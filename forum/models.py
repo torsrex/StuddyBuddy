@@ -21,7 +21,7 @@ class Question(models.Model):
 
 class Answer(models.Model):
     question = models.ForeignKey(Question, related_name='answers')
-    topic = models.ForeignKey(Topic, on_delete=models.DO_NOTHING())
+    topic = models.ForeignKey(Topic)
     answer_text = models.TextField()
     answer_created = models.DateTimeField('Date created', auto_now_add=True)  # Automatically stores creation save
     answer_updated = models.DateTimeField('Date updated', auto_now_add=True)  # Automatically updates on save
