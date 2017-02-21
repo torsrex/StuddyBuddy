@@ -11,7 +11,7 @@ class Topic(models.Model):
 
 
 class Question(models.Model):
-    question_name = models.CharField(max_length=None)
+    question_name = models.CharField(max_length=60)
     question_text = models.TextField()
     question_created = models.DateTimeField('Date created', auto_now_add=True)  # Automatically stores creation date
     question_updated = models.DateTimeField('Date updated', auto_now=True)  # Automatically updates on save
