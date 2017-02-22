@@ -1,0 +1,8 @@
+<h1>Questions</h1>
+<ul>
+{% for questions in object_list %}
+    <li>{{questions.question_name}} - {{ questions.question_text }} - Topic:  {{ questions.question_topic.topic_name  }} - {{ questions.answers.all }}</li>
+{% empty %}
+    <li>No Questions yet.</li>
+{% endfor %}
+</ul>

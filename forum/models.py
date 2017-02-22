@@ -11,6 +11,9 @@ class Topic(models.Model):
 
 
 class Question(models.Model):
+    def __str__(self):
+        return self.question_name
+
     question_name = models.CharField(max_length=60)
     question_text = models.TextField()
     question_created = models.DateTimeField('Date created', auto_now_add=True)  # Automatically stores creation date
@@ -20,6 +23,9 @@ class Question(models.Model):
 
 
 class Answer(models.Model):
+    def __str__(self):
+        return self.answer_text
+
     question = models.ForeignKey(Question, related_name='answers')
     topic = models.ForeignKey(Topic)
     answer_text = models.TextField()
