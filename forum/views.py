@@ -1,14 +1,25 @@
-from django.shortcuts import render
-from django.views.generic.list import ListView
+from django.views import generic
 
 # Create your views here.
 
-from forum.models import Question
+from forum.models import Question, Answer
 
 
-class QuestionListView(ListView):
+class IndexView(generic.ListView):
+    template_name = 'forum/index.html'
+    context_object_name = 'latest_questions_list'
+
+    def get_queryset(self):
+        return Question.objects.order_by('-question_created')
+
+
+class DetailView(generic.ListView):
     model = Question
+    template_name = 'forum/detail.html'
+    context_object_name = 'detailed_question'
 
-    def get_context_data(self, **kwargs):
-        context = super(QuestionListView, self, ).get_context_data(**kwargs)
-        return context
+
+class AnswersView(generic.DetailView):
+    model = Answer
+    template_name = 'forum/answers.html'
+    context_object_name = 'detailed_answer_list'

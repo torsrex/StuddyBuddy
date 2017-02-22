@@ -15,7 +15,6 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from forum.views import QuestionListView
 
 urlpatterns = [
     url(r'^forum/', include('forum.urls')),
