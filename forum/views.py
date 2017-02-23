@@ -8,9 +8,9 @@ from forum.models import *
 class IndexView(generic.ListView):
     template_name = 'forum/index.html'
     context_object_name = 'latest_questions_list'
-
     def get_queryset(self):
-        return Question.objects.order_by('-question_created')
+        pk = self.kwargs["pk"]
+        return Question.objects.filter(question_topic_id=pk).order_by('-question_created')
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
@@ -18,6 +18,7 @@ class IndexView(generic.ListView):
             'answer_list': Answer.objects.order_by('-answer_created'),
         })
         return context
+
 
 
 class TopicsView(generic.ListView):
