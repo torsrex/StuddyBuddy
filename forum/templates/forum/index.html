@@ -6,20 +6,38 @@
     <meta name="viewport" content="width-device-width, initla-scale-1.0">
     {% load staticfiles %} {# jinja logic to reference static files #}
     <link rel='stylesheet' href="{% static 'forum/css/bootstrap.min.css' %}" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="{% static 'forum/js/bootstrap.min.js' %}"></script>
 </head>
 <body class="body" style="background-color: #f6f6f6">
 
 
 <div class="container-fluid">
 {% if latest_questions_list %}
-    <ul>
-    {% for question in latest_questions_list %}
-        <li>Topic: {{ question.question_topic }} - <a href="/forum/{{ question.id }}/">{{ question.question_name }}</a> Question text: {{ question.question_text }}</li>
-    {% endfor %}
-    </ul>
+<div class="panel-group" id="accordion" >
+{%  for question in latest_questions_list %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ forloop.counter }}">
+                    {{ question }}
+                </a>
+            </h4>
+        </div>
+        <div id="collapse{{ forloop.counter }}" class="panel-collapse collapse">
+            <div class="panel-body">
+                    <p>{{ question.question_text }}</p>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+</div>
 {% else %}
     <p>No questions are available.</p>
 {% endif %}
 </div>
+</div>
+</div>
+
 </body>
 </html>

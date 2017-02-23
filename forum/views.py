@@ -2,7 +2,7 @@ from django.views import generic
 
 # Create your views here.
 
-from forum.models import Question, Answer
+from forum.models import *
 
 
 class IndexView(generic.ListView):
@@ -23,3 +23,4 @@ class AnswersView(generic.DetailView):
     model = Answer
     template_name = 'forum/answers.html'
     context_object_name = 'detailed_answer_list'
+
