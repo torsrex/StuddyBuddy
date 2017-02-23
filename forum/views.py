@@ -1,6 +1,5 @@
 from django.views import generic
 
-
 # Create your views here.
 
 from forum.models import *
@@ -21,14 +20,10 @@ class IndexView(generic.ListView):
         return context
 
 
-class DetailView(generic.ListView):
-    model = Question
-    template_name = 'forum/detail.html'
-    context_object_name = 'detailed_question'
+class TopicsView(generic.ListView):
+    model = Topic
+    template_name = 'forum/topics.html'
+    context_object_name = 'topics_list'
 
-
-class AnswersView(generic.DetailView):
-    model = Answer
-    template_name = 'forum/answers.html'
-    context_object_name = 'detailed_answer_list'
-
+    def get_queryset(self):
+        return Topic.objects.order_by('topic_name')

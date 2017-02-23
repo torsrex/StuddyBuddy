@@ -6,6 +6,6 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.IndexView.as_view(), name='index'),
-    url(r'^(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name='detail'),
-    url(r'^answers/(?P<question_id>[0-9]+)$', views.AnswersView.as_view(), name='answers'),
+    url(r'^topics/$', views.TopicsView.as_view(), name='topics'),
+    #url(r'^topics/$', views.IndexView.as_view(), name='questionList'),
 ]

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Topics</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width-device-width, initla-scale-1.0">
+    {% load staticfiles %} {# jinja logic to reference static files #}
+    <link rel='stylesheet' href="{% static 'forum/css/bootstrap.min.css' %}" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="{% static 'forum/js/bootstrap.min.js' %}"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        #myInput {
+
+            background-position: 10px 10px;
+            background-repeat: no-repeat;
+            width: 100%;
+            font-size: 16px;
+            padding: 12px 20px 12px 40px;
+            border: 1px solid #ddd;
+            margin-bottom: 12px;
+        }
+
+        .inner-addon {
+            position: relative;
+        }
+
+        /* style icon */
+        .inner-addon .glyphicon {
+            position: absolute;
+            padding: 10px;
+            pointer-events: none;
+        }
+
+        /* align icon */
+        .left-addon .glyphicon {
+            left: 0px;
+        }
+
+        .right-addon .glyphicon {
+            right: 0px;
+        }
+
+        /* add padding  */
+        .left-addon input {
+            padding-left: 30px;
+        }
+
+        .right-addon input {
+            padding-right: 30px;
+        }
+
+        #myTable {
+            border-collapse: collapse;
+            width: 100%;
+            border: 1px solid #ddd;
+            font-size: 18px;
+        }
+
+        #myTable th, #myTable td {
+            text-align: left;
+            padding: 12px;
+        }
+
+        #myTable tr {
+            border-bottom: 1px solid #ddd;
+        }
+
+        #myTable tr:hover {
+            background-color: #b2e8ff;
+        }
+
+        #myTable tr.header {
+            background-color: #d3d3d3;
+        }
+
+    </style>
+</head>
+<body class="body" style="background-color: #f6f6f6">
+
+
+<div class="container-fluid">
+    <h2>Topics</h2>
+    {% if topics_list %}
+        <div class="inner-addon left-addon">
+            <i class="glyphicon glyphicon-search"></i>
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.."
+                   title="Type in a name">
+        </div>
+        <table id="myTable">
+            <tr class="header">
+                <th style="width:20%;">Subject code</th>
+                <th style="width:90%;">Subject name</th>
+            </tr>
+            {% for topic in topics_list %}
+                <tr>
+                    <td>
+                        <a href="topics/{{ topic.id }}" style="color:#0f0f0f;text-decoration:none">
+                            <div style="height:100%;width:100%">
+                                {{ topic.topic_name }}
+                            </div>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="topics/{{ topic.id }}" style="color:#0f0f0f;text-decoration:none">
+                            <div style="height:100%;width:100%">
+                                {{ topic.topic_desc }}
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+
+        <script>
+            function myFunction() {
+                var input, filter, table, tr, td, i;
+                input = document.getElementById("myInput");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("myTable");
+                tr = table.getElementsByTagName("tr");
+                for (i = 0; i < tr.length; i++) {
+                    td = tr[i].getElementsByTagName("td")[0];
+                    if (td) {
+                        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+            }
+        </script>
+    {% else %}
+        <p>No created topic.</p>
+    {% endif %}
+</div>
+</body>
+</html>
