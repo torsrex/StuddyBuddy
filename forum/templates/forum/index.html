@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Index of forum</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width-device-width, initla-scale-1.0">
+    {% load staticfiles %} {# jinja logic to reference static files #}
+    <link rel='stylesheet' href="{% static 'forum/css/bootstrap.min.css' %}" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="{% static 'forum/js/bootstrap.min.js' %}"></script>
+</head>
+<body class="body" style="background-color: #f6f6f6">
+
+
+<div class="container-fluid">
+    {% if latest_questions_list %}
+        <div class="panel-group" id="accordion">
+            {% for question in latest_questions_list %}
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ forloop.counter }}">
+                                <div class="row">
+                                    <div class="col-md-6">{{ question.question_name }}</div>
+                                    <div class="col-md-6">Created: {{ question.question_created }}</div>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse{{ forloop.counter }}" class="panel-collapse collapse">
+                        <div class="panel-body">
+
+                            <p>{{ question.question_text }}</p>
+                            {% for answer in answer_list %}
+                                {% if answer.question_id == question.id %}
+                                <br>{{ answer.answer_text }}
+                                {% endif %}
+                                {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No questions are available.</p>
+    {% endif %}
+</div>
+</div>
+</div>
+
+
+</body>
+</html>

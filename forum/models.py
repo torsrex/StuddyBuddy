@@ -9,6 +9,9 @@ class Topic(models.Model):
     topic_created = models.DateTimeField('Date created', auto_now_add=True)  # Automatically stores creation save
     topic_updated = models.DateTimeField('Date updated', auto_now_add=True)  # Automatically updates on save
 
+    def __str__(self):
+        return self.topic_name
+
 
 class Question(models.Model):
     question_name = models.CharField(max_length=60)
@@ -18,6 +21,9 @@ class Question(models.Model):
     question_SuitableForQuiz = models.BooleanField()  # Stores whether answer can be used for quiz
     question_topic = models.ForeignKey(Topic, related_name='questions')
 
+    def __str__(self):
+        return self.question_name
+
 
 class Answer(models.Model):
     question = models.ForeignKey(Question, related_name='answers')
@@ -25,3 +31,6 @@ class Answer(models.Model):
     answer_text = models.TextField()
     answer_created = models.DateTimeField('Date created', auto_now_add=True)  # Automatically stores creation save
     answer_updated = models.DateTimeField('Date updated', auto_now_add=True)  # Automatically updates on save
+
+    def __str__(self):
+        return self.answer_text
