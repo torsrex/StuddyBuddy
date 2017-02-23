@@ -32,9 +32,9 @@
                             <p>{{ question.question_text }}</p>
                             {% for answer in answer_list %}
                                 {% if answer.question_id == question.id %}
-                                <br>{{ answer.answer_text }}
+                                    <br>Answer number: {{ answer.id }} : {{ answer.answer_text }}
                                 {% endif %}
-                                {% endfor %}
+                            {% endfor %}
 
                         </div>
                     </div>
@@ -44,6 +44,7 @@
     {% else %}
         <p>No questions are available.</p>
     {% endif %}
+
 </div>
 </div>
 </div>
