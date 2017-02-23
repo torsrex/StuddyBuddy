@@ -13,31 +13,41 @@
 
 
 <div class="container-fluid">
-{% if latest_questions_list %}
-<div class="panel-group" id="accordion" >
-{%  for question in latest_questions_list %}
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ forloop.counter }}">
-                    {{ question }}
-                </a>
-            </h4>
+    {% if latest_questions_list %}
+        <div class="panel-group" id="accordion">
+            {% for question in latest_questions_list %}
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ forloop.counter }}">
+                                <div class="row">
+                                    <div class="col-md-6">{{ question.question_name }}</div>
+                                    <div class="col-md-6">Created: {{ question.question_created }}</div>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse{{ forloop.counter }}" class="panel-collapse collapse">
+                        <div class="panel-body">
+
+                            <p>{{ question.question_text }}</p>
+                            {% for answer in answer_list %}
+                                {% if answer.question_id == question.id %}
+                                <br>{{ answer.answer_text }}
+                                {% endif %}
+                                {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
-        <div id="collapse{{ forloop.counter }}" class="panel-collapse collapse">
-            <div class="panel-body">
-                    <p>{{ question.question_text }}</p>
-            </div>
-        </div>
-    </div>
-{% endfor %}
-</div>
-{% else %}
-    <p>No questions are available.</p>
-{% endif %}
+    {% else %}
+        <p>No questions are available.</p>
+    {% endif %}
 </div>
 </div>
 </div>
+
 
 </body>
 </html>

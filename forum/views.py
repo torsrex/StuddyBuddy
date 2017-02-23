@@ -1,5 +1,6 @@
 from django.views import generic
 
+
 # Create your views here.
 
 from forum.models import *
@@ -11,6 +12,13 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         return Question.objects.order_by('-question_created')
+
+    def get_context_data(self, **kwargs):
+        context = super(IndexView, self).get_context_data(**kwargs)
+        context.update({
+            'answer_list': Answer.objects.order_by('-answer_created'),
+        })
+        return context
 
 
 class DetailView(generic.ListView):
