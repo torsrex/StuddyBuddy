@@ -1,6 +1,6 @@
 from django import forms
 
-from forum.models import Question
+from forum.models import Question, Topic
 
 
 class QuestionForm(forms.ModelForm):
@@ -31,3 +31,17 @@ class QuestionForm(forms.ModelForm):
     class Meta:
         model = Question
         fields = ('question_name', 'question_text', 'question_SuitableForQuiz', 'question_topic')
+
+
+class TopicForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(TopicForm, self).__init__(*args, **kwargs)
+        # Update css for form fields
+        for field in iter(self.fields):
+            self.fields[field].widget.attrs.update({
+                'class': 'form-control'
+            })
+
+    class Meta:
+        model = Topic
+        fields = ('topic_name', 'topic_desc')

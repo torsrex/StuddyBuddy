@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views import generic
 
-from forum.forms import QuestionForm
+from forum.forms import QuestionForm, TopicForm
 from forum.models import *
 
 
@@ -37,6 +37,17 @@ def new_question(request, topic_id):
 def question_details(request, pk):
     # question = get_object_or_404(Question, pk=pk)
     return render(request, '/forum/topics/' + pk)
+
+
+# Creates new topic
+def new_topic(request):
+    if request.method == "POST":
+        form = TopicForm(request.POST)
+        form.save()
+        return redirect('topics')
+    else:
+        form = TopicForm()
+    return render(request, 'forum/new_topic.html', {'form': form})
 
 
 # Overview of topics with search funcion
