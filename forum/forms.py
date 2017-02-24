@@ -4,6 +4,30 @@ from forum.models import Question
 
 
 class QuestionForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        # Get 'initial' argument if any
+        initial_arguments = kwargs.get('initial', None)
+        updated_initial = {}
+        if initial_arguments:
+            # We have initial arguments, fetch 'user' placeholder variable if any
+            question_topic = initial_arguments.get('question_topic', None)
+            # Now update the form's initial values if user
+            if question_topic:
+                updated_initial['question_topic'] = question_topic
+        # You can also initialize form fields with hardcoded values
+        # or perform complex DB logic here to then perform initialization
+        # Finally update the kwargs initial reference
+        kwargs.update(initial=updated_initial)
+        super(QuestionForm, self).__init__(*args, **kwargs)
+        # Update css for form fields
+        for field in iter(self.fields):
+            self.fields[field].widget.attrs.update({
+                'class': 'form-control'
+            })
+        self.fields['question_SuitableForQuiz'].widget.attrs.update({
+            'class': 'checkbox'
+        })
+
     class Meta:
         model = Question
-        fields = ('question_name', 'question_text', 'question_topic', 'question_SuitableForQuiz')
+        fields = ('question_name', 'question_text', 'question_SuitableForQuiz', 'question_topic')

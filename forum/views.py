@@ -1,17 +1,18 @@
-from django.shortcuts import redirect
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect
 from django.views import generic
 
 from forum.forms import QuestionForm
 from forum.models import *
 
 
+# Lists questions in accordion view
 class IndexView(generic.ListView):
     template_name = 'forum/index.html'
     context_object_name = 'latest_questions_list'
 
     def get_queryset(self):
-        return Question.objects.order_by('-question_created')
+        pk = self.kwargs["pk"]
+        return Question.objects.filter(question_topic_id=pk).order_by('-question_created')
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
@@ -21,28 +22,28 @@ class IndexView(generic.ListView):
         return context
 
 
-def new_question(request):
+# Creates new question
+def new_question(request, topic_id):
     if request.method == "POST":
         form = QuestionForm(request.POST)
-        question = form.save()
-        return redirect('question_details', pk=question.id)
+        form.save()
+        return redirect('question_details', pk=topic_id)
     else:
-        form = QuestionForm()
+        form = QuestionForm(initial={'question_topic': topic_id})
     return render(request, 'forum/new_question.html', {'form': form})
 
 
-"""
-def question_details(request):
-    print("Ting:" +str(request))
-    question = QuestionForm.objects.get(pk=id)
-    return render(request, 'forum/question_details.html', {'question': question})
-"""
-
-
+# Redirects back to topic after question creation
 def question_details(request, pk):
-    question = get_object_or_404(Question, pk=pk)
-    return render(request, 'forum/question_details.html', {'question': question})
+    # question = get_object_or_404(Question, pk=pk)
+    return render(request, '/forum/topics/' + pk)
 
 
-def base(request):
-    return render(request, 'forum/base.html')
+# Overview of topics with search funcion
+class TopicsView(generic.ListView):
+    model = Topic
+    template_name = 'forum/topics.html'
+    context_object_name = 'topics_list'
+
+    def get_queryset(self):
+        return Topic.objects.order_by('topic_name')

@@ -1,9 +1,34 @@
-{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Ask question</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width-device-width, initla-scale-1.0">
+    {% load staticfiles %} {# jinja logic to reference static files #}
+    <link rel='stylesheet' href="{% static 'forum/css/bootstrap.min.css' %}" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="{% static 'forum/js/bootstrap.min.js' %}"></script>
+</head>
+<body class="body" style="background-color: #f6f6f6">
 
-{% block content %}
+
+<div class="container-fluid">
+
     <h1>New Question</h1>
-    <form method="POST" class="new_question">{% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Save</button>
+    <form class="new_question" method='post'>
+        {% csrf_token %}
+        <label>Name: </label>
+        {{ form.question_name }}
+        <label>Description: </label>
+        {{ form.question_text }}
+
+        <label>Suitable for quiz?: </label>{{ form.question_SuitableForQuiz }}
+        {{ form.question_topic.as_hidden }}
+        <br><input type='submit' value='Submit'/>
     </form>
-{% endblock %}
+
+</div>
+
+
+</body>
+</html>
