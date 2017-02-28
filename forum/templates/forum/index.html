@@ -13,9 +13,7 @@
 
 
 <div class="container-fluid">
-    {% if latest_questions_list.0 %}
-        <h1>Current subject: {{ latest_questions_list.0.question_topic }}</h1>
-    {% endif %}
+        <h1>Current subject: {{ topic_name}}</h1>
     {% if latest_questions_list %}
         <div class="panel-group" id="accordion">
             {% for question in latest_questions_list %}

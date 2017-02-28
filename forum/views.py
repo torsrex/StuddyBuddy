@@ -18,6 +18,7 @@ class IndexView(generic.ListView):
         context = super(IndexView, self).get_context_data(**kwargs)
         context.update({
             'answer_list': Answer.objects.order_by('answer_created'),
+            'topic_name': Topic.objects.get(pk=self.kwargs["pk"])  # Fetches topic name for the header
         })
         return context
 
@@ -25,12 +26,12 @@ class IndexView(generic.ListView):
 # Creates new question
 def new_question(request, topic_id):
     if request.method == "POST":
-        form = QuestionForm(request.POST)
+        form = QuestionForm(request.POST)  # Passes arguments in request to form
         form.save()
-        return redirect('question_details', pk=topic_id)
+        return redirect('question_details', pk=topic_id)  # Redirects to question_ details view using pk from topic_id
     else:
-        form = QuestionForm(initial={'question_topic': topic_id})
-    return render(request, 'forum/new_question.html', {'form': form})
+        form = QuestionForm(initial={'question_topic': topic_id})  # Creates a new form with initial values
+    return render(request, 'forum/new_question.html', {'form': form})  # Returns a render using the form
 
 
 # Redirects back to topic after question creation
@@ -40,20 +41,21 @@ def question_details(request, pk):
 
 # Creates new topic
 def new_topic(request):
-    if request.method == "POST":
-        form = TopicForm(request.POST)
+    if request.method == "POST":  # Used when submit button is clicked
+        form = TopicForm(request.POST)  # Passes arguments in request to form
         form.save()
-        return redirect('topics')
+        return redirect('topics')  # Redirects to the topic view after form submission
     else:
-        form = TopicForm()
-    return render(request, 'forum/new_topic.html', {'form': form})
+        form = TopicForm()  # Just displays the form empty
+    return render(request, 'forum/new_topic.html',
+                  {'form': form})  # Returns a render using the template and form specified
 
 
-# Overview of topics with search funcion
+# Overview of topics with search function
 class TopicsView(generic.ListView):
-    model = Topic
-    template_name = 'forum/topics.html'
-    context_object_name = 'topics_list'
+    model = Topic  # Sets the model this built in view is interacting with
+    template_name = 'forum/topics.html'  # Sets template used by the view
+    context_object_name = 'topics_list'  # Creates name for list of the object
 
     def get_queryset(self):
-        return Topic.objects.order_by('topic_name')
+        return Topic.objects.order_by('topic_name')  # Makes sure the topics are ordered by name
