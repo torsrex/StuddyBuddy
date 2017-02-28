@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views import generic
 
-from forum.forms import QuestionForm, TopicForm
+from forum.forms import QuestionForm, TopicForm, AnswerForm
 from forum.models import *
 
 
@@ -11,6 +11,7 @@ class IndexView(generic.ListView):
     context_object_name = 'latest_questions_list'
 
     def get_queryset(self):
+        self.form = AnswerForm(self.request.GET)
         pk = self.kwargs["pk"]
         return Question.objects.filter(question_topic_id=pk).order_by('-question_created')
 
@@ -18,7 +19,8 @@ class IndexView(generic.ListView):
         context = super(IndexView, self).get_context_data(**kwargs)
         context.update({
             'answer_list': Answer.objects.order_by('answer_created'),
-            'topic_name': Topic.objects.get(pk=self.kwargs["pk"])  # Fetches topic name for the header
+            'topic_name': Topic.objects.get(pk=self.kwargs["pk"]),  # Fetches topic name for the header
+            'form': self.form
         })
         return context
 
