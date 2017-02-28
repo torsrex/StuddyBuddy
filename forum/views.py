@@ -35,7 +35,6 @@ def new_question(request, topic_id):
 
 # Redirects back to topic after question creation
 def question_details(request, pk):
-    # question = get_object_or_404(Question, pk=pk)
     return render(request, '/forum/topics/' + pk)
 
 
