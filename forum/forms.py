@@ -1,6 +1,7 @@
 from django import forms
 
 from forum.models import Question, Topic
+from django.contrib.auth.models import User
 
 
 class QuestionForm(forms.ModelForm):
@@ -45,3 +46,19 @@ class TopicForm(forms.ModelForm):
     class Meta:
         model = Topic
         fields = ('topic_name', 'topic_desc')
+
+
+class UserForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput)
+
+    def __init__(self, *args, **kwargs):
+        super(UserForm, self).__init__(*args, **kwargs)
+        # Update css for form fields
+        for field in iter(self.fields):
+            self.fields[field].widget.attrs.update({
+                'class': 'form-control'
+            })
+
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'password']

@@ -82,6 +82,12 @@
 </head>
 <body class="body" style="background-color: #f6f6f6">
 
+{% if user.username %}
+    <p>Logged in as: {{ user.username }}</p>
+    <a class="btn btn-default" href="logout" role="button">Log out</a>
+{% else %}
+    <a class="btn btn-default" href="login" role="button">Log in</a>
+{% endif %}
 
 <div class="container-fluid">
     <h2>Topics</h2>

@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 # Create your models here.
@@ -20,6 +21,7 @@ class Question(models.Model):
     question_updated = models.DateTimeField('Date updated', auto_now=True)  # Automatically updates on save
     question_SuitableForQuiz = models.BooleanField(default=False)  # Stores whether answer can be used for quiz
     question_topic = models.ForeignKey(Topic, related_name='questions')
+    user = models.ForeignKey(User, editable=False)
 
     def __str__(self):
         return self.question_name
