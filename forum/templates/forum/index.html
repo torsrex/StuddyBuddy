@@ -16,26 +16,29 @@
     <h1>Current subject: {{ topic_name }}</h1>
     {% if latest_questions_list %}
         <div class="panel-group" id="accordion">
-            {% for question in latest_questions_list %}
+            {% for q in latest_questions_list %}
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ forloop.counter }}">
                                 <div class="row">
-                                    <div class="col-md-6">{{ question.question_name }}</div>
-                                    <div class="col-md-6">Created: {{ question.question_created }}</div>
+                                    <div class="col-md-6">{{ q.question_name }}</div>
+                                    <div class="col-md-6">Created: {{ q.question_created }}</div>
                             </a>
                         </h4>
                     </div>
                     <div id="collapse{{ forloop.counter }}" class="panel-collapse collapse">
                         <div class="panel-body">
-                            <p>{{ question.question_text }}
-                            <form class="new_question" method='post'>
+                            <p>{{ q.question_text }}</p>
+                            <form class="new_question" action="/forum/new_answer/" method='post'>
+                                {% csrf_token %}
                                 {{ form.answer_text }}
+                                <input type="hidden" value="{{ q.id }}" name="question">
+                                {{ form.topic.as_hidden }}
                                 <br><input type='submit' class="btn btn-default" value='Submit'/>
                             </form>
                             {% for answer in answer_list %}
-                                {% if answer.question_id == question.id %}
+                                {% if answer.question_id == q.id %}
                                     <br>Answer number: {{ answer.id }} : {{ answer.answer_text }}
                                 {% endif %}
                             {% endfor %}

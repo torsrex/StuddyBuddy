@@ -48,7 +48,6 @@ class TopicForm(forms.ModelForm):
 
 
 class AnswerForm(forms.ModelForm):
-
     def __init__(self, *args, **kwargs):
         super(AnswerForm, self).__init__(*args, **kwargs)
         # Update css for form fields
@@ -59,4 +58,4 @@ class AnswerForm(forms.ModelForm):
 
     class Meta:
         model = Answer
-        fields = ('answer_text',)
+        fields = ('answer_text', 'question', 'topic')

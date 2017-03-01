@@ -11,8 +11,8 @@ class IndexView(generic.ListView):
     context_object_name = 'latest_questions_list'
 
     def get_queryset(self):
-        self.form = AnswerForm(self.request.GET)
         pk = self.kwargs["pk"]
+        self.form = AnswerForm(initial={'topic': pk})
         return Question.objects.filter(question_topic_id=pk).order_by('-question_created')
 
     def get_context_data(self, **kwargs):
@@ -23,6 +23,14 @@ class IndexView(generic.ListView):
             'form': self.form
         })
         return context
+
+
+# Handles the post of new answer form for IndexListView
+def new_answer(request):
+    if request.method == "POST":  # Used when submit button is clicked
+        form = AnswerForm(request.POST)  # Passes arguments in request to form
+        form.save()
+        return redirect('/forum/topics/'+request.POST['topic'])  # Redirects to the topic view after form submission
 
 
 # Creates new question
