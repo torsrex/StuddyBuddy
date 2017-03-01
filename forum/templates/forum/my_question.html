@@ -13,10 +13,10 @@
 
 
 <div class="container-fluid">
-        <h1>Current subject: {{ topic_name}}</h1>
-    {% if latest_questions_list %}
+        <h1>Current User: {{ user_name}}</h1>
+    {% if my_question_list %}
         <div class="panel-group" id="accordion">
-            {% for question in latest_questions_list %}
+            {% for question in my_question_list %}
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
