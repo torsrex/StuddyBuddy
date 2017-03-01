@@ -22,6 +22,21 @@ class IndexView(generic.ListView):
         })
         return context
 
+# Lists inlogged users asked questions
+class my_questionView(generic.ListView):
+    template_name = 'forum/my_question.html'
+    context_object_name = 'my_question_list'
+
+    def get_queryset(request):
+        return Question.objects.filter(question_author = request.user).order_by('-question_created') #returns questions asked by inlogged user
+
+    def get_context_data(request, **kwargs):
+        context = super(my_questionView, request).get_context_data(**kwargs)
+        context.update({
+            'answer_list': Answer.objects.order_by('answer_created'),
+            'user_name': request.user
+        })
+        return context
 
 # Creates new question
 def new_question(request, topic_id):
