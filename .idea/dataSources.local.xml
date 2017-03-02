@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Django default" uuid="11e85928-e2a4-4c60-915d-2b04e15bdcc0">
+      <database-info product="PostgreSQL" version="9.6.2" jdbc-version="4.0" driver-name="PostgreSQL Native Driver" driver-version="PostgreSQL 9.4 JDBC4 (build 1201)">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <user-name>studybuddy_user</user-name>
+      <user-password>dfc7dfdfdfcedfcedfd3dffadf99dfc4dfc9dfc3dfc6df9ddf9b</user-password>
+      <resolve-scope>studybuddy_db:public,studybuddy_user</resolve-scope>
+    </data-source>
+  </component>
+</project>
