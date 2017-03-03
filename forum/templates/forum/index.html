@@ -4,10 +4,48 @@
     <title>Index of forum</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width-device-width, initla-scale-1.0">
+    {% load filters %}
     {% load staticfiles %} {# jinja logic to reference static files #}
     <link rel='stylesheet' href="{% static 'forum/css/bootstrap.min.css' %}" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="{% static 'forum/js/bootstrap.min.js' %}"></script>
+
+
+    <style>
+        .circle {
+            border-radius: 100%;
+            border: 0.25em solid black;
+            height: 25px;
+            width: 25px;
+        }
+
+        .downbtn {
+            left: 0px;
+        }
+
+        .glyphicon.glyphicon-chevron-up {
+            font-size: 17px;
+            padding: 0px 3px 0 2px;
+        }
+
+        .glyphicon.glyphicon-chevron-down {
+            font-size: 17px;
+            padding: 0px 3px 0 2px;
+        }
+
+        .submit-with-icon {
+            background: transparent;
+            border: 0px;
+            padding: 0;
+            outline: 0;
+        }
+
+        .circle:active {
+            content: '';
+            background-color: rgb(235, 235, 235);
+            border-color: rgb(173, 173, 173);
+        }
+    </style>
 </head>
 <body class="body" style="background-color: #f6f6f6">
 
@@ -31,6 +69,32 @@
                     <div id="collapse{{ forloop.counter }}" class="panel-collapse collapse">
                         <div class="panel-body">
                             <p>{{ q.question_text }}</p>
+
+                            <div>
+                                <form action="/forum/upvote/" method="post">
+                                    {% csrf_token %}
+                                    <div class="circle">
+                                        <input type="hidden" value="{{ q.id }}" name="pk_question">
+                                        <input type="hidden" value="{{ topic_name.id }}" name="topic">
+                                        <button type="submit" class="submit-with-icon">
+                                            <span class="glyphicon glyphicon-chevron-up"></span>
+                                        </button>
+                                    </div>
+                                </form>
+                                <label>{{ var|votes:q }}</label>
+                                <form action="/forum/downvote/" method="post">
+                                    {% csrf_token %}
+                                    <div class="circle">
+                                        <input type="hidden" value="{{ q.id }}" name="pk_question">
+                                        <input type="hidden" value="{{ topic_name.id }}" name="topic">
+                                        <button type="submit" class="submit-with-icon">
+                                            <span class="glyphicon glyphicon-chevron-down"></span>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+
+
                             <p>{{ q.answers.answer_text }}</p>
                             <br>
                             {% for answer in answer_list %}

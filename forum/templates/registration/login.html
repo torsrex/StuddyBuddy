@@ -1,10 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'forum/base.html' %}
+{% block content %}
+
+    <h2>Login</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+    </form>
+    <br>
+    <br>
+    <p>Not registered yet?</p>
+    <a class="btn btn-default" href="/forum/register" role="button">Create a user</a>
+
+{% endblock %}

@@ -1,10 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>StudyBuddy</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width-device-width, initla-scale-1.0">
+    {% load staticfiles %} {# jinja logic to reference static files #}
+    <link rel='stylesheet' href="{% static 'forum/css/bootstrap.min.css' %}" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="{% static 'forum/js/bootstrap.min.js' %}"></script>
 </head>
-<body>
-$END$
+<body class="body" style="background-color: #f6f6f6">
+
+{% if user.username %}
+    <p>Logged in as: {{ user.username }}</p>
+    <a class="btn btn-default" href="logout" role="button">Log out</a>
+{% else %}
+    <a class="btn btn-default" href="login" role="button">Log in</a>
+{% endif %}
+
+
+<div class="container-fluid">
+    {% block content %}
+
+
+    {% endblock %}
+
+
+</div>
+
+
 </body>
 </html>
