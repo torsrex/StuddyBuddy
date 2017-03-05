@@ -3,10 +3,10 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.views import generic
 from django.contrib.auth.models import User
-
+from django.shortcuts import get_object_or_404, HttpResponseRedirect
+from django.http import HttpResponse
 from forum.forms import QuestionForm, TopicForm, UserForm
 from forum.models import *
-
 
 # Lists questions in accordion view
 class IndexView(generic.ListView):
@@ -57,6 +57,12 @@ def new_question(request, topic_id):
         form = QuestionForm(initial={'question_topic': topic_id})  # Creates a new form with initial values
     return render(request, 'forum/new_question.html', {'form': form})  # Returns a render using the form
 
+#Deletes question
+def delete_question(request, question_id):
+    id = question_id
+    question = get_object_or_404(Question, pk=id)
+    question.delete()
+    return HttpResponseRedirect('/forum/my_question/')
 
 # Redirects back to topic after question creation
 def question_details(request, pk):

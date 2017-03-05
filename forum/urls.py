@@ -13,4 +13,5 @@ urlpatterns = [
     url(r'^register/$', views.UserFormView.as_view(), name='register'),
     url(r'^login/$', auth_views.login, name='login'),
     url(r'^logout/$', auth_views.logout, {'next_page': '/forum'}, name='logout'),
+    url(r'^(?P<question_id>[0-9]+)/$', views.delete_question, name="delete_question"),
 ]
