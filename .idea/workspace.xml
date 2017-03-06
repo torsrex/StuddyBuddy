@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="27e1aa90-364a-4f03-b6e4-7897433c025e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/11e85928-e2a4-4c60-915d-2b04e15bdcc0/_metadata_/metadata" afterPath="$PROJECT_DIR$/.idea/dataSources/11e85928-e2a4-4c60-915d-2b04e15bdcc0/_metadata_/metadata" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/11e85928-e2a4-4c60-915d-2b04e15bdcc0/_metadata_/metadata.keystream" afterPath="$PROJECT_DIR$/.idea/dataSources/11e85928-e2a4-4c60-915d-2b04e15bdcc0/_metadata_/metadata.keystream" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/11e85928-e2a4-4c60-915d-2b04e15bdcc0/_metadata_/metadata.keystream.len" afterPath="$PROJECT_DIR$/.idea/dataSources/11e85928-e2a4-4c60-915d-2b04e15bdcc0/_metadata_/metadata.keystream.len" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/11e85928-e2a4-4c60-915d-2b04e15bdcc0/_metadata_/metadata.len" afterPath="$PROJECT_DIR$/.idea/dataSources/11e85928-e2a4-4c60-915d-2b04e15bdcc0/_metadata_/metadata.len" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/11e85928-e2a4-4c60-915d-2b04e15bdcc0/_metadata_/metadata_i" afterPath="$PROJECT_DIR$/.idea/dataSources/11e85928-e2a4-4c60-915d-2b04e15bdcc0/_metadata_/metadata_i" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/11e85928-e2a4-4c60-915d-2b04e15bdcc0/_metadata_/metadata_i.len" afterPath="$PROJECT_DIR$/.idea/dataSources/11e85928-e2a4-4c60-915d-2b04e15bdcc0/_metadata_/metadata_i.len" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/11e85928-e2a4-4c60-915d-2b04e15bdcc0.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/11e85928-e2a4-4c60-915d-2b04e15bdcc0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forum/templates/forum/my_question.html" afterPath="$PROJECT_DIR$/forum/templates/forum/my_question.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forum/templates/forum/topics.html" afterPath="$PROJECT_DIR$/forum/templates/forum/topics.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forum/urls.py" afterPath="$PROJECT_DIR$/forum/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forum/views.py" afterPath="$PROJECT_DIR$/forum/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -70,8 +58,8 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/forum/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="10" column="75" lean-forward="false" selection-start-line="10" selection-start-column="64" selection-end-line="10" selection-end-column="75" />
+            <state relative-caret-position="375">
+              <caret line="15" column="60" lean-forward="false" selection-start-line="15" selection-start-column="45" selection-end-line="15" selection-end-column="60" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -79,11 +67,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/forum/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="496">
-              <caret line="64" column="34" lean-forward="false" selection-start-line="64" selection-start-column="34" selection-end-line="64" selection-end-column="34" />
+            <state relative-caret-position="530">
+              <caret line="103" column="28" lean-forward="true" selection-start-line="103" selection-start-column="28" selection-end-line="103" selection-end-column="28" />
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
               </folding>
@@ -104,7 +92,7 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/forum/templates/forum/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1146">
+            <state relative-caret-position="381">
               <caret line="47" column="88" lean-forward="true" selection-start-line="47" selection-start-column="88" selection-end-line="47" selection-end-column="88" />
               <folding />
             </state>
@@ -115,17 +103,17 @@
         <entry file="file://$PROJECT_DIR$/forum/templates/forum/topics.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="577">
-              <caret line="148" column="52" lean-forward="false" selection-start-line="148" selection-start-column="41" selection-end-line="148" selection-end-column="52" />
+              <caret line="148" column="86" lean-forward="true" selection-start-line="148" selection-start-column="86" selection-end-line="148" selection-end-column="86" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="my_question.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="my_question.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/forum/templates/forum/my_question.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="48" column="15" lean-forward="false" selection-start-line="48" selection-start-column="15" selection-end-line="48" selection-end-column="15" />
+            <state relative-caret-position="354">
+              <caret line="26" column="50" lean-forward="false" selection-start-line="26" selection-start-column="50" selection-end-line="26" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -219,8 +207,8 @@
         <option value="$PROJECT_DIR$/forum/templates/forum/index.html" />
         <option value="$PROJECT_DIR$/forum/templates/forum/topics.html" />
         <option value="$PROJECT_DIR$/forum/urls.py" />
-        <option value="$PROJECT_DIR$/forum/templates/forum/my_question.html" />
         <option value="$PROJECT_DIR$/forum/views.py" />
+        <option value="$PROJECT_DIR$/forum/templates/forum/my_question.html" />
       </list>
     </option>
   </component>
@@ -903,17 +891,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/forum/templates/forum/my_question.html">
+    <entry file="file://$PROJECT_DIR$/forum/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="48" column="15" lean-forward="false" selection-start-line="48" selection-start-column="15" selection-end-line="48" selection-end-column="15" />
-          <folding />
+        <state relative-caret-position="375">
+          <caret line="15" column="60" lean-forward="false" selection-start-line="15" selection-start-column="45" selection-end-line="15" selection-end-column="60" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/forum/templates/forum/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1146">
+        <state relative-caret-position="381">
           <caret line="47" column="88" lean-forward="true" selection-start-line="47" selection-start-column="88" selection-end-line="47" selection-end-column="88" />
           <folding />
         </state>
@@ -930,28 +920,26 @@
     <entry file="file://$PROJECT_DIR$/forum/templates/forum/topics.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="577">
-          <caret line="148" column="52" lean-forward="false" selection-start-line="148" selection-start-column="41" selection-end-line="148" selection-end-column="52" />
+          <caret line="148" column="86" lean-forward="true" selection-start-line="148" selection-start-column="86" selection-end-line="148" selection-end-column="86" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/forum/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="10" column="75" lean-forward="false" selection-start-line="10" selection-start-column="64" selection-end-line="10" selection-end-column="75" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/forum/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="496">
-          <caret line="64" column="34" lean-forward="false" selection-start-line="64" selection-start-column="34" selection-end-line="64" selection-end-column="34" />
+        <state relative-caret-position="530">
+          <caret line="103" column="28" lean-forward="true" selection-start-line="103" selection-start-column="28" selection-end-line="103" selection-end-column="28" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forum/templates/forum/my_question.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="26" column="50" lean-forward="false" selection-start-line="26" selection-start-column="50" selection-end-line="26" selection-end-column="50" />
+          <folding />
         </state>
       </provider>
     </entry>

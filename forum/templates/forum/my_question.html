@@ -24,7 +24,7 @@
                                 <div class="row">
                                     <div class="col-md-6">{{ question.question_name }}</div>
                                     <div class="col-md-6">Created: {{ question.question_created }}</div>
-                                    <a href="{% url "delete_question" question_id=question.id %}">Delete</a>
+                                    <a class="btn btn-default" href="{% url "delete_question" question_id=question.id %}">Delete</a>
                             </a>
                         </h4>
                     </div>
