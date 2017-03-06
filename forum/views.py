@@ -1,9 +1,11 @@
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.views import generic
 
-from forum.forms import QuestionForm, TopicForm, AnswerForm, UserForm
+from forum.forms import AnswerForm
+from forum.forms import QuestionForm, TopicForm, UserForm
 from forum.models import *
 
 
@@ -23,6 +25,24 @@ class IndexView(generic.ListView):
             'answer_list': Answer.objects.filter(topic=self.pk).order_by('answer_created'),
             'topic_name': Topic.objects.get(pk=self.kwargs["pk"]),  # Fetches topic name for the header
             'form': self.form
+        })
+        return context
+
+
+# Lists inlogged users asked questions
+class my_questionView(generic.ListView):
+    template_name = 'forum/my_question.html'
+    context_object_name = 'my_question_list'
+
+    def get_queryset(self):
+        return Question.objects.filter(user=self.request.user).order_by(
+            '-question_created')  # returns questions asked by inlogged user
+
+    def get_context_data(self, **kwargs):
+        context = super(my_questionView, self).get_context_data(**kwargs)
+        context.update({
+            'answer_list': Answer.objects.order_by('answer_created'),
+            'user_name': self.request.user
         })
         return context
 
@@ -59,11 +79,18 @@ def new_question(request, topic_id):
 
             formToSave.user = request.user
             formToSave.save()
-            return redirect('question_details',
-                            pk=topic_id)  # Redirects to question_ details view using pk from topic_id
+            return redirect('question_details', pk=topic_id)
     else:
         form = QuestionForm(initial={'question_topic': topic_id})  # Creates a new form with initial values
     return render(request, 'forum/new_question.html', {'form': form})  # Returns a render using the form
+
+
+# Deletes question
+def delete_question(request, question_id):
+    id = question_id
+    question = get_object_or_404(Question, pk=id)
+    question.delete()
+    return HttpResponseRedirect('/forum/my_question/')
 
 
 # Redirects back to topic after question creation
