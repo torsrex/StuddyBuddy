@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Topics</title>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width-device-width, initla-scale-1.0">
-    {% load staticfiles %} {# jinja logic to reference static files #}
-    <link rel='stylesheet' href="{% static 'forum/css/bootstrap.min.css' %}" type="text/css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="{% static 'forum/js/bootstrap.min.js' %}"></script>
-
+{% extends "forum\base.html" %}
+{% block title %}Topics{% endblock %}
+{% block head %}
     <style>
         * {
             box-sizing: border-box;
@@ -77,24 +69,20 @@
         #myTable tr.header {
             background-color: #d3d3d3;
         }
-
     </style>
-</head>
+{% endblock %}
+
 <body class="body" style="background-color: #f6f6f6">
 
-{% if user.username %}
-    <p>Logged in as: {{ user.username }}</p>
-    <a class="btn btn-default" href="logout" role="button">Log out</a>
-{% else %}
-    <a class="btn btn-default" href="login" role="button">Log in</a>
-{% endif %}
-
-<div class="container-fluid">
+{% block container-fluid %}
     <h2>Topics</h2>
+    <a class="btn btn-default" href="new_topic" role="button">Create new topic</a>
+    <br>
+    <br>
     {% if topics_list %}
         <div class="inner-addon left-addon">
             <i class="glyphicon glyphicon-search"></i>
-            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.."
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for subjects.."
                    title="Type in a name">
         </div>
         <table id="myTable">
@@ -122,6 +110,8 @@
             {% endfor %}
         </table>
 
+
+        {#Search script for searching in table#}
         <script>
             function myFunction() {
                 var input, filter, table, tr, td, i;
@@ -141,12 +131,11 @@
                 }
             }
         </script>
+
     {% else %}
+        {#Displays default no topic page#}
         <p>No created topic.</p>
     {% endif %}
-    <br><a class="btn btn-default" href="new_topic" role="button">Create new topic</a>
 
-    <br><a class="btn btn-default" href="my_question" role="button">Your questions</a>
-</div>
-</body>
-</html>
+
+{% endblock %}

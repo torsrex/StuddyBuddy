@@ -1,7 +1,7 @@
-from django.db import models
 from django.contrib.auth.models import User
-
+from django.db import models
 from vote.models import VoteModel
+
 
 # Create your models here.
 
@@ -28,7 +28,7 @@ class Question(VoteModel, models.Model):
         return self.question_name
 
 
-class Answer(models.Model):
+class Answer(VoteModel, models.Model):
     question = models.ForeignKey(Question, related_name='answers')
     topic = models.ForeignKey(Topic)
     answer_text = models.TextField()

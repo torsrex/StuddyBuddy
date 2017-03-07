@@ -1,10 +1,15 @@
-{% load i18n %}
-
+{% extends "registration\base_login.html" %}
+{% block title %}Register{% endblock %}
 {% block content %}
-    <form method="post" action=".">
+    <h2 style="white-space: nowrap">Create account</h2>
+    <form class="new_question" method='post'>
         {% csrf_token %}
-        {{ form.as_p }}
-
-        <input type="submit" value="{% trans 'Submit' %}"/>
+        <label>Username: </label>
+        {{ form.username }}
+        <label>Email-address: </label>
+        {{ form.email }}
+         <label>Password: </label>
+        {{ form.password }}
+        <br><input class="btn btn-default" type='submit' value='Submit'/>
     </form>
 {% endblock %}

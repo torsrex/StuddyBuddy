@@ -1,20 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Ask question</title>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width-device-width, initla-scale-1.0">
-    {% load staticfiles %} {# jinja logic to reference static files #}
-    <link rel='stylesheet' href="{% static 'forum/css/bootstrap.min.css' %}" type="text/css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="{% static 'forum/js/bootstrap.min.js' %}"></script>
-</head>
-<body class="body" style="background-color: #f6f6f6">
-
-
-<div class="container-fluid">
-
-    <h1>New Question</h1>
+{% extends "registration\base_login.html" %}
+{% block title %}New question{% endblock %}
+{% block content %}
+    <h2 style="white-space: nowrap">New Question</h2>
     <form class="new_question" method='post'>
         {% csrf_token %}
         <label>Name: </label>
@@ -25,9 +12,4 @@
         {{ form.question_topic.as_hidden }}
         <br><input type='submit' class="btn btn-default" value='Submit'/>
     </form>
-
-</div>
-
-
-</body>
-</html>
+{% endblock %}

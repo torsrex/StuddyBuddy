@@ -1,19 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Index of forum</title>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width-device-width, initla-scale-1.0">
-    {% load staticfiles %} {# jinja logic to reference static files #}
-    <link rel='stylesheet' href="{% static 'forum/css/bootstrap.min.css' %}" type="text/css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="{% static 'forum/js/bootstrap.min.js' %}"></script>
-</head>
-<body class="body" style="background-color: #f6f6f6">
+{% extends "forum\base.html" %}
+{% block title %}Your questions{% endblock %}
 
-
-<div class="container-fluid">
-        <h1>Current User: {{ user_name}}</h1>
+{% block container-fluid %}
+    <h1>Current User: {{ user_name }}</h1>
     {% if my_question_list %}
         <div class="panel-group" id="accordion">
             {% for question in my_question_list %}
@@ -24,7 +13,10 @@
                                 <div class="row">
                                     <div class="col-md-6">{{ question.question_name }}</div>
                                     <div class="col-md-6">Created: {{ question.question_created }}</div>
-                                    <a class="btn btn-default" href="{% url "delete_question" question_id=question.id %}">Delete</a>
+                                    <a class="btn btn-default"
+                                       href="{% url "delete_question" question_id=question.id %}">
+                                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete
+                                    </a>
                             </a>
                         </h4>
                     </div>
@@ -42,12 +34,4 @@
         <p>No questions are available.</p>
     {% endif %}
     <br>
-    <a class="btn btn-default" href="/forum" role="button">Go back</a>
-
-</a>
-</div>
-</div>
-
-
-</body>
-</html>
+{% endblock %}

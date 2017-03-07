@@ -1,33 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>StudyBuddy</title>
+    <title>{% block title %}{% endblock %}</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width-device-width, initla-scale-1.0">
     {% load staticfiles %} {# jinja logic to reference static files #}
     <link rel='stylesheet' href="{% static 'forum/css/bootstrap.min.css' %}" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="{% static 'forum/js/bootstrap.min.js' %}"></script>
-</head>
-<body class="body" style="background-color: #f6f6f6">
+    <style>
+        .right {
+            float: right;
+            padding-top: 12px;
+        }
 
-{% if user.username %}
-    <p>Logged in as: {{ user.username }}</p>
-    <a class="btn btn-default" href="logout" role="button">Log out</a>
-{% else %}
-    <a class="btn btn-default" href="login" role="button">Log in</a>
-{% endif %}
+        .left {
+            float: left;
+            padding-top: 12px;
+        }
 
-
-<div class="container-fluid">
-    {% block content %}
+    </style>
+    {% block head %}
 
 
     {% endblock %}
 
+</head>
+<body class="body" style="background-color: #f6f6f6">
+{#Script for displaying tooltips#}
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip({placement: "bottom"});
+    });
+</script>
 
+{#Main container class for content, scales automatically#}
+<div class="container-fluid">
+    <div class="left">
+        <a class="btn btn-default" href="/forum" role="button"
+           style=" width: 6.2em;  height: 2.2em;display:inline;">
+            <label>&nbsp;<span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</label>&nbsp;
+
+        </a>
+    </div>
+    <div class="right">
+        {% if user.username %}
+            <div>
+                <a data-toggle="tooltip" title="List of your questions" class="btn btn-default"
+                   href="/forum/my_question"
+                   role="button" style=" width: 2.5em;  height: 2em;">
+                    <label><span class="glyphicon glyphicon-list-alt" aria-hidden="true"
+                                 style="transform: scale(1.2);padding-right: 30px"></span></label>
+                </a>
+                <a data-toggle="tooltip" title="Log out" class="btn btn-default" href="/forum/logout" role="button"
+                   style=" width: 6.2em;  height: 2.2em;display:inline;">
+                    <label>&nbsp;{{ user.username }} <span class="glyphicon glyphicon-log-out"
+                                                           aria-hidden="true"></span></label>&nbsp;
+                </a>
+            </div>
+        {% else %}
+            <div>
+                <a class="btn btn-default" href="/forum/login" role="button"
+                   style=" width: 6.2em;  height: 2.2em;display:inline;">
+                    <label>&nbsp;<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Log in</label>&nbsp;
+
+                </a>
+            </div>
+        {% endif %}
+    </div>
+
+    <div style="padding-top: 30px">
+
+        {% block container-fluid %}
+
+        {% endblock %}
+    </div>
 </div>
-
-
 </body>
 </html>

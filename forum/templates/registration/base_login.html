@@ -1,34 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Register</title>
+    <title>{% block title %}{% endblock %}</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width-device-width, initla-scale-1.0">
     {% load staticfiles %} {# jinja logic to reference static files #}
     <link rel='stylesheet' href="{% static 'forum/css/bootstrap.min.css' %}" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="{% static 'forum/js/bootstrap.min.js' %}"></script>
+    <style>
+        .center {
+            width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
 </head>
 <body class="body" style="background-color: #f6f6f6">
-
-
-<div class="container-fluid">
-
-    <h1>Register an account</h1>
-    <form class="new_question" method='post'>
-        {% csrf_token %}
-        <label>Username: </label>
-        {{ form.username }}
-        <label>Email-address: </label>
-        {{ form.email }}
-         <label>Password: </label>
-        {{ form.password }}
-        <br><input class="btn btn-default" type='submit' value='Submit'/>
-
-    </form>
-
+<div class="center">
+    {% block content %}
+    {% endblock %}
 </div>
-
-
 </body>
 </html>

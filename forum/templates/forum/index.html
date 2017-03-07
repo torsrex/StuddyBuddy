@@ -1,36 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Index of forum</title>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width-device-width, initla-scale-1.0">
-    {% load filters %}
-    {% load staticfiles %} {# jinja logic to reference static files #}
-    <link rel='stylesheet' href="{% static 'forum/css/bootstrap.min.css' %}" type="text/css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="{% static 'forum/js/bootstrap.min.js' %}"></script>
-
-
+{% extends "forum\base.html" %}
+{% block title %}Index of forum{% endblock %}
+{% load filters %}
+{% block head %}
     <style>
         .circle {
             border-radius: 100%;
-            border: 0.25em solid black;
+            border: 0.22em solid black;
             height: 25px;
             width: 25px;
         }
 
-        .downbtn {
-            left: 0px;
-        }
-
         .glyphicon.glyphicon-chevron-up {
             font-size: 17px;
-            padding: 0px 3px 0 2px;
+            padding-left: 1.6px;
         }
 
         .glyphicon.glyphicon-chevron-down {
+            padding-left: 1.6px;
+            padding-top: 2px;
             font-size: 17px;
-            padding: 0px 3px 0 2px;
         }
 
         .submit-with-icon {
@@ -46,11 +34,10 @@
             border-color: rgb(173, 173, 173);
         }
     </style>
-</head>
-<body class="body" style="background-color: #f6f6f6">
+{% endblock %}
 
+{% block container-fluid %}
 
-<div class="container-fluid">
     <h1>Current subject: {{ topic_name }}</h1>
     {% if latest_questions_list %}
         <div class="panel-group" id="accordion">
@@ -131,8 +118,6 @@
     <a class="btn btn-default" href="new_question" role="button">Create new question</a>
     <br>
     <br>
-    <a class="btn btn-default" href="/forum" role="button">Go back</a>
-</div>
 
-</body>
-</html>
+{% endblock %}
+
