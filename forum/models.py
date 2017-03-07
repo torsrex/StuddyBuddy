@@ -28,7 +28,7 @@ class Question(VoteModel, models.Model):
         return self.question_name
 
 
-class Answer(VoteModel, models.Model):
+class Answer(models.Model):
     question = models.ForeignKey(Question, related_name='answers')
     topic = models.ForeignKey(Topic)
     answer_text = models.TextField()

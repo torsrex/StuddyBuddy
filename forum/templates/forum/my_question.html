@@ -11,12 +11,18 @@
                         <h4 class="panel-title">
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ forloop.counter }}">
                                 <div class="row">
-                                    <div class="col-md-6">{{ question.question_name }}</div>
-                                    <div class="col-md-6">Created: {{ question.question_created }}</div>
+                                    <div class="col-md-4">{{ question.question_name }}</div>
+                                    <div class="col-md-4">Last changed: {{ question.question_updated }}
+                                    </div>
+                                    <div class="col-md-4">
+
+
                                     <a class="btn btn-default"
                                        href="{% url "delete_question" question_id=question.id %}">
                                         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete
                                     </a>
+                                    </div>
+                                    </div>
                             </a>
                         </h4>
                     </div>

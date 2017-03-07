@@ -1,11 +1,15 @@
 {% extends "registration\base_login.html" %}
+{#Sets login page title#}
 {% block title %}Login{% endblock %}
+{#Start of main content#}
 {% block content %}
     <h2>Login</h2>
+    {#Creates login form#}
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form.as_p }} {# Displays entire autgenerated form #}
         <button class="btn btn-default" type="submit">Login</button>
+        {# Redirects to account creation page #}
         <a class="btn btn-default" href="/forum/register" role="button">Create account</a>
     </form>
 {% endblock %}

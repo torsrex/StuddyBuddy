@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> {# Sets html language to English #}
 <head>
     <title>{% block title %}{% endblock %}</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width-device-width, initla-scale-1.0">
     {% load staticfiles %} {# jinja logic to reference static files #}
+    {# Loads bootstrap css #}
     <link rel='stylesheet' href="{% static 'forum/css/bootstrap.min.css' %}" type="text/css">
+    {# Loads jquery #}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    {# Loads bootstrap javascript #}
     <script src="{% static 'forum/js/bootstrap.min.js' %}"></script>
+    {# Centers forms #}
     <style>
         .center {
             width: 300px;
@@ -17,6 +21,7 @@
     </style>
 </head>
 <body class="body" style="background-color: #f6f6f6">
+{# Placeholder for forms #}
 <div class="center">
     {% block content %}
     {% endblock %}
