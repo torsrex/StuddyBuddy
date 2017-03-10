@@ -76,9 +76,11 @@
 
 {% block container-fluid %}
     <h2>Topics</h2>
-    <a class="btn btn-default" href="new_topic" role="button">Create new topic</a>
-    <br>
-    <br>
+    {% if perms.forum.delete_question %}
+        <a class="btn btn-default" href="new_topic" role="button">Create new topic</a>
+        <br>
+        <br>
+    {% endif %}
     {% if topics_list %}
         <div class="inner-addon left-addon">
             <i class="glyphicon glyphicon-search"></i>

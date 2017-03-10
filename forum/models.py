@@ -27,6 +27,9 @@ class Question(VoteModel, models.Model):
     def __str__(self):
         return self.question_name
 
+    def get_user(self):  # Returns user who created question
+        return User.objects.get(pk=self.user_id).username.title()
+
 
 class Answer(models.Model):
     question = models.ForeignKey(Question, related_name='answers')
@@ -34,6 +37,10 @@ class Answer(models.Model):
     answer_text = models.TextField()
     answer_created = models.DateTimeField('Date created', auto_now_add=True)  # Automatically stores creation save
     answer_updated = models.DateTimeField('Date updated', auto_now_add=True)  # Automatically updates on save
+    user = models.ForeignKey(User, editable=False)
 
     def __str__(self):
         return self.answer_text
+
+    def get_user(self):  # Returns user who created answer
+        return User.objects.get(pk=self.user_id).username.title()

@@ -21,6 +21,12 @@
             font-size: 17px;
         }
 
+        .glyphicon.glyphicon-remove {
+            padding-left: 1px;
+            padding-top: 1px;
+            font-size: 17px;
+        }
+
         .submit-with-icon {
             background: transparent;
             border: 0px;
@@ -48,7 +54,7 @@
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ forloop.counter }}">
                                 <div class="row">
                                     <div class="col-md-6">{{ q.question_name }}</div>
-                                    <div class="col-md-6">Created: {{ q.question_created }}</div>
+                                    <div class="col-md-3">Created: {{ q.question_created }}</div>
                                 </div>
                             </a>
                         </h4>
@@ -78,10 +84,20 @@
                                             <span class="glyphicon glyphicon-chevron-down"></span>
                                         </button>
                                     </div>
+                                    {% if perms.forum.delete_question %}
+                                        <form action="/forum/delete_question_in_index/" method="post">
+                                            {% csrf_token %}
+                                            <div class="circle">
+                                                <input type="hidden" value="{{ q.id }}" name="pk_question">
+                                                <input type="hidden" value="{{ topic_name.id }}" name="topic">
+                                                <button type="submit" class="submit-with-icon">
+                                                    <span class="glyphicon glyphicon-remove"></span>
+                                                </button>
+                                            </div>
+                                        </form>
+                                    {% endif %}
                                 </form>
                             </div>
-
-
                             <p>{{ q.answers.answer_text }}</p>
                             <br>
                             {% for answer in answer_list %}
@@ -89,7 +105,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
                                             <div class="row">
-                                                <div class="col-md-6">Placeholder for username</div>
+                                                <div class="col-md-6">{{ answer.get_user }}</div>
                                                 <div class="col-md-6">Created: {{ answer.answer_created }}</div>
                                             </div>
                                         </div>

@@ -1,5 +1,7 @@
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import Permission
+from django.http import HttpResponseForbidden
 from django.shortcuts import get_object_or_404, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.views import generic
@@ -61,12 +63,26 @@ def downvote(request):
     return redirect('/forum/topics/' + request.POST['topic'])
 
 
+def delete_question_in_index(request):
+    if not request.user.has_perm('forum.delete_question'):
+        return HttpResponseForbidden('Nope!')
+    if request.method == 'POST':
+        q = Question.objects.get(pk=request.POST['pk_question'])
+        q.delete()
+    return redirect('/forum/topics/' + request.POST['topic'])
+
+
 # Handles the post of new answer form for IndexListView
+@login_required(login_url='login')
 def new_answer(request):
     if request.method == "POST":  # Used when submit button is clicked
         form = AnswerForm(request.POST)  # Passes arguments in request to form
-        form.save()
-        return redirect('/forum/topics/' + request.POST['topic'])  # Redirects to the topic view after form submission
+        if form.is_valid():
+            formToSave = form.save(commit=False)
+            formToSave.user = request.user
+            formToSave.save()
+            return redirect(
+                '/forum/topics/' + request.POST['topic'])  # Redirects to the topic view after form submission
 
 
 # Creates new question
@@ -140,11 +156,14 @@ class UserFormView(generic.View):
 
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
+            email = form.cleaned_data['email']
             user.set_password(password)
             user.save()
-
             # returns User objects if credentials are correct
             user = authenticate(username=username, password=password)
+            if '@ntnu.no' in email:
+                permission = Permission.objects.get(codename='delete_question')
+                user.user_permissions.add(permission)
             if user is not None:
                 if user.is_active:
                     login(request, user)
