@@ -74,7 +74,9 @@
                                         </button>
                                     </div>
                                 </form>
+
                                 <label>{{ var|votes:q }}</label>
+
                                 <form action="/forum/downvote/" method="post">
                                     {% csrf_token %}
                                     <div class="circle">
@@ -84,19 +86,39 @@
                                             <span class="glyphicon glyphicon-chevron-down"></span>
                                         </button>
                                     </div>
-                                    {% if perms.forum.delete_question %}
-                                        <form action="/forum/delete_question_in_index/" method="post">
+                                </form>
+
+                                {% if perms.forum.delete_question %}
+                                    <form action="/forum/delete_question_in_index/" method="post">
+                                        {% csrf_token %}
+                                        <div class="circle">
+                                            <input type="hidden" value="{{ q.id }}" name="pk_question">
+                                            <input type="hidden" value="{{ topic_name.id }}" name="topic">
+                                            <button type="submit" class="submit-with-icon">
+                                                <span class="glyphicon glyphicon-remove"></span>
+                                            </button>
+                                        </div>
+                                    </form>
+                                {% endif %}
+
+                                <br>
+                                {% if q.user.username == user.username %}
+                                        <form action="/forum/mark_as_solved/" method="post">
                                             {% csrf_token %}
                                             <div class="circle">
                                                 <input type="hidden" value="{{ q.id }}" name="pk_question">
                                                 <input type="hidden" value="{{ topic_name.id }}" name="topic">
                                                 <button type="submit" class="submit-with-icon">
-                                                    <span class="glyphicon glyphicon-remove"></span>
+                                                    {% if q.question_solved == True %}
+                                                        <span class="glyphicon glyphicon-ok" style="color:#00ff00"></span>
+                                                    {% endif %}
+                                                    {% if q.question_solved == False %}
+                                                        <span class="glyphicon glyphicon-ok" style="color:#ff0000"></span>
+                                                     {% endif %}
                                                 </button>
                                             </div>
                                         </form>
-                                    {% endif %}
-                                </form>
+                                {% endif %}
                             </div>
                             <p>{{ q.answers.answer_text }}</p>
                             <br>

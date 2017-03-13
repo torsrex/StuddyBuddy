@@ -23,6 +23,7 @@ class Question(VoteModel, models.Model):
     question_SuitableForQuiz = models.BooleanField(default=False)  # Stores whether answer can be used for quiz
     question_topic = models.ForeignKey(Topic, related_name='questions')
     user = models.ForeignKey(User, editable=False)
+    question_solved = models.BooleanField(default=False) #Stores whether answer is marked as solved by author
 
     def __str__(self):
         return self.question_name

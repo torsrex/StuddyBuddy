@@ -169,3 +169,13 @@ class UserFormView(generic.View):
                     login(request, user)
                     return redirect('/forum')
         return render(request, self.template_name, {'form': form})
+
+def mark_as_solved(request):
+    q = Question.objects.get(pk=request.POST['pk_question'])
+    if q.question_solved == False:
+        q.question_solved = True
+        q.save()
+    else:
+        q.question_solved = False
+        q.save()
+    return redirect('/forum/topics/' + request.POST['topic'])
