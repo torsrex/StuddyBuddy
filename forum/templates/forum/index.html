@@ -39,6 +39,16 @@
             background-color: rgb(235, 235, 235);
             border-color: rgb(173, 173, 173);
         }
+
+        div.initiallyHidden li {
+            display: none;
+        }
+
+        ul {
+            list-style-type: none;
+            margin-right: 0px;
+            padding: 0px;
+        }
     </style>
 {% endblock %}
 
@@ -46,6 +56,44 @@
 
     <h1>Current subject: {{ topic_name }}</h1>
     {% if latest_questions_list %}
+        <div id='feed' style="witdh:150px;float:left;">
+            <ul>
+                {% for q in latest_questions_list %}
+                    <li>
+                        <button id='b{{ forloop.counter }}'>Toggle first</button>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div id='detail' class='initiallyHidden' style='position:absolute;float:left;left:150px;'>
+            <ul>
+                {% for q in latest_questions_list %}
+                    <li id='b{{ forloop.counter }}c'>{{ q.question_text }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <script>
+            $(function () {
+                var toggled = ""
+                $("button").click(function () {
+                    var id = "" + this.id;
+                    $(toggled).toggle();
+                    $("#" + id + "c").toggle();
+                    toggled = "#" + id + "c"
+
+
+                });
+            });
+        </script>
+        </div>
+
+
+
+
+
+
+        {% comment %}
         <div class="panel-group" id="accordion">
             {% for q in latest_questions_list %}
                 <div class="panel panel-default">
@@ -127,13 +175,15 @@
                     </div>
                 </div>
             {% endfor %}
-        </div>
+
+        </div>{% endcomment %}
     {% else %}
         <p>No questions are available.</p>
     {% endif %}
+    {% comment %}
     <a class="btn btn-default" href="new_question" role="button">Create new question</a>
     <br>
     <br>
-
+    {% endcomment %}
 {% endblock %}
 
