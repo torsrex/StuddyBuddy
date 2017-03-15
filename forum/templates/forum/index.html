@@ -42,6 +42,8 @@
 
         .initiallyHidden {
             display: none;
+            min-width: 150vh; {# TODO: fix implementation #}
+            margin-left: 10px;
         }
 
         ul {
@@ -118,7 +120,8 @@
                                     <button type="submit" class="submit-with-icon">
                                         <span class="glyphicon glyphicon-chevron-down"></span>
                                     </button>
-                                </div>
+                                </div><br>
+                            </form>
                                 {% if perms.forum.delete_question %}
                                     <form action="/forum/delete_question_in_index/" method="post">
                                         {% csrf_token %}
@@ -163,19 +166,6 @@
             </ul>
         </div>
 
-        <script>
-            $(function () {
-                var toggled = ""
-                $("div#feed li").click(function () {
-                    var id = "" + this.id;
-                    $(toggled).toggle();
-                    $("#" + id + "c").toggle();
-                    toggled = "#" + id + "c"
-
-
-                });
-            });
-        </script>
         </div>
     {% else %}
         <p>No questions are available.</p>
@@ -183,5 +173,19 @@
     {# <a class="btn btn-default" href="new_question" role="button">Create new question</a> #}
     <br>
     <br>
+
+    <script>
+        $(function () {
+            var toggled = ""
+            $("div#feed li").click(function () {
+                var id = "" + this.id;
+                $(toggled).toggle();
+                $("#" + id + "c").toggle();
+                toggled = "#" + id + "c"
+
+
+            });
+        });
+    </script>
 {% endblock %}
 
