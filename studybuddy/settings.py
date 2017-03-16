@@ -48,8 +48,14 @@ HAYSTACK_CONNECTIONS = {
         'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
         'URL': 'http://127.0.0.1:9200/',
         'INDEX_NAME': 'haystack',
+        'INCLUDE_SPELLING': True,
     },
 }
+
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'  # Allows index to be updated dynamically
+
+# End haystack configs
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

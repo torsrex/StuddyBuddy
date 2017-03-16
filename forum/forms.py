@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 
 from forum.models import Question, Topic, Answer
 
+from haystack.forms import SearchForm  # Haystack Search form import
+
 
 class QuestionForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
@@ -76,3 +78,9 @@ class UserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['username', 'email', 'password']
+
+
+# Haystack custom search form, extends haystack form import
+class QuestionSearchForm(SearchForm):
+    def no_query_found(self):
+        return self.searchqueryset.all()

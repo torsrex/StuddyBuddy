@@ -2,12 +2,10 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Permission
 from django.http import HttpResponseForbidden
-from django.shortcuts import get_object_or_404, HttpResponseRedirect
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, HttpResponseRedirect, render, redirect, render_to_response
 from django.views import generic
 
-from forum.forms import AnswerForm
-from forum.forms import QuestionForm, TopicForm, UserForm
+from forum.forms import QuestionForm, TopicForm, UserForm, AnswerForm, QuestionSearchForm
 from forum.models import *
 
 
@@ -169,3 +167,11 @@ class UserFormView(generic.View):
                     login(request, user)
                     return redirect('/forum')
         return render(request, self.template_name, {'form': form})
+
+
+# Haystack handle search
+
+def questions(request):
+    form = QuestionSearchForm(request.GET)
+    questions = form.search()  # Returns all results from search
+    return render_to_response('forum/questions.html', {'questions': questions})

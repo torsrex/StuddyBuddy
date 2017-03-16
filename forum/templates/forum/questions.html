@@ -1,0 +1,18 @@
+{% extends "forum\base.html" %}
+{% block title %}Search form{% endblock %}
+
+{% block container-fluid %}
+    <form type="get" action=".">
+        <input type="text" name="q">
+        <button type="submit">Search</button>
+    </form>
+    {#Lists questions#}
+    {% for q in questions %}
+        <h1>{{ q.question_name }}</h1>
+        <p>
+            {{ q.question_text }}
+            {{ q.question_created }}
+        </p>
+
+    {% endfor %}
+{% endblock %}
