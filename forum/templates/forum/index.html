@@ -42,8 +42,17 @@
 
         .initiallyHidden {
             display: none;
-            min-width: 150vh; {# TODO: fix implementation #}
-            margin-left: 10px;
+            min-width: 150vh;
+
+        {
+            # TODO: fix implementation #
+        }
+        margin-left:
+
+        10
+        px
+
+        ;
         }
 
         ul {
@@ -83,6 +92,13 @@
 
 {% endblock %}
 
+{% block header-button %}
+    <div class="left">
+        <a style="height:2.2em;display:inline;" class="btn btn-default" href="new_question" role="button">Create new
+            question</a>
+    </div>
+{% endblock %}
+
 {% block container-fluid %}
 
     <h1>Current subject: {{ topic_name }}</h1>
@@ -120,20 +136,21 @@
                                     <button type="submit" class="submit-with-icon">
                                         <span class="glyphicon glyphicon-chevron-down"></span>
                                     </button>
-                                </div><br>
+                                </div>
+                                <br>
                             </form>
-                                {% if perms.forum.delete_question %}
-                                    <form action="/forum/delete_question_in_index/" method="post">
-                                        {% csrf_token %}
-                                        <div class="circle">
-                                            <input type="hidden" value="{{ q.id }}" name="pk_question">
-                                            <input type="hidden" value="{{ topic_name.id }}" name="topic">
-                                            <button type="submit" class="submit-with-icon">
-                                                <span class="glyphicon glyphicon-remove"></span>
-                                            </button>
-                                        </div>
-                                    </form>
-                                {% endif %}
+                            {% if perms.forum.delete_question %}
+                                <form action="/forum/delete_question_in_index/" method="post">
+                                    {% csrf_token %}
+                                    <div class="circle">
+                                        <input type="hidden" value="{{ q.id }}" name="pk_question">
+                                        <input type="hidden" value="{{ topic_name.id }}" name="topic">
+                                        <button type="submit" class="submit-with-icon">
+                                            <span class="glyphicon glyphicon-remove"></span>
+                                        </button>
+                                    </div>
+                                </form>
+                            {% endif %}
                             </form>
                         </div>
                         <p>{{ q.answers.answer_text }}</p>
@@ -150,6 +167,27 @@
                                     <div class="panel-body">
                                         {{ answer.answer_text }}
                                     </div>
+                                    <form action="/forum/upvote_answer/" method="post">
+                                        {% csrf_token %}
+                                        <div class="circle">
+                                            <input type="hidden" value="{{ answer.id }}" name="pk_answer">
+                                            <input type="hidden" value="{{ topic_name.id }}" name="topic">
+                                            <button type="submit" class="submit-with-icon">
+                                                <span class="glyphicon glyphicon-chevron-up"></span>
+                                            </button>
+                                        </div>
+                                    </form>
+                                    <label>{{ variable|votes:answer }}</label>
+                                    <form action="/forum/downvote_answer/" method="post">
+                                        {% csrf_token %}
+                                        <div class="circle">
+                                            <input type="hidden" value="{{ answer.id }}" name="pk_answer">
+                                            <input type="hidden" value="{{ topic_name.id }}" name="topic">
+                                            <button type="submit" class="submit-with-icon">
+                                                <span class="glyphicon glyphicon-chevron-down"></span>
+                                            </button>
+                                        </div>
+                                    </form>
                                 </div>
                                 <br>
                             {% endif %}
@@ -166,13 +204,9 @@
             </ul>
         </div>
 
-        </div>
     {% else %}
         <p>No questions are available.</p>
     {% endif %}
-    <a class="btn btn-default" href="new_question" role="button">Create new question</a>
-    <br>
-    <br>
 
     <script>
         $(function () {

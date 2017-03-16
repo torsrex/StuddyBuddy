@@ -31,7 +31,7 @@ class Question(VoteModel, models.Model):
         return User.objects.get(pk=self.user_id).username.title()
 
 
-class Answer(models.Model):
+class Answer(VoteModel, models.Model):
     question = models.ForeignKey(Question, related_name='answers')
     topic = models.ForeignKey(Topic)
     answer_text = models.TextField()
