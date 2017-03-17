@@ -26,6 +26,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['178.62.110.47', '127.0.0.1']
 
+LOGIN_REDIRECT_URL='/forum/'
+
 # Application definition
 
 INSTALLED_APPS = [

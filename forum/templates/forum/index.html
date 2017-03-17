@@ -84,6 +84,7 @@
                                             <span class="glyphicon glyphicon-chevron-down"></span>
                                         </button>
                                     </div>
+                                </form>
                                     {% if perms.forum.delete_question %}
                                         <form action="/forum/delete_question_in_index/" method="post">
                                             {% csrf_token %}

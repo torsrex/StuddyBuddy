@@ -1,0 +1,1 @@
+"C:\Program Files\PostgreSQL\9.6\bin\psql.exe" -h localhost -p 5432 -U postgres -f Reset_database.sql postgres
