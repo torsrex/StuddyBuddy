@@ -16,6 +16,8 @@ urlpatterns = [
     url(r'^logout/$', auth_views.logout, {'next_page': '/forum'}, name='logout'),
     url(r'^upvote/$', views.upvote, name='upvote'),
     url(r'^downvote/$', views.downvote, name='downvote'),
+    url(r'^upvote_answer/$', views.upvote_answer, name='upvote_answer'),
+    url(r'^downvote_answer/$', views.downvote_answer, name='downvote_answer'),
     url(r'^(?P<question_id>[0-9]+)/$', views.delete_question, name="delete_question"),
     url(r'^delete_question_in_index/$', views.delete_question_in_index, name="delete_question_in_index"),
 

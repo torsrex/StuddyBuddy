@@ -2,11 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="27e1aa90-364a-4f03-b6e4-7897433c025e" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/forum/templates/js/jquery-3.1.1.min.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forum/migrations/0001_initial.py" afterPath="$PROJECT_DIR$/forum/migrations/0001_initial.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forum/models.py" afterPath="$PROJECT_DIR$/forum/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forum/templates/forum/base.html" afterPath="$PROJECT_DIR$/forum/templates/forum/base.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forum/templates/forum/index.html" afterPath="$PROJECT_DIR$/forum/templates/forum/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forum/templates/registration/login.html" afterPath="$PROJECT_DIR$/forum/templates/registration/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forum/tests.py" afterPath="$PROJECT_DIR$/forum/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/studybuddy/settings.py" afterPath="$PROJECT_DIR$/studybuddy/settings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forum/templates/forum/topics.html" afterPath="$PROJECT_DIR$/forum/templates/forum/topics.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forum/urls.py" afterPath="$PROJECT_DIR$/forum/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forum/views.py" afterPath="$PROJECT_DIR$/forum/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -49,7 +53,7 @@
         <entry file="file://$PROJECT_DIR$/forum/forms.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="474">
-              <caret line="69" column="36" lean-forward="true" selection-start-line="69" selection-start-column="36" selection-end-line="69" selection-end-column="36" />
+              <caret line="69" column="36" lean-forward="false" selection-start-line="69" selection-start-column="36" selection-end-line="69" selection-end-column="36" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
                 <marker date="1489401416309" expanded="true" signature="2224:2227" ph="..." />
@@ -70,12 +74,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/forum/templates/forum/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="321">
-              <caret line="86" column="39" lean-forward="false" selection-start-line="86" selection-start-column="39" selection-end-line="86" selection-end-column="39" />
-              <folding />
+            <state relative-caret-position="1961">
+              <caret line="218" column="0" lean-forward="true" selection-start-line="218" selection-start-column="0" selection-end-line="218" selection-end-column="0" />
+              <folding>
+                <element signature="n#style#0;n#a#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#0;n#ul#0;n#div#2;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#div#0;n#div#0;n#ul#0;n#div#2;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#form#1;n#div#0;n#div#0;n#ul#0;n#div#2;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#form#2;n#div#0;n#div#0;n#ul#0;n#div#2;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#ul#0;n#div#2;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#ul#0;n#div#2;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#ul#0;n#div#2;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#form#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#ul#0;n#div#2;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -84,16 +98,16 @@
         <entry file="file://$PROJECT_DIR$/forum/templates/registration/login.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="170">
-              <caret line="10" column="86" lean-forward="true" selection-start-line="10" selection-start-column="86" selection-end-line="10" selection-end-column="86" />
+              <caret line="10" column="86" lean-forward="false" selection-start-line="10" selection-start-column="86" selection-end-line="10" selection-end-column="86" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/forum/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-19">
+            <state relative-caret-position="32">
               <caret line="8" column="48" lean-forward="false" selection-start-line="8" selection-start-column="48" selection-end-line="8" selection-end-column="48" />
               <folding />
             </state>
@@ -104,7 +118,7 @@
         <entry file="file://$PROJECT_DIR$/forum/tests.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="86">
-              <caret line="65" column="20" lean-forward="true" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
+              <caret line="65" column="20" lean-forward="false" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
               <folding>
                 <element signature="e#0#64#0" expanded="true" />
               </folding>
@@ -135,9 +149,12 @@
       <file leaf-file-name="topics.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/forum/templates/forum/topics.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2244">
-              <caret line="132" column="17" lean-forward="false" selection-start-line="132" selection-start-column="17" selection-end-line="132" selection-end-column="17" />
-              <folding />
+            <state relative-caret-position="2295">
+              <caret line="135" column="17" lean-forward="false" selection-start-line="135" selection-start-column="17" selection-end-line="135" selection-end-column="17" />
+              <folding>
+                <marker date="1489757391459" expanded="true" signature="3558:3569" ph="{% if topics_list ... %}" />
+                <marker date="1489757391459" expanded="true" signature="3558:3586" ph="{% block container-fluid ... %}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -293,6 +310,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="registration" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="StuddyBuddy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="StuddyBuddy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="forum" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -850,9 +885,12 @@
     <entry file="file://$PROJECT_DIR$/forum/templates/forum/registration_form.html" />
     <entry file="file://$PROJECT_DIR$/forum/templates/forum/topics.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2244">
-          <caret line="132" column="17" lean-forward="false" selection-start-line="132" selection-start-column="17" selection-end-line="132" selection-end-column="17" />
-          <folding />
+        <state relative-caret-position="2295">
+          <caret line="135" column="17" lean-forward="false" selection-start-line="135" selection-start-column="17" selection-end-line="135" selection-end-column="17" />
+          <folding>
+            <marker date="1489757391459" expanded="true" signature="3558:3569" ph="{% if topics_list ... %}" />
+            <marker date="1489757391459" expanded="true" signature="3558:3586" ph="{% block container-fluid ... %}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -880,18 +918,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/forum/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-19">
-          <caret line="8" column="48" lean-forward="false" selection-start-line="8" selection-start-column="48" selection-end-line="8" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/forum/forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="474">
-          <caret line="69" column="36" lean-forward="true" selection-start-line="69" selection-start-column="36" selection-end-line="69" selection-end-column="36" />
+          <caret line="69" column="36" lean-forward="false" selection-start-line="69" selection-start-column="36" selection-end-line="69" selection-end-column="36" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
             <marker date="1489401416309" expanded="true" signature="2224:2227" ph="..." />
@@ -902,7 +932,7 @@
     <entry file="file://$PROJECT_DIR$/forum/templates/registration/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
-          <caret line="10" column="86" lean-forward="true" selection-start-line="10" selection-start-column="86" selection-end-line="10" selection-end-column="86" />
+          <caret line="10" column="86" lean-forward="false" selection-start-line="10" selection-start-column="86" selection-end-line="10" selection-end-column="86" />
           <folding />
         </state>
       </provider>
@@ -910,7 +940,7 @@
     <entry file="file://$PROJECT_DIR$/forum/tests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="86">
-          <caret line="65" column="20" lean-forward="true" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
+          <caret line="65" column="20" lean-forward="false" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
           <folding>
             <element signature="e#0#64#0" expanded="true" />
           </folding>
@@ -929,8 +959,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/forum/templates/forum/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="86" column="39" lean-forward="false" selection-start-line="86" selection-start-column="39" selection-end-line="86" selection-end-column="39" />
+        <state relative-caret-position="1961">
+          <caret line="218" column="0" lean-forward="true" selection-start-line="218" selection-start-column="0" selection-end-line="218" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#0;n#ul#0;n#div#2;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#div#0;n#div#0;n#ul#0;n#div#2;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#form#1;n#div#0;n#div#0;n#ul#0;n#div#2;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#form#2;n#div#0;n#div#0;n#ul#0;n#div#2;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#ul#0;n#div#2;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#ul#0;n#div#2;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#ul#0;n#div#2;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#form#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#ul#0;n#div#2;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forum/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="8" column="48" lean-forward="false" selection-start-line="8" selection-start-column="48" selection-end-line="8" selection-end-column="48" />
           <folding />
         </state>
       </provider>
