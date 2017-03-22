@@ -2,44 +2,47 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9b1c3312-730c-47e6-b625-898b31112c67" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/forum/templates/forum/questions.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/1/index/segments_2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/1/translog/translog-1.tlog" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/_state/state-3.st" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/0/_state/state-0.st" afterPath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/0/_state/state-0.st" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/_state/global-0.st" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/0/_state/state-0.st" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/0/index/segments_3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/1/_state/state-0.st" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/1/index/segments_3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/2/_state/state-0.st" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/2/index/segments_3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/3/_state/state-0.st" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/3/index/segments_3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/4/_state/state-0.st" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/4/index/segments_3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/_state/state-20.st" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/0/index/_0.cfe" afterPath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/0/index/_0.cfe" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/0/index/_0.cfs" afterPath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/0/index/_0.cfs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/0/index/_0.si" afterPath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/0/index/_0.si" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/0/index/segments_3" afterPath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/0/index/segments_3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/0/translog/translog-2.tlog" afterPath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/0/translog/translog-2.tlog" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/1/_state/state-0.st" afterPath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/1/_state/state-0.st" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/0/translog/translog.ckp" afterPath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/0/translog/translog.ckp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/1/index/_0.cfe" afterPath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/1/index/_0.cfe" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/1/index/_0.cfs" afterPath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/1/index/_0.cfs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/1/index/_0.si" afterPath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/1/index/_0.si" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/1/translog/translog-2.tlog" afterPath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/1/translog/translog-2.tlog" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/1/translog/translog.ckp" afterPath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/1/translog/translog.ckp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/2/_state/state-0.st" afterPath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/2/_state/state-0.st" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/2/index/_0.cfe" afterPath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/2/index/_0.cfe" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/2/index/_0.cfs" afterPath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/2/index/_0.cfs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/2/index/_0.si" afterPath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/2/index/_0.si" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/2/index/segments_3" afterPath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/2/index/segments_3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/2/translog/translog-2.tlog" afterPath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/2/translog/translog-2.tlog" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/3/_state/state-0.st" afterPath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/3/_state/state-0.st" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/2/translog/translog.ckp" afterPath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/2/translog/translog.ckp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/3/index/_0.cfe" afterPath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/3/index/_0.cfe" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/3/index/_0.cfs" afterPath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/3/index/_0.cfs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/3/index/_0.si" afterPath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/3/index/_0.si" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/3/index/segments_3" afterPath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/3/index/segments_3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/3/translog/translog-2.tlog" afterPath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/3/translog/translog-2.tlog" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/4/_state/state-0.st" afterPath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/4/_state/state-0.st" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/3/translog/translog.ckp" afterPath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/3/translog/translog.ckp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/4/index/_0.cfe" afterPath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/4/index/_0.cfe" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/4/index/_0.cfs" afterPath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/4/index/_0.cfs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/4/index/_0.si" afterPath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/4/index/_0.si" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/4/index/segments_3" afterPath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/4/index/segments_3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/4/translog/translog-2.tlog" afterPath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/4/translog/translog-2.tlog" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/4/translog/translog.ckp" afterPath="$PROJECT_DIR$/elasticsearch-2.3.1/data/elasticsearch/nodes/0/indices/haystack/4/translog/translog.ckp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forum/forms.py" afterPath="$PROJECT_DIR$/forum/forms.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forum/search_indexes.py" afterPath="$PROJECT_DIR$/forum/search_indexes.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forum/templates/search/indexes/forum/question_text.txt" afterPath="$PROJECT_DIR$/forum/templates/search/indexes/forum/question_text.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forum/urls.py" afterPath="$PROJECT_DIR$/forum/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forum/templates/forum/index.html" afterPath="$PROJECT_DIR$/forum/templates/forum/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forum/views.py" afterPath="$PROJECT_DIR$/forum/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/studybuddy/settings.py" afterPath="$PROJECT_DIR$/studybuddy/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/studybuddy/urls.py" afterPath="$PROJECT_DIR$/studybuddy/urls.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -85,12 +88,12 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="search_indexes.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/forum/search_indexes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="94" lean-forward="false" selection-start-line="5" selection-start-column="94" selection-end-line="5" selection-end-column="94" />
+            <state relative-caret-position="170">
+              <caret line="10" column="34" lean-forward="false" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -101,8 +104,8 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/studybuddy/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+            <state relative-caret-position="357">
+              <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
               <folding>
                 <element signature="e#644#685#0" expanded="true" />
               </folding>
@@ -114,7 +117,7 @@
         <entry file="file://$PROJECT_DIR$/forum/templates/search/indexes/forum/question_text.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="34">
-              <caret line="2" column="20" lean-forward="true" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+              <caret line="2" column="20" lean-forward="false" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -123,8 +126,8 @@
       <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/forum/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1394">
-              <caret line="82" column="59" lean-forward="false" selection-start-line="82" selection-start-column="59" selection-end-line="82" selection-end-column="59" />
+            <state relative-caret-position="1275">
+              <caret line="80" column="0" lean-forward="false" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
               </folding>
@@ -135,28 +138,18 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/studybuddy/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
+            <state relative-caret-position="765">
               <caret line="45" column="24" lean-forward="false" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/forum/templates/forum/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="85" column="9" lean-forward="false" selection-start-line="85" selection-start-column="9" selection-end-line="85" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/forum/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2975">
-              <caret line="175" column="64" lean-forward="false" selection-start-line="175" selection-start-column="64" selection-end-line="175" selection-end-column="64" />
+            <state relative-caret-position="2618">
+              <caret line="164" column="40" lean-forward="false" selection-start-line="164" selection-start-column="40" selection-end-line="164" selection-end-column="40" />
               <folding>
                 <element signature="e#0#51#0" expanded="true" />
               </folding>
@@ -164,7 +157,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="questions.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="questions.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/forum/templates/forum/questions.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
@@ -174,24 +167,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/forum/models.py">
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/forum/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="18" column="4" lean-forward="false" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="17" />
-              <folding />
+            <state relative-caret-position="306">
+              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/forum/urls.py">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/forum/templates/forum/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="100" lean-forward="false" selection-start-line="20" selection-start-column="100" selection-end-line="20" selection-end-column="100" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="1887">
+              <caret line="190" column="0" lean-forward="false" selection-start-line="190" selection-start-column="0" selection-end-line="190" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -220,15 +213,16 @@
         <option value="$PROJECT_DIR$/templates/search/search.html" />
         <option value="$PROJECT_DIR$/forum/templates/search/search.html" />
         <option value="$PROJECT_DIR$/forum/haystack_urls.py" />
-        <option value="$PROJECT_DIR$/forum/templates/forum/index.html" />
-        <option value="$PROJECT_DIR$/forum/urls.py" />
         <option value="$PROJECT_DIR$/forum/templates/forum/questions.html" />
         <option value="$PROJECT_DIR$/forum/forms.py" />
         <option value="$PROJECT_DIR$/studybuddy/settings.py" />
-        <option value="$PROJECT_DIR$/forum/views.py" />
         <option value="$PROJECT_DIR$/forum/templates/search/indexes/forum/question_text.txt" />
-        <option value="$PROJECT_DIR$/forum/search_indexes.py" />
         <option value="$PROJECT_DIR$/studybuddy/urls.py" />
+        <option value="$PROJECT_DIR$/forum/templates/forum/autocomplete.html" />
+        <option value="$PROJECT_DIR$/forum/templates/forum/index.html" />
+        <option value="$PROJECT_DIR$/forum/urls.py" />
+        <option value="$PROJECT_DIR$/forum/search_indexes.py" />
+        <option value="$PROJECT_DIR$/forum/views.py" />
       </list>
     </option>
   </component>
@@ -239,10 +233,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1928" />
-    <option name="y" value="-169" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="x" value="1" />
+    <option name="y" value="1" />
+    <option name="width" value="1364" />
+    <option name="height" value="726" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -259,7 +253,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -395,6 +388,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -524,6 +518,12 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
@@ -684,27 +684,27 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1928" y="-169" width="1936" height="1056" extended-state="7" />
+    <frame x="1" y="1" width="1364" height="726" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.121875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286648" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17284867" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286648" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -718,33 +718,96 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/forum/templates/search/search.html">
+    <entry file="file://$PROJECT_DIR$/forum/search_indexes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="16" lean-forward="false" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#176#182#1#HTML" expanded="false" />
-            <element signature="e#1056#1063#0#HTML" expanded="false" />
+            <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/forum/haystack_urls.py">
+    <entry file="file://$PROJECT_DIR$/studybuddy/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="12" lean-forward="false" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
+        <state relative-caret-position="357">
+          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding>
+            <element signature="e#644#685#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forum/templates/search/indexes/forum/question_text.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="20" lean-forward="true" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forum/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1275">
+          <caret line="80" column="0" lean-forward="true" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/studybuddy/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="45" column="24" lean-forward="false" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forum/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2618">
+          <caret line="164" column="40" lean-forward="false" selection-start-line="164" selection-start-column="40" selection-end-line="164" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forum/templates/forum/questions.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="21" lean-forward="false" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forum/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/forum/templates/forum/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="85" column="9" lean-forward="false" selection-start-line="85" selection-start-column="9" selection-end-line="85" selection-end-column="24" />
+        <state relative-caret-position="3230">
+          <caret line="190" column="0" lean-forward="true" selection-start-line="190" selection-start-column="0" selection-end-line="190" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/forum/templates/search/search.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="16" lean-forward="false" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forum/haystack_urls.py" />
     <entry file="dbDummy://dbtable:/b7106fc4/c5b4eb20-fa24-4c30-836e-4b7e54650f0a/studybuddy_db.public.forum_answer">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -754,7 +817,6 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -775,24 +837,80 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/studybuddy/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="45" column="24" lean-forward="false" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/studybuddy/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding>
+            <element signature="e#644#685#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forum/templates/forum/autocomplete.html" />
     <entry file="file://$PROJECT_DIR$/forum/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="100" lean-forward="false" selection-start-line="20" selection-start-column="100" selection-end-line="20" selection-end-column="100" />
+        <state relative-caret-position="306">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/studybuddy/settings.py">
+    <entry file="file://$PROJECT_DIR$/forum/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="45" column="24" lean-forward="false" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
+        <state relative-caret-position="2618">
+          <caret line="164" column="40" lean-forward="false" selection-start-line="164" selection-start-column="40" selection-end-line="164" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forum/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1275">
+          <caret line="80" column="0" lean-forward="false" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forum/templates/search/indexes/forum/question_text.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="20" lean-forward="false" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forum/search_indexes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="34" lean-forward="false" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forum/templates/forum/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1887">
+          <caret line="190" column="0" lean-forward="false" selection-start-line="190" selection-start-column="0" selection-end-line="190" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -802,54 +920,6 @@
         <state relative-caret-position="136">
           <caret line="8" column="21" lean-forward="false" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/forum/templates/search/indexes/forum/question_text.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="20" lean-forward="true" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/forum/search_indexes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="94" lean-forward="false" selection-start-line="5" selection-start-column="94" selection-end-line="5" selection-end-column="94" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/studybuddy/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding>
-            <element signature="e#644#685#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/forum/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1394">
-          <caret line="82" column="59" lean-forward="false" selection-start-line="82" selection-start-column="59" selection-end-line="82" selection-end-column="59" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/forum/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2975">
-          <caret line="175" column="64" lean-forward="false" selection-start-line="175" selection-start-column="64" selection-end-line="175" selection-end-column="64" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

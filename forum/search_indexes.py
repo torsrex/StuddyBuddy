@@ -14,4 +14,5 @@ class QuestionIndex(indexes.SearchIndex, indexes.Indexable):
         return Question  # Mandatory method to set model
 
     def index_queryset(self, using=None):
+        """Used when the entire index for model is updated."""
         return self.get_model().objects.filter(question_created__lte=datetime.datetime.now())  # Returns a queryset

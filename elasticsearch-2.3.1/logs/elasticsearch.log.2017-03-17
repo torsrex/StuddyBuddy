@@ -1,0 +1,34 @@
+[2017-03-17 09:14:35,363][INFO ][node                     ] [Sushi] version[2.3.1], pid[2732], build[bd98092/2016-04-04T12:25:05Z]
+[2017-03-17 09:14:35,373][INFO ][node                     ] [Sushi] initializing ...
+[2017-03-17 09:14:36,306][INFO ][plugins                  ] [Sushi] modules [reindex, lang-expression, lang-groovy], plugins [], sites []
+[2017-03-17 09:14:36,341][INFO ][env                      ] [Sushi] using [1] data paths, mounts [[(C:)]], net usable_space [144gb], net total_space [297.6gb], spins? [unknown], types [NTFS]
+[2017-03-17 09:14:36,341][INFO ][env                      ] [Sushi] heap size [910.5mb], compressed ordinary object pointers [true]
+[2017-03-17 09:14:41,027][INFO ][node                     ] [Sushi] initialized
+[2017-03-17 09:14:41,027][INFO ][node                     ] [Sushi] starting ...
+[2017-03-17 09:14:41,740][INFO ][transport                ] [Sushi] publish_address {127.0.0.1:9300}, bound_addresses {127.0.0.1:9300}, {[::1]:9300}
+[2017-03-17 09:14:41,745][INFO ][discovery                ] [Sushi] elasticsearch/wKJxxNoXRxq2Q4v7et7EjA
+[2017-03-17 09:14:45,805][INFO ][cluster.service          ] [Sushi] new_master {Sushi}{wKJxxNoXRxq2Q4v7et7EjA}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-join(elected_as_master, [0] joins received)
+[2017-03-17 09:14:46,050][INFO ][gateway                  ] [Sushi] recovered [1] indices into cluster_state
+[2017-03-17 09:14:46,409][INFO ][http                     ] [Sushi] publish_address {127.0.0.1:9200}, bound_addresses {127.0.0.1:9200}, {[::1]:9200}
+[2017-03-17 09:14:46,410][INFO ][node                     ] [Sushi] started
+[2017-03-17 09:14:47,668][INFO ][cluster.routing.allocation] [Sushi] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[haystack][0]] ...]).
+[2017-03-17 10:11:47,858][INFO ][cluster.metadata         ] [Sushi] [haystack] creating index, cause [api], templates [], shards [5]/[1], mappings []
+[2017-03-17 10:11:48,271][INFO ][cluster.metadata         ] [Sushi] [haystack] create_mapping [modelresult]
+[2017-03-17 10:11:48,747][INFO ][cluster.routing.allocation] [Sushi] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[haystack][4]] ...]).
+[2017-03-17 10:12:59,032][INFO ][cluster.metadata         ] [Sushi] [haystack] creating index, cause [api], templates [], shards [5]/[1], mappings []
+[2017-03-17 10:12:59,218][INFO ][cluster.metadata         ] [Sushi] [haystack] create_mapping [modelresult]
+[2017-03-17 10:12:59,789][INFO ][cluster.metadata         ] [Sushi] [haystack] update_mapping [modelresult]
+[2017-03-17 10:12:59,835][INFO ][cluster.routing.allocation] [Sushi] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[haystack][4]] ...]).
+[2017-03-17 10:26:55,248][INFO ][cluster.metadata         ] [Sushi] [haystack] creating index, cause [api], templates [], shards [5]/[1], mappings []
+[2017-03-17 10:26:55,461][INFO ][cluster.metadata         ] [Sushi] [haystack] create_mapping [modelresult]
+[2017-03-17 10:26:55,662][INFO ][cluster.metadata         ] [Sushi] [haystack] update_mapping [modelresult]
+[2017-03-17 10:26:56,184][INFO ][cluster.routing.allocation] [Sushi] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[haystack][4]] ...]).
+[2017-03-17 10:27:54,187][INFO ][cluster.metadata         ] [Sushi] [haystack] creating index, cause [api], templates [], shards [5]/[1], mappings []
+[2017-03-17 10:27:54,437][INFO ][cluster.metadata         ] [Sushi] [haystack] create_mapping [modelresult]
+[2017-03-17 10:27:54,928][INFO ][cluster.metadata         ] [Sushi] [haystack] update_mapping [modelresult]
+[2017-03-17 10:27:54,971][INFO ][cluster.routing.allocation] [Sushi] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[haystack][4]] ...]).
+[2017-03-17 11:38:50,506][INFO ][cluster.metadata         ] [Sushi] [haystack] update_mapping [modelresult]
+[2017-03-17 14:12:58,502][INFO ][cluster.metadata         ] [Sushi] [haystack] creating index, cause [api], templates [], shards [5]/[1], mappings []
+[2017-03-17 14:12:58,679][INFO ][cluster.metadata         ] [Sushi] [haystack] create_mapping [modelresult]
+[2017-03-17 14:12:59,319][INFO ][cluster.routing.allocation] [Sushi] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[haystack][4]] ...]).
+[2017-03-17 14:12:59,407][INFO ][cluster.metadata         ] [Sushi] [haystack] update_mapping [modelresult]

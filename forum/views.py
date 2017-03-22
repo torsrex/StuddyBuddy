@@ -1,11 +1,13 @@
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Permission
-from django.http import HttpResponseForbidden
+from django.http import HttpResponseForbidden, HttpResponse
 from django.shortcuts import get_object_or_404, HttpResponseRedirect, render, redirect, render_to_response
 from django.views import generic
+from haystack.query import SearchQuerySet
+import json
 
-from forum.forms import QuestionForm, TopicForm, UserForm, AnswerForm, QuestionSearchForm
+from forum.forms import *
 from forum.models import *
 
 
@@ -174,4 +176,7 @@ class UserFormView(generic.View):
 def questions(request):
     form = QuestionSearchForm(request.GET)
     questions = form.search()  # Returns all results from search
+    print(questions)
     return render_to_response('forum/questions.html', {'questions': questions})
+
+
