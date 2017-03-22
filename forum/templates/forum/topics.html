@@ -99,8 +99,8 @@
     {% for topic in topics_list %}
     <tr>
         <td>
-            <a href="/forum/topics/{{ topic.id }}" style="color:#0f0f0f;text-decoration:none">
-                <div style="height:100%;width:100%">
+            <a href="/forum/topics/{{ topic.id }}" style="color:#0f0f0f;text-decoration:none" >
+                <div style="height:100%;width:100%" id="t{{ topic.id }}">
                     {{ topic.topic_name }}
                 </div>
             </a>

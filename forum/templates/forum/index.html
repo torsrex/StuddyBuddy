@@ -85,7 +85,7 @@
 
 {% block header-button %}
     <div class="left">
-        <a style="height:2.2em;display:inline;" class="btn btn-default" href="new_question" role="button">Create new
+        <a style="height:2.2em;display:inline;" class="btn btn-default" href="new_question" role="button" id="registration_button">Create new
             question</a>
     </div>
 {% endblock %}
@@ -113,7 +113,7 @@
                                 <div class="circle" style="float:left;">
                                     <input type="hidden" value="{{ q.id }}" name="pk_question">
                                     <input type="hidden" value="{{ topic_name.id }}" name="topic">
-                                    <button type="submit" class="submit-with-icon">
+                                    <button type="submit" class="submit-with-icon" id="upvote">
                                         <span class="glyphicon glyphicon-chevron-up"></span>
                                     </button>
                                 </div>
@@ -124,7 +124,7 @@
                                 <div class="circle" style="float:left;">
                                     <input type="hidden" value="{{ q.id }}" name="pk_question">
                                     <input type="hidden" value="{{ topic_name.id }}" name="topic">
-                                    <button type="submit" class="submit-with-icon">
+                                    <button type="submit" class="submit-with-icon" id="downvote">
                                         <span class="glyphicon glyphicon-chevron-down"></span>
                                     </button>
                                 </div>
@@ -135,7 +135,7 @@
                                     <div class="circle" style="float:left;margin-left:2em;">
                                         <input type="hidden" value="{{ q.id }}" name="pk_question">
                                         <input type="hidden" value="{{ topic_name.id }}" name="topic">
-                                        <button type="submit" class="submit-with-icon">
+                                        <button type="submit" class="submit-with-icon" id="remove">
                                             <span class="glyphicon glyphicon-remove"></span>
                                         </button>
                                     </div>
