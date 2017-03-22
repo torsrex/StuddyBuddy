@@ -4,8 +4,7 @@ from django.contrib.auth.models import Permission
 from django.http import HttpResponseForbidden, HttpResponse
 from django.shortcuts import get_object_or_404, HttpResponseRedirect, render, redirect, render_to_response
 from django.views import generic
-from haystack.query import SearchQuerySet
-import json
+from haystack.forms import SearchForm
 
 from forum.forms import *
 from forum.models import *
@@ -185,9 +184,8 @@ class UserFormView(generic.View):
 # Haystack handle search
 
 def questions(request):
-    form = QuestionSearchForm(request.GET)
+    form = SearchForm(request.GET)
     questions = form.search()  # Returns all results from search
-    print(questions)
     return render_to_response('forum/questions.html', {'questions': questions})
 
 
