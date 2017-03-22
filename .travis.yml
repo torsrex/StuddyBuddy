@@ -4,6 +4,10 @@ python:
 install:
   - pip install -r requirements.txt
   - pip install coveralls
+addons:
+  postgresql: "9.6"
+before_script:
+  - psql -U postgres -d postgres -a -f ./create_database.sql
 script:
   coverage run --source='.' manage.py test forum --exclude-tag notworking --exclude-tag selenium
 after_success:
