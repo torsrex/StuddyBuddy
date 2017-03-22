@@ -26,7 +26,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['178.62.110.47', '127.0.0.1']
 
-LOGIN_REDIRECT_URL='/forum/'
+LOGIN_REDIRECT_URL = '/forum/'
 
 # Application definition
 
@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #'forum.apps.ForumConfig',
+    # 'forum.apps.ForumConfig',
     'vote',
     'forum',
 ]
@@ -57,7 +57,7 @@ ROOT_URLCONF = 'studybuddy.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -74,17 +74,26 @@ WSGI_APPLICATION = 'studybuddy.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'studybuddy_db',
-        'USER': 'studybuddy_user',
-        'PASSWORD': 'muddyP3ncil71',
-        'HOST': 'localhost',
-        'PORT': '',
+LOCAL = True
+if LOCAL:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': 'studybuddy_db',
+        }
     }
-}
+else:
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'studybuddy_db',
+            'USER': 'studybuddy_user',
+            'PASSWORD': 'muddyP3ncil71',
+            'HOST': 'localhost',
+            'PORT': '',
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators

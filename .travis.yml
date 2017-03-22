@@ -1,20 +1,13 @@
 language: python
 python:
   - "3.6"
+sudo: false
 install:
   - pip install -r requirements.txt
   - pip install coveralls
-addons:
-  postgresql: "9.5"
-services:
-  - postgresql
 before_script:
-  - psql -U postgres - c 'CREATE DATABASE studybuddy_db;'
-  - psql -U postgres - c 'CREATE USER studybuddy_user WITH PASSWORD 'muddyP3ncil71';'
-  - psql -U postgres - c 'ALTER ROLE studybuddy_user SET client_encoding TO 'utf8';'
-  - psql -U postgres - c 'ALTER ROLE studybuddy_user SET default_transaction_isolation TO 'read committed';'
-  - psql -U postgres - c 'ALTER ROLE studybuddy_user SET timezone TO 'UTC';'
-  - psql -U postgres - c 'GRANT ALL PRIVILEGES ON DATABASE studybuddy_db TO studybuddy_user;'
+    - python manage.py makemigrations
+    - python manage.py migrate
 script:
   coverage run --source='.' manage.py test forum --exclude-tag notworking --exclude-tag selenium
 after_success:
