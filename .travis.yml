@@ -5,6 +5,8 @@ sudo: false
 install:
   - pip install -r requirements.txt
   - pip install coveralls
+services:
+  - elasticsearch
 before_script:
     - python manage.py makemigrations
     - python manage.py migrate
