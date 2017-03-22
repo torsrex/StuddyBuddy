@@ -1,4 +1,4 @@
-{% extends "registration\base_login.html" %}
+{% extends 'registration/base_login.html' %}
 {% block title %}New question{% endblock %}
 {% block content %}
     <h2 style="white-space: nowrap">New Question</h2>
@@ -10,6 +10,6 @@
         {{ form.question_text }}
         <label>Suitable for quiz?: </label>{{ form.question_SuitableForQuiz }}
         {{ form.question_topic.as_hidden }}
-        <br><input type='submit' class="btn btn-default" value='Submit'/>
+        <br><input type='submit' class="btn btn-default" value='Submit' id="button"/>
     </form>
 {% endblock %}

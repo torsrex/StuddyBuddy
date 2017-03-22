@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.views.generic.base import RedirectView
 
 urlpatterns = [
-    url(r'^', include('forum.urls')),
     url(r'^forum/', include('forum.urls')),
+    url(r'^$', RedirectView.as_view(url='forum/'), name='go-to-forum'),
     url(r'^admin/', admin.site.urls),
 
 ]

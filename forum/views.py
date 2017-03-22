@@ -62,6 +62,17 @@ def downvote(request):
         q.votes.down(request.user.id)
     return redirect('/forum/topics/' + request.POST['topic'])
 
+def upvote_answer(request):
+    if request.method == 'POST':
+        a = Answer.objects.get(pk=request.POST['pk_answer'])
+        a.votes.up(request.user.id)
+    return redirect('/forum/topics/' + request.POST['topic'])
+
+def downvote_answer(request):
+    if request.method == 'POST':
+        a = Answer.objects.get(pk=request.POST['pk_answer'])
+        a.votes.down(request.user.id)
+    return redirect('/forum/topics/' + request.POST['topic'])
 
 def delete_question_in_index(request):
     if not request.user.has_perm('forum.delete_question'):

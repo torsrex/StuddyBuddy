@@ -1,4 +1,4 @@
-{% extends "registration\base_login.html" %}
+{% extends 'registration/base_login.html' %}
 {# Sets title #}
 {% block title %}Register{% endblock %}
 {% block content %}
@@ -12,6 +12,6 @@
         {{ form.email }}
         <label>Password: </label>
         {{ form.password }}
-        <br><input class="btn btn-default" type='submit' value='Submit'/>
+        <br><input class="btn btn-default" type='submit' id="register_button" value='Submit'/>
     </form>
 {% endblock %}

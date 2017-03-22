@@ -1,11 +1,15 @@
 {% extends "forum\base.html" %}
 {% block title %}Search form{% endblock %}
-
-{% block container-fluid %}
-    <form type="get" action=".">
+{% block header-button %}
+    <div class="left">
+    <form type="get" action="." style="padding-left: 1em">
         <input type="text" name="q">
-        <button type="submit">Search</button>
+        <button class="btn btn-default" type="submit" style="height:2.2em;display:inline;">Search</button>
     </form>
+    </div>
+
+{% endblock %}
+{% block container-fluid %}
     {#Lists questions#}
     {% for q in questions %}
         <h1>{{ q.question_name }}</h1>

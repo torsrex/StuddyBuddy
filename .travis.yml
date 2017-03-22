@@ -1,0 +1,14 @@
+language: python
+python:
+  - "3.6"
+sudo: false
+install:
+  - pip install -r requirements.txt
+  - pip install coveralls
+before_script:
+    - python manage.py makemigrations
+    - python manage.py migrate
+script:
+  coverage run --source='.' manage.py test forum --exclude-tag notworking --exclude-tag selenium
+after_success:
+  coveralls

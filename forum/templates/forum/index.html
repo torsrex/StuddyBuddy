@@ -1,4 +1,4 @@
-{% extends "forum\base.html" %}
+{% extends 'forum/base.html' %}
 {% block title %}Index of forum{% endblock %}
 {% load filters %}
 {% block head %}
@@ -42,8 +42,8 @@
 
         .initiallyHidden {
             display: none;
-            min-width: 150vh; {# TODO: fix implementation #}
-            margin-left: 10px;
+            min-width: 150vh;  {# TODO: fix implementation #}
+            margin-left:10px ;
         }
 
         ul {
@@ -83,6 +83,19 @@
 
 {% endblock %}
 
+{% block header-button %}
+    <div class="left">
+        <a style="height:2.2em;display:inline;" class="btn btn-default" href="new_question" role="button" id="registration_button">Create new
+            question</a>
+    </div>
+    <div class="left">
+        <form action="/forum/search/" type="get" action="." style="padding-left: 1em">
+        <input type="text" name="q">
+        <button class="btn btn-default" type="submit" style="height:2.2em;display:inline;">Search</button>
+    </form>
+    </div>
+{% endblock %}
+
 {% block container-fluid %}
 
     <h1>Current subject: {{ topic_name }}</h1>
@@ -94,7 +107,7 @@
                 {% endfor %}
             </ul>
         </div>
-        <div id='detail'>
+        <div id='detail' class="scroll">
             <ul>
                 {% for q in latest_questions_list %}
                     <div class='initiallyHidden' id='b{{ forloop.counter }}c'>
@@ -103,39 +116,40 @@
                         <div>
                             <form action="/forum/upvote/" method="post">
                                 {% csrf_token %}
-                                <div class="circle">
+                                <div class="circle" style="float:left;">
                                     <input type="hidden" value="{{ q.id }}" name="pk_question">
                                     <input type="hidden" value="{{ topic_name.id }}" name="topic">
-                                    <button type="submit" class="submit-with-icon">
+                                    <button type="submit" class="submit-with-icon" id="upvote">
                                         <span class="glyphicon glyphicon-chevron-up"></span>
                                     </button>
                                 </div>
                             </form>
-                            <label>{{ var|votes:q }}</label>
+                            <label style="float:left;">&nbsp{{ var|votes:q }}&nbsp</label>
                             <form action="/forum/downvote/" method="post">
                                 {% csrf_token %}
-                                <div class="circle">
+                                <div class="circle" style="float:left;">
                                     <input type="hidden" value="{{ q.id }}" name="pk_question">
                                     <input type="hidden" value="{{ topic_name.id }}" name="topic">
-                                    <button type="submit" class="submit-with-icon">
+                                    <button type="submit" class="submit-with-icon" id="downvote">
                                         <span class="glyphicon glyphicon-chevron-down"></span>
                                     </button>
-                                </div><br>
+                                </div>
                             </form>
-                                {% if perms.forum.delete_question %}
-                                    <form action="/forum/delete_question_in_index/" method="post">
-                                        {% csrf_token %}
-                                        <div class="circle">
-                                            <input type="hidden" value="{{ q.id }}" name="pk_question">
-                                            <input type="hidden" value="{{ topic_name.id }}" name="topic">
-                                            <button type="submit" class="submit-with-icon">
-                                                <span class="glyphicon glyphicon-remove"></span>
-                                            </button>
-                                        </div>
-                                    </form>
-                                {% endif %}
+                            {% if perms.forum.delete_question %}
+                                <form action="/forum/delete_question_in_index/" method="post">
+                                    {% csrf_token %}
+                                    <div class="circle" style="float:left;margin-left:2em;">
+                                        <input type="hidden" value="{{ q.id }}" name="pk_question">
+                                        <input type="hidden" value="{{ topic_name.id }}" name="topic">
+                                        <button type="submit" class="submit-with-icon" id="remove">
+                                            <span class="glyphicon glyphicon-remove"></span>
+                                        </button>
+                                    </div>
+                                </form>
+                            {% endif %}
                             </form>
                         </div>
+                        <br>
                         <p>{{ q.answers.answer_text }}</p>
                         <br>
                         {% for answer in answer_list %}
@@ -144,7 +158,30 @@
                                     <div class="panel-heading">
                                         <div class="row">
                                             <div class="col-md-6">{{ answer.get_user }}</div>
-                                            <div class="col-md-6">Created: {{ answer.answer_created }}</div>
+                                            <div class="col-md-6">
+                                                <p style="float:left;">Created: {{ answer.answer_created }}</p>
+                                                <form action="/forum/upvote_answer/" method="post">
+                                                    {% csrf_token %}
+                                                    <div class="circle" style="float:left;margin-left:2em">
+                                                        <input type="hidden" value="{{ answer.id }}" name="pk_answer">
+                                                        <input type="hidden" value="{{ topic_name.id }}" name="topic">
+                                                        <button type="submit" class="submit-with-icon">
+                                                            <span class="glyphicon glyphicon-chevron-up"></span>
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                                <label style="float:left;">&nbsp{{ variable|votes:answer }}&nbsp</label>
+                                                <form action="/forum/downvote_answer/" method="post">
+                                                    {% csrf_token %}
+                                                    <div class="circle" style="float:left;">
+                                                        <input type="hidden" value="{{ answer.id }}" name="pk_answer">
+                                                        <input type="hidden" value="{{ topic_name.id }}" name="topic">
+                                                        <button type="submit" class="submit-with-icon">
+                                                            <span class="glyphicon glyphicon-chevron-down"></span>
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="panel-body">
@@ -166,13 +203,9 @@
             </ul>
         </div>
 
-        </div>
     {% else %}
         <p>No questions are available.</p>
     {% endif %}
-    <a class="btn btn-default" href="new_question" role="button">Create new question</a>
-    <br>
-    <br>
 
     <script>
         $(function () {
