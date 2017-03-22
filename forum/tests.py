@@ -18,11 +18,6 @@ class siteTestCase(TestCase):
             id=1
         )
 
-    def test_root_page_404(self):
-        client = Client()
-        response = client.get('/')  # expecting 404
-        self.assertEquals(response.status_code, 404)
-
     def test_forum(self):
         client = Client()
         response = client.get('/forum/')  # expecting 200
