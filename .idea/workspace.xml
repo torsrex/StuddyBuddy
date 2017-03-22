@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="27e1aa90-364a-4f03-b6e4-7897433c025e" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Reset.bat" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Reset_database.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/create_database.sql" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.travis.yml" afterPath="$PROJECT_DIR$/.travis.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forum/templates/forum/index.html" afterPath="$PROJECT_DIR$/forum/templates/forum/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forum/templates/forum/my_question.html" afterPath="$PROJECT_DIR$/forum/templates/forum/my_question.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forum/templates/forum/new_question.html" afterPath="$PROJECT_DIR$/forum/templates/forum/new_question.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forum/templates/forum/new_topic.html" afterPath="$PROJECT_DIR$/forum/templates/forum/new_topic.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forum/templates/forum/topics.html" afterPath="$PROJECT_DIR$/forum/templates/forum/topics.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forum/templates/registration/login.html" afterPath="$PROJECT_DIR$/forum/templates/registration/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forum/templates/registration/registration_form.html" afterPath="$PROJECT_DIR$/forum/templates/registration/registration_form.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/requirements.txt" afterPath="$PROJECT_DIR$/requirements.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/studybuddy/settings.py" afterPath="$PROJECT_DIR$/studybuddy/settings.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -58,7 +45,7 @@
         <entry file="file://$PROJECT_DIR$/forum/templates/registration/login.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="44" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="44" />
+              <caret line="0" column="44" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -934,7 +921,7 @@
     <entry file="file://$PROJECT_DIR$/forum/templates/registration/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="44" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="44" />
+          <caret line="0" column="44" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="44" />
           <folding />
         </state>
       </provider>
