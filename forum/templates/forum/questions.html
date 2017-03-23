@@ -2,10 +2,10 @@
 {% block title %}Search form{% endblock %}
 {% block header-button %}
     <div class="left">
-    <form type="get" action="." style="padding-left: 1em">
-        <input type="text" name="q">
-        <button class="btn btn-default" type="submit" style="height:2.2em;display:inline;">Search</button>
-    </form>
+        <form type="get" action="." style="padding-left: 1em">
+            <input type="text" name="q">
+            <button class="btn btn-default" type="submit" style="height:2.2em;display:inline;">Search</button>
+        </form>
     </div>
 
 {% endblock %}
@@ -13,15 +13,16 @@
     {#Lists questions#}
     {% for q in questions %}
 
-        <a class="btn btn-default" href="/forum/topics/{{ q.question_topic }}/?cid={{ q.pk }}" role="button"
-           id="registration_button">Create new
-            question</a>
-        <h1>{{ q.question_name }}</h1>
-        <p>
+                <a href="/forum/topics/{{ q.question_topic }}/?cid={{ q.pk }}"
+                   id="registration_button"><h3>{{ q.question_name }} {{ q.question_created }}</h3></a>
+
+
+        {% comment %}
+          If displaying text and date is wanted
+            <p>
             {{ q.question_text }}
-            {{ q.question_created }}
-    {{ q.question_topic}}
-        </p>
+            </p>
+        {% endcomment %}
     {% endfor %}
 
 {% endblock %}
