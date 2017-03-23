@@ -52,26 +52,26 @@ def upvote(request):
     if request.method == 'POST':
         q = Question.objects.get(pk=request.POST['pk_question'])
         q.votes.up(request.user.id)
-    return redirect('/forum/topics/' + request.POST['topic'])
+    return redirect('/forum/topics/' + request.POST['topic'] + '?cid=' + request.POST['pk_question'])
 
 
 def downvote(request):
     if request.method == 'POST':
         q = Question.objects.get(pk=request.POST['pk_question'])
         q.votes.down(request.user.id)
-    return redirect('/forum/topics/' + request.POST['topic'])
+    return redirect('/forum/topics/' + request.POST['topic'] + '?cid=' + request.POST['pk_question'])
 
 def upvote_answer(request):
     if request.method == 'POST':
         a = Answer.objects.get(pk=request.POST['pk_answer'])
         a.votes.up(request.user.id)
-    return redirect('/forum/topics/' + request.POST['topic'])
+    return redirect('/forum/topics/' + request.POST['topic'] + '?cid=' + request.POST['pk_question'])
 
 def downvote_answer(request):
     if request.method == 'POST':
         a = Answer.objects.get(pk=request.POST['pk_answer'])
         a.votes.down(request.user.id)
-    return redirect('/forum/topics/' + request.POST['topic'])
+    return redirect('/forum/topics/' + request.POST['topic'] + '?cid=' + request.POST['pk_question'])
 
 def delete_question_in_index(request):
     if not request.user.has_perm('forum.delete_question'):

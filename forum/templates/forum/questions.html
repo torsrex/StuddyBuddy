@@ -12,11 +12,16 @@
 {% block container-fluid %}
     {#Lists questions#}
     {% for q in questions %}
+
+        <a class="btn btn-default" href="/forum/topics/{{ q.question_topic }}/?cid={{ q.pk }}" role="button"
+           id="registration_button">Create new
+            question</a>
         <h1>{{ q.question_name }}</h1>
         <p>
             {{ q.question_text }}
             {{ q.question_created }}
+    {{ q.question_topic}}
         </p>
-
     {% endfor %}
+
 {% endblock %}
