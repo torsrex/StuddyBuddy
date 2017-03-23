@@ -96,7 +96,7 @@ if LOCAL:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': 'studybuddy_db',
+            'NAME': 'studybuddy_db.sqlite3',
         }
     }
 else:
