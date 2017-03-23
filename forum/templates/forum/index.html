@@ -104,7 +104,7 @@
         <div id='feed' class="scroll">
             <ul>
                 {% for q in latest_questions_list %}
-                    <li id='b{{ q.id }}'>{{ q.question_name }}</li>
+                    <li id='b{{ q.id }}' style="padding:0.7em">{{ q.question_name }}</li>
                 {% endfor %}
             </ul>
         </div>
@@ -232,16 +232,18 @@
             var url = window.location.href;
             if (url.indexOf('?' + field + '=') != -1) {
                 var pk_question = findGetParameter(field);
+                $("#b" + pk_question).css("background-color", "#d3d3d3");
                 $("#b" + pk_question + "c").toggle();
-                toggled = "#b" + pk_question + "c";
+                toggled = "#b" + pk_question;
             }
 
             $("div#feed li").click(function () {
                 var id = "" + this.id;
-                $(toggled).toggle();
+                $(toggled + "c").toggle();
                 $("#" + id + "c").toggle();
-                toggled = "#" + id + "c";
-
+                $(toggled).css("background-color", "#e8e8e8");
+                toggled = "#" + id;
+                $(toggled).css("background-color", "#d3d3d3");
 
             });
         });
