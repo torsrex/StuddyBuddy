@@ -885,3 +885,64 @@ JavaScript error: chrome://marionette/content/listener.js, line 1060: NS_ERROR_F
 1490172552938	Marionette	WARN	TLS certificate errors will be ignored for this session
 1490172557484	Marionette	INFO	New connections will no longer be accepted
 [Child 7468] ###!!! ABORT: Aborting on channel error.: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/glue/MessageChannel.cpp, line 2143
+1490258656451	geckodriver	INFO	Listening on 127.0.0.1:52072
+1490258658451	mozprofile::profile	INFO	Using profile path C:\Users\KGMK931\AppData\Local\Temp\rust_mozprofile.etrRsSojAhFq
+1490258658466	geckodriver::marionette	INFO	Starting browser C:\Program Files (x86)\Mozilla Firefox\firefox.exe with args []
+1490258658498	geckodriver::marionette	INFO	Connecting to Marionette on localhost:52081
+1490258660912	Marionette	INFO	Listening on port 52081
+1490258662061	Marionette	WARN	TLS certificate errors will be ignored for this session
+1490258665471	Marionette	INFO	New connections will no longer be accepted
+[Child 8376] ###!!! ABORT: Aborting on channel error.: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/glue/MessageChannel.cpp, line 2143
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x3E0003,name=PCompositable::Msg_Destroy) Channel error: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x3E0003,name=PCompositable::Msg_Destroy) Channel error: cannot send/recv
+
+1490258666357	geckodriver	INFO	Listening on 127.0.0.1:52118
+1490258668397	mozprofile::profile	INFO	Using profile path C:\Users\KGMK931\AppData\Local\Temp\rust_mozprofile.mkPxNsvMy6MY
+1490258668412	geckodriver::marionette	INFO	Starting browser C:\Program Files (x86)\Mozilla Firefox\firefox.exe with args []
+1490258668428	geckodriver::marionette	INFO	Connecting to Marionette on localhost:52129
+1490258669685	Marionette	INFO	Listening on port 52129
+1490258670203	Marionette	WARN	TLS certificate errors will be ignored for this session
+1490258673316	Marionette	INFO	New connections will no longer be accepted
+[Child 6100] ###!!! ABORT: Aborting on channel error.: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/glue/MessageChannel.cpp, line 2143
+1490258674062	geckodriver	INFO	Listening on 127.0.0.1:52158
+1490258676111	mozprofile::profile	INFO	Using profile path C:\Users\KGMK931\AppData\Local\Temp\rust_mozprofile.TnzmICMwu0qU
+1490258676127	geckodriver::marionette	INFO	Starting browser C:\Program Files (x86)\Mozilla Firefox\firefox.exe with args []
+1490258676142	geckodriver::marionette	INFO	Connecting to Marionette on localhost:52168
+1490258677456	Marionette	INFO	Listening on port 52168
+JavaScript error: resource://gre/components/nsUrlClassifierListManager.js, line 536: TypeError: this.tablesData[table] is undefined
+1490258730453	geckodriver	INFO	Listening on 127.0.0.1:52283
+1490258732531	mozprofile::profile	INFO	Using profile path C:\Users\KGMK931\AppData\Local\Temp\rust_mozprofile.sszY7tdGxz9b
+1490258732563	geckodriver::marionette	INFO	Starting browser C:\Program Files (x86)\Mozilla Firefox\firefox.exe with args []
+1490258732578	geckodriver::marionette	INFO	Connecting to Marionette on localhost:52293
+1490258734001	Marionette	INFO	Listening on port 52293
+1490258734591	Marionette	WARN	TLS certificate errors will be ignored for this session
+1490258738569	Marionette	INFO	New connections will no longer be accepted
+[Child 12600] ###!!! ABORT: Aborting on channel error.: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/glue/MessageChannel.cpp, line 2143
+1490258739517	geckodriver	INFO	Listening on 127.0.0.1:52344
+1490258741567	mozprofile::profile	INFO	Using profile path C:\Users\KGMK931\AppData\Local\Temp\rust_mozprofile.Zp8HatIa9WM4
+1490258741582	geckodriver::marionette	INFO	Starting browser C:\Program Files (x86)\Mozilla Firefox\firefox.exe with args []
+1490258741582	geckodriver::marionette	INFO	Connecting to Marionette on localhost:52354
+1490258742870	Marionette	INFO	Listening on port 52354
+1490258743429	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: chrome://marionette/content/listener.js, line 1060: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIWebProgress.removeProgressListener]
+1490258748660	Marionette	INFO	New connections will no longer be accepted
+[Child 14288] ###!!! ABORT: Aborting on channel error.: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/glue/MessageChannel.cpp, line 2143
+1490258749697	geckodriver	INFO	Listening on 127.0.0.1:52423
+1490258751726	mozprofile::profile	INFO	Using profile path C:\Users\KGMK931\AppData\Local\Temp\rust_mozprofile.FHyNkRACYNXD
+1490258751742	geckodriver::marionette	INFO	Starting browser C:\Program Files (x86)\Mozilla Firefox\firefox.exe with args []
+1490258751758	geckodriver::marionette	INFO	Connecting to Marionette on localhost:52433
+1490258753091	Marionette	INFO	Listening on port 52433
+1490258753720	Marionette	WARN	TLS certificate errors will be ignored for this session
+1490258759058	Marionette	INFO	New connections will no longer be accepted
+[Child 12516] ###!!! ABORT: Aborting on channel error.: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/glue/MessageChannel.cpp, line 2143
+1490258759927	geckodriver	INFO	Listening on 127.0.0.1:52489
+1490258761997	mozprofile::profile	INFO	Using profile path C:\Users\KGMK931\AppData\Local\Temp\rust_mozprofile.dEFWKnqL0s6Y
+1490258761997	geckodriver::marionette	INFO	Starting browser C:\Program Files (x86)\Mozilla Firefox\firefox.exe with args []
+1490258762013	geckodriver::marionette	INFO	Connecting to Marionette on localhost:52499
+1490258763335	Marionette	INFO	Listening on port 52499
+1490258763948	Marionette	WARN	TLS certificate errors will be ignored for this session
+1490258769535	Marionette	INFO	New connections will no longer be accepted
+[Child 7972] ###!!! ABORT: Aborting on channel error.: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/glue/MessageChannel.cpp, line 2143
