@@ -138,6 +138,7 @@ class permissionTestCase(TestCase):
         resp = c.get('/forum/my_question')
         self.assertTrue(len(resp.context['my_question_list']) == 0)  # For another user, the list should still be empty.
 
+"""
     def test_teachers_can_delete_all_questions(self):
         self.question_1 = Question.objects.create(
             question_name="testquest",
@@ -153,6 +154,7 @@ class permissionTestCase(TestCase):
         questions=Question.objects.all()
         print(questions)
         assert len(questions)==0
+"""
 
 
 """
