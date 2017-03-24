@@ -125,6 +125,7 @@ def question_details(request, pk):
 
 
 # Creates new topic
+@login_required(login_url='login')
 def new_topic(request):
     if request.method == "POST":  # Used when submit button is clicked
         form = TopicForm(request.POST)  # Passes arguments in request to form
