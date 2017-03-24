@@ -92,7 +92,7 @@ def new_answer(request):
             formToSave.user = request.user
             formToSave.save()
             return redirect(
-                '/forum/topics/' + request.POST['topic'])  # Redirects to the topic view after form submission
+                '/forum/topics/' + request.POST['topic'] + '?cid=' + request.POST['question'])  # Redirects to the topic view after form submission
 
 
 # Creates new question
