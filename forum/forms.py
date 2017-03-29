@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from forum.models import Question, Topic, Answer
 from django.db.models import Q
 
+
 # from haystack.forms import SearchForm # Haystack Search form import
 
 
@@ -88,6 +89,18 @@ class UserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['username', 'email', 'password']
+
+    # Method to enforce @ntnu.no and @stud.ntnu.no emails
+    def clean_email(self):
+        email = self.cleaned_data['email']  # Gets the cleaned email
+
+        if '@ntnu.no' in email:
+            return email # Always returned the cleaned data
+        elif '@stud.ntnu.no' in email:
+            return email # Always returned the cleaned data
+        else:
+            raise forms.ValidationError('Invalid email, please use ntnu mail.')  # Raises error if wrong email
+
 
 """
 # Haystack custom search form, extends haystack form import
