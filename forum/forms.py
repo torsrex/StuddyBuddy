@@ -27,13 +27,22 @@ class QuestionForm(forms.ModelForm):
             self.fields[field].widget.attrs.update({
                 'class': 'form-control'
             })
+
+        # TODO: Implement quiz if time permits
+        # Code for adding css styling to SuitableForQuiz checkbox
+        """
         self.fields['question_SuitableForQuiz'].widget.attrs.update({
             'class': 'checkbox'
         })
+        """
 
     class Meta:
         model = Question
-        fields = ('question_name', 'question_text', 'question_SuitableForQuiz', 'question_topic')
+        # Fields without SuitableForQuiz checkbox
+        fields = ('question_name', 'question_text', 'question_topic')
+
+        # TODO: Implement quiz if time permits
+        # fields = ('question_name', 'question_text', 'question_SuitableForQuiz', 'question_topic')
 
 
 class TopicForm(forms.ModelForm):
