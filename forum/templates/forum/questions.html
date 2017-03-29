@@ -1,13 +1,14 @@
 {% extends "forum\base.html" %}
 {% block title %}Search form{% endblock %}
 {% block header-button %}
+   {% comment %}
     <div class="left">
         <form type="get" action="." style="padding-left: 1em">
             <input type="text" name="q">
             <button class="btn btn-default" type="submit" style="height:2.2em;display:inline;">Search</button>
         </form>
     </div>
-
+    {% endcomment %}
 {% endblock %}
 {% block container-fluid %}
     {#Lists questions#}

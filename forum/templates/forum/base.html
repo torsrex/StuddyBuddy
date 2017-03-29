@@ -46,6 +46,12 @@
     {% block header-button %}
 
     {% endblock %}
+    <div class="left">
+        <form action="/forum/search/" type="get" action="." style="padding-left: 1em">
+            <input type="text" name="q" placeholder=" Search all questions..">
+            <button class="btn btn-default" type="submit" style="height:2.2em;display:inline;">Search</button>
+        </form>
+    </div>
     <div class="right">
         {% if user.username %}
         <div>

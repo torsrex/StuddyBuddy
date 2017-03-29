@@ -78,13 +78,13 @@
 {% block header-button %}
 <div class="left">
     {% if perms.forum.delete_question %}
-    <a class="btn btn-default" style="height:2.2em;display:inline;" href="new_topic" role="button">Create new topic</a>
+    <a class="btn btn-default" style="height:2.2em;display:inline;" href="new_topic" role="button">Create new subject</a>
     {% endif %}
 </div>
 {% endblock %}
 
 {% block container-fluid %}
-<h2>Topics</h2>
+<h2>Subject</h2>
 {% if topics_list %}
 <div class="inner-addon left-addon">
     <i class="glyphicon glyphicon-search"></i>
