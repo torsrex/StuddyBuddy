@@ -12,6 +12,7 @@
         .right {
             float: right;
             padding-top: 12px;
+            padding-right: 90px;
         }
 
         .left {
@@ -54,35 +55,37 @@
     </div>
     <div class="right">
         {% if user.username %}
-        <div>
-            <a data-toggle="tooltip" title="List of your questions" class="btn btn-default"
-               href="/forum/my_question"
-               role="button" style="width: 2.5em;  height: 2em;">
-                <label><span class="glyphicon glyphicon-list-alt" aria-hidden="true"
-                             style="transform: scale(1.2);padding-right: 30px"></span></label>
-            </a>
-            <a data-toggle="tooltip" title="Log out" class="btn btn-default" href="/forum/logout" role="button"
-               style=" width: 6.2em;  height: 2.2em;display:inline;background-color: rgba(193,21,27,0.6)">
-                <label>&nbsp;{{ user.username }} <span class="glyphicon glyphicon-log-out"
-                                                       aria-hidden="true"></span></label>&nbsp;
-            </a>
+            <div>
 
-        </div>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button"
+                            data-toggle="dropdown">{{ user.username }}</button>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item" href="/forum/my_question" role="button">My questions</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="/forum/logout" role="button">Log out</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
         {% else %}
-        <div>
-            <a class="btn btn-default" href="/forum/register/" role="button"
-               style=" width: 6.2em;  height: 2.2em;display:inline;background-color: #a9f654">
-                <label>&nbsp;<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Register</label>&nbsp;
+            <div>
+                <a class="btn btn-default" href="/forum/register/" role="button"
+                   style=" width: 6.2em;  height: 2.2em;display:inline;background-color: #a9f654">
+                    <label>&nbsp;<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Register</label>&nbsp;
 
-            </a>
-             &nbsp; {# Adds spacing between buttons #}
-            <a class="btn btn-default" href="/forum/login" role="button"
-               style=" width: 6.2em;  height: 2.2em;display:inline;background-color: #87cefa">
-                <label>&nbsp;<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Log in</label>&nbsp;
+                </a>
+                &nbsp; {# Adds spacing between buttons #}
+                <a class="btn btn-default" href="/forum/login" role="button"
+                   style=" width: 6.2em;  height: 2.2em;display:inline;background-color: #87cefa">
+                    <label>&nbsp;<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Log in</label>&nbsp;
 
-            </a>
+                </a>
 
-        </div>
+            </div>
         {% endif %}
     </div>
 
