@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 
 from forum.models import Question, Topic, Answer
+from django.db.models import Q
 
 # from haystack.forms import SearchForm # Haystack Search form import
 

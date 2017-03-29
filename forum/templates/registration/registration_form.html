@@ -3,6 +3,21 @@
 {% block title %}Register{% endblock %}
 {% block content %}
     <h2 style="white-space: nowrap">Create account</h2>
+    {# Displays errors #}
+    {% if form.errors %}
+        {% for field in form %}
+            {% for error in field.errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+            {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endif %}
     {# Creates form #}
     <form class="new_question" method='post'>
         {% csrf_token %}
@@ -17,4 +32,7 @@
         {{ form.password }}
         <br><input class="btn btn-default" type='submit' id="register_button" value='Submit'/>
     </form>
+
+
+
 {% endblock %}
