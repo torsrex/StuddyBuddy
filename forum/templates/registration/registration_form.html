@@ -6,10 +6,13 @@
     {# Creates form #}
     <form class="new_question" method='post'>
         {% csrf_token %}
+
         <label>Username: </label>
         {{ form.username }}
+        <p>Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</p>
         <label>Email-address: </label>
         {{ form.email }}
+        <p>Please use your ntnu email when registering.</p>
         <label>Password: </label>
         {{ form.password }}
         <br><input class="btn btn-default" type='submit' id="register_button" value='Submit'/>
