@@ -92,7 +92,11 @@
 {% endblock %}
 
 {% block container-fluid %}
-
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip-right"]').tooltip({placement: "right"});
+    });
+</script>
     <h1>Current subject: {{ topic_name }}</h1>
     {% if latest_questions_list %}
         <div id='feed' class="scroll">
@@ -115,7 +119,7 @@
                                     <input type="hidden" value="{{ q.id }}" name="pk_question">
                                     <input type="hidden" value="{{ topic_name.id }}" name="topic">
                                     <button type="submit" class="submit-with-icon" id="upvote">
-                                        <span class="glyphicon glyphicon-chevron-up"></span>
+                                        <span data-toggle="tooltip-right" title="Upvote question" class="glyphicon glyphicon-chevron-up"></span>
                                     </button>
                                 </div>
                             </form>
@@ -126,7 +130,7 @@
                                     <input type="hidden" value="{{ q.id }}" name="pk_question">
                                     <input type="hidden" value="{{ topic_name.id }}" name="topic">
                                     <button type="submit" class="submit-with-icon" id="downvote">
-                                        <span class="glyphicon glyphicon-chevron-down"></span>
+                                        <span data-toggle="tooltip-right" title="Downvote question" class="glyphicon glyphicon-chevron-down"></span>
                                     </button>
                                 </div>
                             </form>
@@ -137,7 +141,7 @@
                                         <input type="hidden" value="{{ q.id }}" name="pk_question">
                                         <input type="hidden" value="{{ topic_name.id }}" name="topic">
                                         <button type="submit" class="submit-with-icon" id="remove">
-                                            <span class="glyphicon glyphicon-remove"></span>
+                                            <span data-toggle="tooltip-right" title="Delete question" class="glyphicon glyphicon-remove"></span>
                                         </button>
                                     </div>
                                 </form>
@@ -168,7 +172,7 @@
                                                         <input type="hidden" value="{{ answer.id }}" name="pk_answer">
                                                         <input type="hidden" value="{{ topic_name.id }}" name="topic">
                                                         <button type="submit" class="submit-with-icon">
-                                                            <span class="glyphicon glyphicon-chevron-up"></span>
+                                                            <span data-toggle="tooltip-right" title="Upvote answer" class="glyphicon glyphicon-chevron-up"></span>
                                                         </button>
                                                     </div>
                                                 </form>
@@ -180,7 +184,7 @@
                                                         <input type="hidden" value="{{ answer.id }}" name="pk_answer">
                                                         <input type="hidden" value="{{ topic_name.id }}" name="topic">
                                                         <button type="submit" class="submit-with-icon">
-                                                            <span class="glyphicon glyphicon-chevron-down"></span>
+                                                            <span data-toggle="tooltip-right" title="Downvote answer" class="glyphicon glyphicon-chevron-down"></span>
                                                         </button>
                                                     </div>
                                                 </form>
