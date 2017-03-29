@@ -66,14 +66,22 @@
                 <label>&nbsp;{{ user.username }} <span class="glyphicon glyphicon-log-out"
                                                        aria-hidden="true"></span></label>&nbsp;
             </a>
+
         </div>
         {% else %}
         <div>
-            <a class="btn btn-default" href="/forum/login" role="button"
+            <a class="btn btn-default" href="/forum/register/" role="button"
                style=" width: 6.2em;  height: 2.2em;display:inline;background-color: #a9f654">
+                <label>&nbsp;<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Register</label>&nbsp;
+
+            </a>
+             &nbsp; {# Adds spacing between buttons #}
+            <a class="btn btn-default" href="/forum/login" role="button"
+               style=" width: 6.2em;  height: 2.2em;display:inline;background-color: #87cefa">
                 <label>&nbsp;<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Log in</label>&nbsp;
 
             </a>
+
         </div>
         {% endif %}
     </div>
