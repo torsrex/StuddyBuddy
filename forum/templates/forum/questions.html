@@ -1,29 +1,12 @@
 {% extends "forum\base.html" %}
 {% block title %}Search form{% endblock %}
-{% block header-button %}
-   {% comment %}
-    <div class="left">
-        <form type="get" action="." style="padding-left: 1em">
-            <input type="text" name="q">
-            <button class="btn btn-default" type="submit" style="height:2.2em;display:inline;">Search</button>
-        </form>
-    </div>
-    {% endcomment %}
-{% endblock %}
 {% block container-fluid %}
     {#Lists questions#}
     {% for q in questions %}
 
-                <a href="/forum/topics/{{ q.question_topic }}/?cid={{ q.pk }}"
-                   id="registration_button"><h3>{{ q.question_name }} {{ q.question_created }}</h3></a>
+        <a href="/forum/topics/{{ q.question_topic }}/?cid={{ q.pk }}"
+           id="registration_button"><h3>{{ q.question_name }} {{ q.question_created }}</h3></a>
 
-
-        {% comment %}
-          If displaying text and date is wanted
-            <p>
-            {{ q.question_text }}
-            </p>
-        {% endcomment %}
     {% endfor %}
 
 {% endblock %}

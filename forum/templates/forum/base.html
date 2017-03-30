@@ -3,7 +3,7 @@
 <head>
     <title>{% block title %}{% endblock %}</title>
     <meta charset="utf-8"/>
-     <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     {% load staticfiles %} {# jinja logic to reference static files #}
     <link rel='stylesheet' href="{% static 'forum/css/bootstrap.min.css' %}" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -18,8 +18,187 @@
         .left {
             float: left;
             padding-top: 12px;
+            padding-right: 1em;
         }
 
+        .green_button {
+            min-width: 6.2em;
+            height: 2.2em;
+            display: inline-block;
+            background-color: #a9f654;
+        }
+
+        .blue_button {
+            min-width: 6.2em;
+            height: 2.2em;
+            display: inline-block;
+            background-color: #87cefa;
+        }
+
+        .no_color_header_button {
+            min-width: 6.2em;
+            height: 2.2em;
+            display: inline-block;
+        }
+
+        .main_container {
+            padding-top: 30px;
+        }
+
+        .body_color {
+            background-color: #f6f6f6;
+        }
+
+        #search {
+            min-width: 6.2em;
+            height: 2.2em;
+        }
+
+        .text_nowrap {
+            white-space: nowrap;
+        }
+
+        .circle {
+            border-radius: 100%;
+            border: 0.22em solid black;
+            height: 25px;
+            width: 25px;
+        }
+
+        .glyphicon.glyphicon-chevron-up {
+            font-size: 17px;
+            padding-left: 1.6px;
+        }
+
+        .glyphicon.glyphicon-chevron-down {
+            padding-left: 1.6px;
+            padding-top: 2px;
+            font-size: 17px;
+        }
+
+        .glyphicon.glyphicon-remove {
+            padding-left: 1px;
+            padding-top: 1px;
+            font-size: 17px;
+        }
+
+        .submit-with-icon {
+            background: transparent;
+            border: 0px;
+            padding: 0;
+            outline: 0;
+        }
+
+        .circle:active {
+            content: '';
+            background-color: rgb(235, 235, 235);
+            border-color: rgb(173, 173, 173);
+        }
+
+        .initiallyHidden {
+            display: none;
+            min-width: 150vh;
+        {# TODO: fix implementation #} margin-left: 10px;
+        }
+
+        ul {
+            list-style-type: none;
+            margin-right: 0px;
+            padding: 0px;
+        }
+
+        .scroll {
+            height: 86vh;
+            overflow-y: auto;
+        }
+
+        div#feed {
+            width: 350px;
+            float: left;
+            background-color: #e8e8e8;
+            border-top: 2px solid #636363;
+            border-right: 3px solid #636363;
+        }
+
+        div#feed li {
+            cursor: pointer;
+            border-bottom: 3px solid #f6f6f6;
+        }
+
+        div#feed li:hover {
+            background-color: #d3d3d3;
+        }
+
+        div#detail {
+            position: absolute;
+            float: left;
+            left: 370px;
+        }
+
+        #searchFunc {
+
+            background-position: 10px 10px;
+            background-repeat: no-repeat;
+            width: 100%;
+            font-size: 16px;
+            padding: 12px 20px 12px 40px;
+            border: 1px solid #ddd;
+            margin-bottom: 12px;
+        }
+
+        .inner-addon {
+            position: relative;
+        }
+
+        /* style icon */
+        .inner-addon .glyphicon {
+            position: absolute;
+            padding: 10px;
+            pointer-events: none;
+        }
+
+        /* align icon */
+        .left-addon .glyphicon {
+            left: 5px;
+            top: 5px;
+        }
+
+        .right-addon .glyphicon {
+            right: 0px;
+        }
+
+        /* add padding  */
+        .left-addon input {
+            padding-left: 30px;
+        }
+
+        .right-addon input {
+            padding-right: 30px;
+        }
+
+        #topicTable {
+            border-collapse: collapse;
+            width: 100%;
+            border: 1px solid #ddd;
+            font-size: 18px;
+        }
+
+        #topicTable th, #topicTable td {
+            text-align: left;
+            padding: 12px;
+        }
+
+        #topicTable tr {
+            border-bottom: 1px solid #ddd;
+        }
+
+        #topicTable tr:hover {
+            background-color: #b2e8ff;
+        }
+
+        #topicTable tr.header {
+            background-color: #d3d3d3;
+        }
     </style>
     {% block head %}
 
@@ -27,7 +206,7 @@
     {% endblock %}
 
 </head>
-<body class="body" style="background-color: #f6f6f6">
+<body class="body body_color">
 {#Script for displaying tooltips#}
 <script>
     $(document).ready(function () {
@@ -38,8 +217,7 @@
 {#Main container class for content, scales automatically#}
 <div class="container-fluid">
     <div class="left">
-        <a class="btn btn-default" href="/forum" role="button"
-           style=" width: 6.2em;  height: 2.2em;display:inline;">
+        <a class="btn btn-default no_color_header_button" href="/forum" role="button">
             <label>&nbsp;<span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</label>&nbsp;
 
         </a>
@@ -48,18 +226,18 @@
 
     {% endblock %}
     <div class="left">
-        <form action="/forum/search/" type="get" action="." style="padding-left: 1em">
-            <input type="text" name="q" placeholder=" Search all questions..">
-            <button class="btn btn-default" type="submit" style="height:2.2em;display:inline;">Search</button>
+        <form action="/forum/search/" type="get" action=".">
+            <input type="text" id="search" name="q" placeholder=" Search all questions..">
+            <button class="btn btn-default no_color_header_button" type="submit">Search</button>
         </form>
     </div>
     <div class="right">
         {% if user.username %}
             <div>
-
                 <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" type="button"
-                            data-toggle="dropdown">{{ user.username }}&nbsp;<span class="glyphicon glyphicon-circle-arrow-down"></span></button>
+                            data-toggle="dropdown">{{ user.username }}&nbsp;<span
+                            class="glyphicon glyphicon-circle-arrow-down"></span></button>
                     <ul class="dropdown-menu">
                         <li>
                             <a class="dropdown-item" href="/forum/my_question" role="button">My questions</a>
@@ -73,14 +251,11 @@
             </div>
         {% else %}
             <div>
-                <a class="btn btn-default" href="/forum/register/" role="button"
-                   style=" width: 6.2em;  height: 2.2em;display:inline;background-color: #a9f654">
-                    <label>&nbsp;<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Register</label>&nbsp;
+                <a class="btn btn-default green_button" href="/forum/register/" role="button">
+                    <label><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Register</label>
 
                 </a>
-                &nbsp; {# Adds spacing between buttons #}
-                <a class="btn btn-default" href="/forum/login" role="button"
-                   style=" width: 6.2em;  height: 2.2em;display:inline;background-color: #87cefa">
+                <a class="btn btn-default blue_button" href="/forum/login" role="button">
                     <label>&nbsp;<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Log in</label>&nbsp;
 
                 </a>
@@ -89,7 +264,7 @@
         {% endif %}
     </div>
 
-    <div style="padding-top: 30px">
+    <div class="main_container">
 
         {% block container-fluid %}
 

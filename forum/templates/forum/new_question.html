@@ -1,7 +1,7 @@
 {% extends 'registration/base_login.html' %}
 {% block title %}New question{% endblock %}
 {% block content %}
-    <h2 style="white-space: nowrap">New Question</h2>
+    <h2 class="text-nowrap">New Question</h2>
     <form class="new_question" method='post'>
         {% csrf_token %}
         <label>Name: </label>
