@@ -46,3 +46,6 @@ class Answer(VoteModel, models.Model):
 
     def get_user(self):  # Returns user who created answer
         return User.objects.get(pk=self.user_id).username.title()
+
+    def is_teacher(self):
+        return User.objects.get(pk=self.user_id).has_perm(perm='forum.delete_question')

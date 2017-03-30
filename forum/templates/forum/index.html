@@ -110,59 +110,68 @@
             <ul>
                 {% for q in latest_questions_list %}
                     <div class='initiallyHidden' id='b{{ q.id }}c'>
-                        <p>{{ q.question_text }}</p>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Question posted by: {{ q.user }}</label>
 
-                        <div>
-                            <form action="/forum/upvote/" method="post">
-                                {% csrf_token %}
-                                <div class="circle" style="float:left;">
-                                    <input type="hidden" value="{{ q.id }}" name="pk_question">
-                                    <input type="hidden" value="{{ topic_name.id }}" name="topic">
-                                    <button type="submit" class="submit-with-icon" id="upvote">
+                                        <div>
+                                            <form action="/forum/upvote/" method="post">
+                                                {% csrf_token %}
+                                                <div class="circle" style="float:left;">
+                                                    <input type="hidden" value="{{ q.id }}" name="pk_question">
+                                                    <input type="hidden" value="{{ topic_name.id }}" name="topic">
+                                                    <button type="submit" class="submit-with-icon" id="upvote">
                     <span data-toggle="tooltip-right" title="Upvote question"
                           class="glyphicon glyphicon-chevron-up"></span>
-                                    </button>
-                                </div>
-                            </form>
-                            <label style="float:left;">&nbsp{{ var|votes:q }}&nbsp</label>
-                            <form action="/forum/downvote/" method="post">
-                                {% csrf_token %}
-                                <div class="circle" style="float:left;">
-                                    <input type="hidden" value="{{ q.id }}" name="pk_question">
-                                    <input type="hidden" value="{{ topic_name.id }}" name="topic">
-                                    <button type="submit" class="submit-with-icon" id="downvote">
+                                                    </button>
+                                                </div>
+                                            </form>
+                                            <label style="float:left;">&nbsp{{ var|votes:q }}&nbsp</label>
+                                            <form action="/forum/downvote/" method="post">
+                                                {% csrf_token %}
+                                                <div class="circle" style="float:left;">
+                                                    <input type="hidden" value="{{ q.id }}" name="pk_question">
+                                                    <input type="hidden" value="{{ topic_name.id }}" name="topic">
+                                                    <button type="submit" class="submit-with-icon" id="downvote">
                     <span data-toggle="tooltip-right" title="Downvote question"
                           class="glyphicon glyphicon-chevron-down"></span>
-                                    </button>
-                                </div>
-                            </form>
-                            {% if perms.forum.delete_question %}
-                                <form action="/forum/delete_question_in_index/" method="post">
-                                    {% csrf_token %}
-                                    <div class="circle" style="float:left;margin-left:2em;">
-                                        <input type="hidden" value="{{ q.id }}" name="pk_question">
-                                        <input type="hidden" value="{{ topic_name.id }}" name="topic">
-                                        <button type="submit" class="submit-with-icon" id="remove">
+                                                    </button>
+                                                </div>
+                                            </form>
+                                            {% if perms.forum.delete_question %}
+                                                <form action="/forum/delete_question_in_index/" method="post">
+                                                    {% csrf_token %}
+                                                    <div class="circle" style="float:left;margin-left:2em;">
+                                                        <input type="hidden" value="{{ q.id }}" name="pk_question">
+                                                        <input type="hidden" value="{{ topic_name.id }}" name="topic">
+                                                        <button type="submit" class="submit-with-icon" id="remove">
                         <span data-toggle="tooltip-right" title="Delete question"
                               class="glyphicon glyphicon-remove"></span>
-                                        </button>
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            {% endif %}
+                                        </div>
                                     </div>
-                                </form>
-                            {% endif %}
-                            </form>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                {{ q.question_text }}
+                            </div>
                         </div>
                         <br>
-                        <p>{{ q.answers.answer_text }}</p>
                         <br>
                         {% for answer in q.answers.all %}
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            {% if perms.forum.delete_question %}
-                                                Teacher: {{ answer.get_user }}
+                                            {% if answer.is_teacher %}
+                                                <label>Answer by teacher: {{ answer.get_user }}</label>
                                             {% else %}
-                                                Student: {{ answer.get_user }}
+                                                <label>Answer by student: {{ answer.get_user }}</label>
                                             {% endif %}
                                         </div>
                                         <div class="col-md-6">

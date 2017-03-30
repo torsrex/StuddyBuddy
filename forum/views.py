@@ -18,7 +18,8 @@ class IndexView(generic.ListView):
     def get_queryset(self):
         self.pk = self.kwargs["pk"]
         self.form = AnswerForm(initial={'topic': self.pk})
-        return Question.objects.filter(question_topic_id=self.pk).order_by('-question_created').prefetch_related('answers').all()
+        return Question.objects.filter(question_topic_id=self.pk).order_by('-question_created').prefetch_related(
+            'answers').all()
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
@@ -61,17 +62,20 @@ def downvote(request):
         q.votes.down(request.user.id)
     return redirect('/forum/topics/' + request.POST['topic'] + '?cid=' + request.POST['pk_question'])
 
+
 def upvote_answer(request):
     if request.method == 'POST':
         a = Answer.objects.get(pk=request.POST['pk_answer'])
         a.votes.up(request.user.id)
     return redirect('/forum/topics/' + request.POST['topic'] + '?cid=' + request.POST['pk_question'])
 
+
 def downvote_answer(request):
     if request.method == 'POST':
         a = Answer.objects.get(pk=request.POST['pk_answer'])
         a.votes.down(request.user.id)
     return redirect('/forum/topics/' + request.POST['topic'] + '?cid=' + request.POST['pk_question'])
+
 
 def delete_question_in_index(request):
     if not request.user.has_perm('forum.delete_question'):
@@ -92,7 +96,8 @@ def new_answer(request):
             formToSave.user = request.user
             formToSave.save()
             return redirect(
-                '/forum/topics/' + request.POST['topic'] + '?cid=' + request.POST['question'])  # Redirects to the topic view after form submission
+                '/forum/topics/' + request.POST['topic'] + '?cid=' + request.POST[
+                    'question'])  # Redirects to the topic view after form submission
 
 
 # Creates new question
@@ -188,5 +193,3 @@ def questions(request):
     form = SearchForm(request.GET)
     questions = form.search()  # Returns all results from search
     return render_to_response('forum/questions.html', {'questions': questions})
-
-
