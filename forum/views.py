@@ -18,7 +18,7 @@ class IndexView(generic.ListView):
     def get_queryset(self):
         self.pk = self.kwargs["pk"]
         self.form = AnswerForm(initial={'topic': self.pk})
-        return Question.objects.filter(question_topic_id=self.pk).order_by('-question_created')
+        return Question.objects.filter(question_topic_id=self.pk).order_by('-question_created').prefetch_related('answers').all()
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)

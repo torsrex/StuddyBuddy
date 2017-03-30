@@ -92,11 +92,11 @@
 {% endblock %}
 
 {% block container-fluid %}
-<script>
-    $(document).ready(function () {
-        $('[data-toggle="tooltip-right"]').tooltip({placement: "right"});
-    });
-</script>
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip-right"]').tooltip({placement: "right"});
+        });
+    </script>
     <h1>Current subject: {{ topic_name }}</h1>
     {% if latest_questions_list %}
         <div id='feed' class="scroll">
@@ -119,7 +119,8 @@
                                     <input type="hidden" value="{{ q.id }}" name="pk_question">
                                     <input type="hidden" value="{{ topic_name.id }}" name="topic">
                                     <button type="submit" class="submit-with-icon" id="upvote">
-                                        <span data-toggle="tooltip-right" title="Upvote question" class="glyphicon glyphicon-chevron-up"></span>
+                    <span data-toggle="tooltip-right" title="Upvote question"
+                          class="glyphicon glyphicon-chevron-up"></span>
                                     </button>
                                 </div>
                             </form>
@@ -130,7 +131,8 @@
                                     <input type="hidden" value="{{ q.id }}" name="pk_question">
                                     <input type="hidden" value="{{ topic_name.id }}" name="topic">
                                     <button type="submit" class="submit-with-icon" id="downvote">
-                                        <span data-toggle="tooltip-right" title="Downvote question" class="glyphicon glyphicon-chevron-down"></span>
+                    <span data-toggle="tooltip-right" title="Downvote question"
+                          class="glyphicon glyphicon-chevron-down"></span>
                                     </button>
                                 </div>
                             </form>
@@ -141,7 +143,8 @@
                                         <input type="hidden" value="{{ q.id }}" name="pk_question">
                                         <input type="hidden" value="{{ topic_name.id }}" name="topic">
                                         <button type="submit" class="submit-with-icon" id="remove">
-                                            <span data-toggle="tooltip-right" title="Delete question" class="glyphicon glyphicon-remove"></span>
+                        <span data-toggle="tooltip-right" title="Delete question"
+                              class="glyphicon glyphicon-remove"></span>
                                         </button>
                                     </div>
                                 </form>
@@ -151,52 +154,52 @@
                         <br>
                         <p>{{ q.answers.answer_text }}</p>
                         <br>
-                        {% for answer in answer_list %}
-                            {% if answer.question_id == q.id %}
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                {% if perms.forum.delete_question %}
-                                                    Teacher: {{ answer.get_user }}
-                                                {% else %}
-                                                    Student: {{ answer.get_user }}
-                                                {% endif %}
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p style="float:left;">Created: {{ answer.answer_created }}</p>
-                                                <form action="/forum/upvote_answer/" method="post">
-                                                    {% csrf_token %}
-                                                    <div class="circle" style="float:left;margin-left:2em">
-                                                        <input type="hidden" value="{{ q.id }}" name="pk_question">
-                                                        <input type="hidden" value="{{ answer.id }}" name="pk_answer">
-                                                        <input type="hidden" value="{{ topic_name.id }}" name="topic">
-                                                        <button type="submit" class="submit-with-icon">
-                                                            <span data-toggle="tooltip-right" title="Upvote answer" class="glyphicon glyphicon-chevron-up"></span>
-                                                        </button>
-                                                    </div>
-                                                </form>
-                                                <label style="float:left;">&nbsp{{ variable|votes:answer }}&nbsp</label>
-                                                <form action="/forum/downvote_answer/" method="post">
-                                                    {% csrf_token %}
-                                                    <div class="circle" style="float:left;">
-                                                        <input type="hidden" value="{{ q.id }}" name="pk_question">
-                                                        <input type="hidden" value="{{ answer.id }}" name="pk_answer">
-                                                        <input type="hidden" value="{{ topic_name.id }}" name="topic">
-                                                        <button type="submit" class="submit-with-icon">
-                                                            <span data-toggle="tooltip-right" title="Downvote answer" class="glyphicon glyphicon-chevron-down"></span>
-                                                        </button>
-                                                    </div>
-                                                </form>
-                                            </div>
+                        {% for answer in q.answers.all %}
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            {% if perms.forum.delete_question %}
+                                                Teacher: {{ answer.get_user }}
+                                            {% else %}
+                                                Student: {{ answer.get_user }}
+                                            {% endif %}
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p style="float:left;">Created: {{ answer.answer_created }}</p>
+                                            <form action="/forum/upvote_answer/" method="post">
+                                                {% csrf_token %}
+                                                <div class="circle" style="float:left;margin-left:2em">
+                                                    <input type="hidden" value="{{ q.id }}" name="pk_question">
+                                                    <input type="hidden" value="{{ answer.id }}" name="pk_answer">
+                                                    <input type="hidden" value="{{ topic_name.id }}" name="topic">
+                                                    <button type="submit" class="submit-with-icon">
+                                <span data-toggle="tooltip-right" title="Upvote answer"
+                                      class="glyphicon glyphicon-chevron-up"></span>
+                                                    </button>
+                                                </div>
+                                            </form>
+                                            <label style="float:left;">&nbsp{{ variable|votes:answer }}&nbsp</label>
+                                            <form action="/forum/downvote_answer/" method="post">
+                                                {% csrf_token %}
+                                                <div class="circle" style="float:left;">
+                                                    <input type="hidden" value="{{ q.id }}" name="pk_question">
+                                                    <input type="hidden" value="{{ answer.id }}" name="pk_answer">
+                                                    <input type="hidden" value="{{ topic_name.id }}" name="topic">
+                                                    <button type="submit" class="submit-with-icon">
+                                <span data-toggle="tooltip-right" title="Downvote answer"
+                                      class="glyphicon glyphicon-chevron-down"></span>
+                                                    </button>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
-                                    <div class="panel-body">
-                                        {{ answer.answer_text }}
-                                    </div>
                                 </div>
-                                <br>
-                            {% endif %}
+                                <div class="panel-body">
+                                    {{ answer.answer_text }}
+                                </div>
+                            </div>
+                            <br>
                         {% endfor %}
                         <form class="new_question" action="/forum/new_answer/" method='post'>
                             {% csrf_token %}
