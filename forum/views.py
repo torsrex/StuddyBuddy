@@ -24,7 +24,6 @@ class IndexView(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
         context.update({
-            'answer_list': Answer.objects.filter(topic=self.pk).order_by('answer_created'),
             'topic_name': Topic.objects.get(pk=self.kwargs["pk"]),  # Fetches topic name for the header
             'form': self.form
         })
