@@ -189,7 +189,7 @@ ENV/
 # End of https://www.gitignore.io/api/django,python,osx,pycharm
 
 # Database related files
-db.sqlite3
+studybuddy_db.sqlite3
 *.sql
 # Bootstrap related files and assets
 /static/
