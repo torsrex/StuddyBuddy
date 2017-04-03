@@ -1,6 +1,0 @@
-{# Haystack fields list for question index #}
-{{ objects.title }} {# Mandatory for all indexes #}
-{{ object.user.username }}
-{{ object.question_name }}
-{{ object.question_text }}
-{{ object.question_topic }}
