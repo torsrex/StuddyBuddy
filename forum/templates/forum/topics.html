@@ -6,71 +6,71 @@
     {% if perms.forum.delete_question %}
         <div class="left">
 
-        <a class="btn btn-default green_button" href="new_topic" role="button">Create new subject</a>
+            <a class="btn btn-default green_button" href="new_topic" role="button">Create new subject</a>
         </div>
     {% endif %}
 {% endblock %}
 
 {% block container-fluid %}
-<h2>Subject</h2>
-{% if topics_list %}
-<div class="inner-addon left-addon">
-    <i class="glyphicon glyphicon-search"></i>
-    <input type="text" id="searchFunc" onkeyup="searchFunction()" placeholder="Search for subjects.."
-           title="Type in a name">
-</div>
-<table id="topicTable">
-    <tr class="header">
-        <th style="width:20%;">Subject code</th>
-        <th style="width:90%;">Subject name</th>
-    </tr>
-    {% for topic in topics_list %}
-    <tr>
-        <td>
-            <a href="/forum/topics/{{ topic.id }}" style="color:#0f0f0f;text-decoration:none" >
-                <div style="height:100%;width:100%" id="t{{ topic.id }}">
-                    {{ topic.topic_name }}
-                </div>
-            </a>
-        </td>
-        <td>
-            <a href="/forum/topics/{{ topic.id }}" style="color:#0f0f0f;text-decoration:none">
-                <div style="height:100%;width:100%">
-                    {{ topic.topic_desc }}
-                </div>
-            </a>
-        </td>
-    </tr>
-    {% endfor %}
-</table>
+    <h2>Subject</h2>
+    {% if topics_list %}
+        <div class="inner-addon left-addon">
+            <i class="glyphicon glyphicon-search"></i>
+            <input type="text" id="searchFunc" onkeyup="searchFunction()" placeholder="Search for subjects.."
+                   title="Type in a name">
+        </div>
+        <table id="topicTable">
+            <tr class="header">
+                <th style="width:20%;">Subject code</th>
+                <th style="width:90%;">Subject name</th>
+            </tr>
+            {% for topic in topics_list %}
+                <tr>
+                    <td>
+                        <a href="/forum/topics/{{ topic.id }}" style="color:#0f0f0f;text-decoration:none">
+                            <div style="height:100%;width:100%" id="t{{ topic.id }}">
+                                {{ topic.topic_name }}
+                            </div>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/forum/topics/{{ topic.id }}" style="color:#0f0f0f;text-decoration:none">
+                            <div style="height:100%;width:100%">
+                                {{ topic.topic_desc }}
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
 
 
-{#Search script for searching in table#}
-<script>
-    function searchFunction() {
-        var input, filter, table, tr, td, i;
-        input = document.getElementById("searchFunc");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("topicTable");
-        tr = table.getElementsByTagName("tr");
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[0];
-            td2 = tr[i].getElementsByTagName("td")[1];
-            if (td) {
-                if (td.innerHTML.toUpperCase().indexOf(filter) > -1 || td2.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
+        {#Search script for searching in table#}
+        <script>
+            function searchFunction() {
+                var input, filter, table, tr, td, i;
+                input = document.getElementById("searchFunc");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("topicTable");
+                tr = table.getElementsByTagName("tr");
+                for (i = 0; i < tr.length; i++) {
+                    td = tr[i].getElementsByTagName("td")[0];
+                    td2 = tr[i].getElementsByTagName("td")[1];
+                    if (td) {
+                        if (td.innerHTML.toUpperCase().indexOf(filter) > -1 || td2.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
                 }
             }
-        }
-    }
-</script>
+        </script>
 
-{% else %}
-{#Displays default no topic page#}
-<p>No created topic.</p>
-{% endif %}
+    {% else %}
+        {#Displays default no topic page#}
+        <p>No created topic.</p>
+    {% endif %}
 
 
 {% endblock %}

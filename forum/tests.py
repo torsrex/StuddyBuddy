@@ -1,13 +1,7 @@
-from django.test import Client, tag, LiveServerTestCase, TestCase
-from forum.models import Topic, User, Question, Answer
-from vote.models import VoteModel
-import time
-
-from django.contrib.staticfiles.testing import StaticLiveServerTestCase
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
+from django.test import Client, TestCase
 
 from forum.models import Question
+from forum.models import Topic, User
 
 
 # Create your tests here.
@@ -97,10 +91,11 @@ class permissionTestCase(TestCase):
         )
         c = Client()
         c.force_login(self.student)
-        c.post('/forum/upvote/', {'pk_question':self.question_1.id, 'topic':self.question_1.question_topic, 'user':self.student})
-        assert self.question_1.votes.count()==1
+        c.post('/forum/upvote/',
+               {'pk_question': self.question_1.id, 'topic': self.question_1.question_topic, 'user': self.student})
+        assert self.question_1.votes.count() == 1
         c.post('/forum/downvote/', {'pk_question': self.question_1.id, 'topic': self.question_1.question_topic})
-        assert self.question_1.votes.count()==0
+        assert self.question_1.votes.count() == 0
 
     """
     @tag('notworking') #Det virker ikke som det funker å bruke post-request.
@@ -138,6 +133,7 @@ class permissionTestCase(TestCase):
         resp = c.get('/forum/my_question')
         self.assertTrue(len(resp.context['my_question_list']) == 0)  # For another user, the list should still be empty.
 
+
 """
     def test_teachers_can_delete_all_questions(self):
         self.question_1 = Question.objects.create(
@@ -155,7 +151,6 @@ class permissionTestCase(TestCase):
         print(questions)
         assert len(questions)==0
 """
-
 
 """
 @tag('selenium')

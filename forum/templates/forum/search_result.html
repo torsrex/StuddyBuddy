@@ -1,10 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'forum/base.html' %}
+{% block title %}Search results{% endblock %}
+
+{% block container-fluid %}
+    <h1>Top three search results: </h1>
+
+
+    {% if result %}
+        {% for q in result %}
+
+            <a href="/forum/topics/{{ q.question_topic_id }}/?cid={{ q.id }}"
+               id="registration_button">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <label>{{ q.question_name }}</label>
+                    </div>
+
+                    <div class="panel-body">
+                        {{ q.question_text }}
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+
+    {% else %}
+        <p>No questions matching criteria found.</p>
+    {% endif %}
+
+{% endblock %}

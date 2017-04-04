@@ -1,4 +1,4 @@
-from django.conf.urls import url, include
+from django.conf.urls import url
 from django.contrib.auth import views as auth_views
 
 from . import views
@@ -20,6 +20,5 @@ urlpatterns = [
     url(r'^downvote_answer/$', views.downvote_answer, name='downvote_answer'),
     url(r'^(?P<question_id>[0-9]+)/$', views.delete_question, name="delete_question"),
     url(r'^delete_question_in_index/$', views.delete_question_in_index, name="delete_question_in_index"),
-    url(r'^search/$', views.questions, name="questions"), # Handles request from SearchView Haystack
-
+    url(r'^search/$', views.search_for_q, name = "search_for_q"),
 ]

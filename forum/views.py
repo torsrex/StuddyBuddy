@@ -1,10 +1,13 @@
+import math
+import re
+from collections import Counter
+
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Permission
-from django.http import HttpResponseForbidden, HttpResponse
-from django.shortcuts import get_object_or_404, HttpResponseRedirect, render, redirect, render_to_response
+from django.http import HttpResponseForbidden
+from django.shortcuts import get_object_or_404, HttpResponseRedirect, render, redirect
 from django.views import generic
-from haystack.forms import SearchForm
 
 from forum.forms import *
 from forum.models import *
@@ -186,9 +189,37 @@ class UserFormView(generic.View):
         return render(request, self.template_name, {'form': form})
 
 
-# Haystack handle search
+def search_for_q(request):
+    q = request.GET['q']
+    WORD = re.compile(r'\w+')
+    top3 = {0: None, 0.0001: None, 0.0000001: None}
+    vec1 = Counter(WORD.findall(q))
+    for que in Question.objects.values():
+        vec2 = Counter(WORD.findall(que.get('question_text')))
 
-def questions(request):
-    form = SearchForm(request.GET)
-    questions = form.search()  # Returns all results from search
-    return render_to_response('forum/questions.html', {'questions': questions})
+        intersection = set(vec1.keys()) & set(vec2.keys())
+        numerator = sum([vec1[x] * vec2[x] for x in intersection])
+
+        sum1 = sum([vec1[x] ** 2 for x in vec1.keys()])
+        sum2 = sum([vec2[x] ** 2 for x in vec2.keys()])
+        denominator = math.sqrt(sum1) * math.sqrt(sum2)
+
+        if not denominator:
+            r = 0.0
+        else:
+            r = float(numerator) / denominator
+
+        min = 1
+        for mykey, myvalue in top3.items():  # iterere gjennom top3 dict
+            if mykey < min:
+                min = mykey
+
+        if r > min:
+            top3.pop(min)
+            top3[r] = que
+
+    result = []
+    for mykey, myvalue in top3.items():
+        if top3.get(mykey) is not None:
+            result.append(top3.get(mykey))
+    return render(request, 'forum/search_result.html', {'result': result})
