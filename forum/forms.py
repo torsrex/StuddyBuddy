@@ -4,9 +4,6 @@ from django.contrib.auth.models import User
 from forum.models import Question, Topic, Answer
 
 
-# from haystack.forms import SearchForm # Haystack Search form import
-
-
 class QuestionForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         # Get 'initial' argument if any
@@ -94,9 +91,9 @@ class UserForm(forms.ModelForm):
         email = self.cleaned_data['email']  # Gets the cleaned email
 
         if '@ntnu.no' in email:
-            return email  # Always returned the cleaned data
+            return email # Always returned the cleaned data
         elif '@stud.ntnu.no' in email:
-            return email  # Always returned the cleaned data
+            return email # Always returned the cleaned data
         else:
             raise forms.ValidationError('Invalid email, please use ntnu mail.')  # Raises error if wrong email
 

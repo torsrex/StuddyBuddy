@@ -7,7 +7,7 @@
 
     {% if result %}
         {% for q in result %}
-
+            {# Loops through all questions in result and displays them #}
             <a href="/forum/topics/{{ q.question_topic_id }}/?cid={{ q.id }}"
                id="registration_button">
                 <div class="panel panel-default">

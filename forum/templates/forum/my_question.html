@@ -3,6 +3,7 @@
 
 {% block container-fluid %}
     <h1>List of your questions</h1>
+    {# Displays questions in my_question_list in accordion view #}
     {% if my_question_list %}
         <div class="panel-group" id="accordion">
             {% for question in my_question_list %}
@@ -26,9 +27,7 @@
                     </div>
                     <div id="collapse{{ forloop.counter }}" class="panel-collapse collapse">
                         <div class="panel-body">
-
                             <p>{{ question.question_text }}</p>
-
                         </div>
                     </div>
                 </div>

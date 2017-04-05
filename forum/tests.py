@@ -24,7 +24,9 @@ class siteTestCase(TestCase):
         self.assertEquals(response.status_code, 200)  #
         self.assertTrue("topics_list" in response.context)
         self.assertTrue(len(response.context[
-                                'topics_list']) == 1)  # Asserting on the length of the querySet, which contains the names of the topics. We know there should appear only one topic, as the database is empty in the beginning
+                                'topics_list']) == 1)
+        """Asserting on the length of the querySet, which contains the names of the topics. 
+        We know there should appear only one topic, as the database is empty in the beginning"""
 
     def test_topic_page(self):
         c = Client()
@@ -54,8 +56,9 @@ class permissionTestCase(TestCase):
         c = Client()
         c.force_login(self.student)
         c.post('/forum/topics/1/new_question/',
-               # Post makes a POST-request to the link in the first argument, sending in the dictionary in the second argument in the request.
                {'question_name': "balle", 'question_text': "yoyoyo", 'question_topic': self.topic_1.id})
+        """Post makes a POST-request to the link in the first argument, 
+        sending in the dictionary in the second argument in the request."""
         questions = Question.objects.all()  # Fetches all the Question objects in the database
         questionFound = False
         for q in questions:
@@ -98,9 +101,9 @@ class permissionTestCase(TestCase):
         c.force_login(self.student)
         c.post('/forum/up_vote/',
                {'pk_question': self.question_1.id, 'topic': self.question_1.question_topic.id, 'user': self.student})
-        assert self.question_1.votes.count() == 1  # After the upvote, the number of votes registered on question_1 should be 1.
+        assert self.question_1.votes.count() == 1  # After the upvote, number of votes on question_1 should be 1.
         c.post('/forum/down_vote/', {'pk_question': self.question_1.id, 'topic': self.question_1.question_topic.id})
-        assert self.question_1.votes.count() == 0  # After the downvote, the number of votes registered on question_1 should be 0 again.
+        assert self.question_1.votes.count() == 0  # After downvote, number of votes on question_1 should be 0 again.
 
     def test_upvote_and_downvote_answer(self):  # Does upvoting and downvoting answers work?
         self.question_1 = Question.objects.create(
@@ -156,8 +159,10 @@ class permissionTestCase(TestCase):
             len(resp.context['my_question_list']) == 0)  # Before a question is created, the list should be empty
         q = Question.objects.create(question_name="balle", question_topic=self.topic_1, user_id=self.student.id)
         resp = c.get('/forum/my_question')
+
+        # After a question creation the list should have exactly one element for the student.
         self.assertTrue(len(resp.context[
-                                'my_question_list']) == 1)  # After a question is created the list should have exactly one element for the student.
+                                'my_question_list']) == 1)
         c.force_login(self.student2)
         resp = c.get('/forum/my_question')
         self.assertTrue(len(resp.context['my_question_list']) == 0)  # For another user, the list should still be empty.
@@ -194,8 +199,8 @@ class permissionTestCase(TestCase):
 
         c = Client()
         c.force_login(self.student)
-        resp = c.post(
-            '/forum/search/?q=transistors')  # Makes a search for "transistors" , which searches through the question_texts of all questions for a similar word.
+        # Makes a search for "transistors" and searches through the question_texts of all questions for a similar word.
+        resp = c.post('/forum/search/?q=transistors')
         transistorFound = False
         jacobianFound = False
         for q in resp.context['result']:  # Iterates through the questions in the list returned by the search function.
@@ -219,13 +224,15 @@ class permissionTestCase(TestCase):
 
         q = Question.objects.get(pk=self.question_1.id)
         assert not q.question_solved  # The question should initially not be solved.
+        # After this, the question should be marked as solved.
         resp = c.post('/forum/mark_as_solved/',
                       {'pk_question': self.question_1.id,
-                       'topic': self.question_1.question_topic.id})  # After this, the question should be marked as solved.
+                       'topic': self.question_1.question_topic.id})
         q = Question.objects.get(pk=self.question_1.id)
         assert q.question_solved
+        # After this, the question should be marked as unsolved.
         resp = c.post('/forum/mark_as_solved/',
                       {'pk_question': self.question_1.id,
-                       'topic': self.question_1.question_topic.id})  # After this, the question should be marked as unsolved.
+                       'topic': self.question_1.question_topic.id})
         q = Question.objects.get(pk=self.question_1.id)
         assert not q.question_solved

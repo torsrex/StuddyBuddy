@@ -2,13 +2,15 @@
 {% block title %}New question{% endblock %}
 {% block content %}
     <h2 class="text-nowrap">New Question</h2>
+    {# Displays new question form #}
     <form class="new_question" method='post'>
         {% csrf_token %}
         <label>Name: </label>
         {{ form.question_name }}
         <label>Description: </label>
         {{ form.question_text }}
-        {% comment %}<label>Suitable for quiz?: </label>{{ form.question_SuitableForQuiz }}{% endcomment %}
+        {% comment %}TODO: Uncomment to enable Quiz field
+        <label>Suitable for quiz?: </label>{{ form.question_SuitableForQuiz }}{% endcomment %}
         {{ form.question_topic.as_hidden }}
         <br><input type='submit' class="btn btn-default" value='Submit' id="button"/>
     </form>

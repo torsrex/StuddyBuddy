@@ -45,7 +45,7 @@ class IndexView(generic.ListView):
         return context
 
 
-# Method to handle deletion of question in question list under topics (IndexView)
+# Creates new answer
 def new_answer(request):
     if request.method == "POST":  # Used when submit button is clicked
         form = AnswerForm(request.POST)  # Passes arguments in request to form
@@ -85,6 +85,19 @@ def new_topic(request):
                   {'form': form})  # Returns a render using the template and form specified
 
 
+# Method for handling mark questions as solved
+def mark_as_solved(request):
+    q = Question.objects.get(pk=request.POST['pk_question'])  # Gets the question
+    if q.question_solved is False:  # Checks if question is already solved
+        q.question_solved = True  # Marks as solved
+        q.save()  # Saves updated question
+    else:
+        q.question_solved = False  # Marks as unsolved
+        q.save()
+    return redirect(
+        '/forum/topics/' + request.POST['topic'] + '?cid=' + request.POST['pk_question'])  # Redirects to question
+
+
 # Lists logged in user's asked questions
 class MyQuestionView(generic.ListView):
     template_name = 'forum/my_question.html'  # Sets template
@@ -93,36 +106,6 @@ class MyQuestionView(generic.ListView):
     def get_queryset(self):
         return Question.objects.filter(user=self.request.user).order_by(
             '-question_created')  # returns questions asked by logged in user ordered by creation date
-
-
-def up_vote(request):
-    if request.method == 'POST':
-        q = Question.objects.get(pk=request.POST['pk_question'])  # Fetches question
-        q.votes.up(request.user.id)  # Up votes question and stores user id
-    return redirect(
-        '/forum/topics/' + request.POST['topic'] + '?cid=' + request.POST[
-            'pk_question'])  # Redirects to changed question
-
-
-def down_vote(request):
-    if request.method == 'POST':
-        q = Question.objects.get(pk=request.POST['pk_question'])
-        q.votes.down(request.user.id)
-    return redirect('/forum/topics/' + request.POST['topic'] + '?cid=' + request.POST['pk_question'])
-
-
-def up_vote_answer(request):
-    if request.method == 'POST':
-        a = Answer.objects.get(pk=request.POST['pk_answer'])
-        a.votes.up(request.user.id)
-    return redirect('/forum/topics/' + request.POST['topic'] + '?cid=' + request.POST['pk_question'])
-
-
-def down_vote_answer(request):
-    if request.method == 'POST':
-        a = Answer.objects.get(pk=request.POST['pk_answer'])
-        a.votes.down(request.user.id)
-    return redirect('/forum/topics/' + request.POST['topic'] + '?cid=' + request.POST['pk_question'])
 
 
 # Method to handle deletion of question in question list under topics (IndexView)
@@ -215,14 +198,31 @@ def search_for_q(request):
     return render(request, 'forum/search_result.html', {'result': result})
 
 
-# Method for handling mark questions as solved
-def mark_as_solved(request):
-    q = Question.objects.get(pk=request.POST['pk_question'])  # Gets the question
-    if q.question_solved is False:  # Checks if question is already solved
-        q.question_solved = True  # Marks as solved
-        q.save()  # Saves updated question
-    else:
-        q.question_solved = False  # Marks as unsolved
-        q.save()
+def up_vote(request):
+    if request.method == 'POST':
+        q = Question.objects.get(pk=request.POST['pk_question'])  # Fetches question
+        q.votes.up(request.user.id)  # Up votes question and stores user id
     return redirect(
-        '/forum/topics/' + request.POST['topic'] + '?cid=' + request.POST['pk_question'])  # Redirects to question
+        '/forum/topics/' + request.POST['topic'] + '?cid=' + request.POST[
+            'pk_question'])  # Redirects to changed question
+
+
+def down_vote(request):
+    if request.method == 'POST':
+        q = Question.objects.get(pk=request.POST['pk_question'])
+        q.votes.down(request.user.id)
+    return redirect('/forum/topics/' + request.POST['topic'] + '?cid=' + request.POST['pk_question'])
+
+
+def up_vote_answer(request):
+    if request.method == 'POST':
+        a = Answer.objects.get(pk=request.POST['pk_answer'])
+        a.votes.up(request.user.id)
+    return redirect('/forum/topics/' + request.POST['topic'] + '?cid=' + request.POST['pk_question'])
+
+
+def down_vote_answer(request):
+    if request.method == 'POST':
+        a = Answer.objects.get(pk=request.POST['pk_answer'])
+        a.votes.down(request.user.id)
+    return redirect('/forum/topics/' + request.POST['topic'] + '?cid=' + request.POST['pk_question'])
