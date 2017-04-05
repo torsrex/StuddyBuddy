@@ -55,7 +55,7 @@
                                                 <div class="circle" style="float:left;">
                                                     <input type="hidden" value="{{ q.id }}" name="pk_question">
                                                     <input type="hidden" value="{{ topic_name.id }}" name="topic">
-                                                    <button type="submit" class="submit-with-icon" id="upvote">
+                                                    <button type="submit" class="submit-with-icon">
                     <span data-toggle="tooltip-right" title="Upvote question"
                           class="glyphicon glyphicon-chevron-up"></span>
                                                     </button>
@@ -67,7 +67,7 @@
                                                 <div class="circle" style="float:left;">
                                                     <input type="hidden" value="{{ q.id }}" name="pk_question">
                                                     <input type="hidden" value="{{ topic_name.id }}" name="topic">
-                                                    <button type="submit" class="submit-with-icon" id="downvote">
+                                                    <button type="submit" class="submit-with-icon">
                     <span data-toggle="tooltip-right" title="Downvote question"
                           class="glyphicon glyphicon-chevron-down"></span>
                                                     </button>
@@ -79,9 +79,28 @@
                                                     <div class="circle" style="float:left;margin-left:2em;">
                                                         <input type="hidden" value="{{ q.id }}" name="pk_question">
                                                         <input type="hidden" value="{{ topic_name.id }}" name="topic">
-                                                        <button type="submit" class="submit-with-icon" id="remove">
+                                                        <button type="submit" class="submit-with-icon">
                         <span data-toggle="tooltip-right" title="Delete question"
                               class="glyphicon glyphicon-remove"></span>
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            {% endif %}
+                                            {% if q.user.username == user.username %}
+                                                <form action="/forum/mark_as_solved/" method="post">
+                                                    {% csrf_token %}
+                                                    <div class="circle" style="float:left;margin-left:1em;">
+                                                        <input type="hidden" value="{{ q.id }}" name="pk_question">
+                                                        <input type="hidden" value="{{ topic_name.id }}" name="topic">
+                                                        <button type="submit" class="submit-with-icon" >
+                                                            {% if q.question_solved == True %}
+                                                                <span class="glyphicon glyphicon-ok"
+                                                                      style="color:#00ff00"></span>
+                                                            {% endif %}
+                                                            {% if q.question_solved == False %}
+                                                                <span class="glyphicon glyphicon-ok"
+                                                                      style="color:#ff0000"></span>
+                                                            {% endif %}
                                                         </button>
                                                     </div>
                                                 </form>
@@ -171,7 +190,7 @@
     {% endif %}
 
     <script>
-        var toggled = ""
+        var toggled = "";
 
         function findGetParameter(parameterName) {
             var result = null,

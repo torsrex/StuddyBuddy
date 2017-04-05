@@ -23,6 +23,7 @@ class Question(VoteModel, models.Model):
     # TODO: Implement quiz if time permits
     # question_SuitableForQuiz = models.BooleanField(default=False)  # Stores whether answer can be used for quiz
 
+    question_solved = models.BooleanField(default=False) #Stores whether answer is marked as solved by author
     question_topic = models.ForeignKey(Topic, related_name='questions')
     user = models.ForeignKey(User, editable=False)
 

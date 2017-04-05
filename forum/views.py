@@ -223,3 +223,14 @@ def search_for_q(request):
         if top3.get(mykey) is not None:
             result.append(top3.get(mykey))
     return render(request, 'forum/search_result.html', {'result': result})
+
+
+def mark_as_solved(request):
+    q = Question.objects.get(pk=request.POST['pk_question'])
+    if q.question_solved == False:
+        q.question_solved = True
+        q.save()
+    else:
+        q.question_solved = False
+        q.save()
+    return redirect('/forum/topics/' + request.POST['topic'] + '?cid=' + request.POST['pk_question'])
