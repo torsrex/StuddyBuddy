@@ -1,6 +1,6 @@
-import math
-import re
 from collections import Counter
+from re import compile
+from math import sqrt
 
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
@@ -19,31 +19,30 @@ class IndexView(generic.ListView):
     context_object_name = 'latest_questions_list'
 
     def get_queryset(self):
-        self.pk = self.kwargs["pk"]
-        self.form = AnswerForm(initial={'topic': self.pk})
-        return Question.objects.filter(question_topic_id=self.pk).order_by('-question_created').prefetch_related(
+        return Question.objects.filter(question_topic_id=self.kwargs["pk"]).order_by(
+            '-question_created').prefetch_related(
             'answers').all()
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
         context.update({
             'topic_name': Topic.objects.get(pk=self.kwargs["pk"]),  # Fetches topic name for the header
-            'form': self.form
+            'form': AnswerForm(initial={'topic': self.kwargs["pk"]})
         })
         return context
 
 
-# Lists inlogged users asked questions
-class my_questionView(generic.ListView):
+# Lists logged in users asked questions
+class MyQuestionView(generic.ListView):
     template_name = 'forum/my_question.html'
     context_object_name = 'my_question_list'
 
     def get_queryset(self):
         return Question.objects.filter(user=self.request.user).order_by(
-            '-question_created')  # returns questions asked by inlogged user
+            '-question_created')  # returns questions asked by logged in user
 
     def get_context_data(self, **kwargs):
-        context = super(my_questionView, self).get_context_data(**kwargs)
+        context = super(MyQuestionView, self).get_context_data(**kwargs)
         context.update({
             'answer_list': Answer.objects.order_by('answer_created'),
             'user_name': self.request.user
@@ -51,28 +50,28 @@ class my_questionView(generic.ListView):
         return context
 
 
-def upvote(request):
+def up_vote(request):
     if request.method == 'POST':
         q = Question.objects.get(pk=request.POST['pk_question'])
         q.votes.up(request.user.id)
     return redirect('/forum/topics/' + request.POST['topic'] + '?cid=' + request.POST['pk_question'])
 
 
-def downvote(request):
+def down_vote(request):
     if request.method == 'POST':
         q = Question.objects.get(pk=request.POST['pk_question'])
         q.votes.down(request.user.id)
     return redirect('/forum/topics/' + request.POST['topic'] + '?cid=' + request.POST['pk_question'])
 
 
-def upvote_answer(request):
+def up_vote_answer(request):
     if request.method == 'POST':
         a = Answer.objects.get(pk=request.POST['pk_answer'])
         a.votes.up(request.user.id)
     return redirect('/forum/topics/' + request.POST['topic'] + '?cid=' + request.POST['pk_question'])
 
 
-def downvote_answer(request):
+def down_vote_answer(request):
     if request.method == 'POST':
         a = Answer.objects.get(pk=request.POST['pk_answer'])
         a.votes.down(request.user.id)
@@ -88,15 +87,22 @@ def delete_question_in_index(request):
     return redirect('/forum/topics/' + request.POST['topic'])
 
 
+# Deletes question
+def delete_question(request):
+    question = get_object_or_404(Question, pk=request.POST['pk_question'])
+    question.delete()
+    return HttpResponseRedirect('/forum/my_question/')
+
+
 # Handles the post of new answer form for IndexListView
 @login_required(login_url='login')
 def new_answer(request):
     if request.method == "POST":  # Used when submit button is clicked
         form = AnswerForm(request.POST)  # Passes arguments in request to form
         if form.is_valid():
-            formToSave = form.save(commit=False)
-            formToSave.user = request.user
-            formToSave.save()
+            form_to_save = form.save(commit=False)
+            form_to_save.user = request.user
+            form_to_save.save()
             return redirect(
                 '/forum/topics/' + request.POST['topic'] + '?cid=' + request.POST[
                     'question'])  # Redirects to the topic view after form submission
@@ -108,27 +114,13 @@ def new_question(request, topic_id):
     if request.method == "POST":
         form = QuestionForm(request.POST)  # Passes arguments in request to form
         if form.is_valid():
-            formToSave = form.save(commit=False)
-
-            formToSave.user = request.user
-            formToSave.save()
-            return redirect('question_details', pk=topic_id)
+            form_to_save = form.save(commit=False)
+            form_to_save.user = request.user
+            form_to_save.save()
+            return redirect('/forum/topics/' + topic_id + '?cid=' ) #TODO:Fix redirect
     else:
         form = QuestionForm(initial={'question_topic': topic_id})  # Creates a new form with initial values
     return render(request, 'forum/new_question.html', {'form': form})  # Returns a render using the form
-
-
-# Deletes question
-def delete_question(request, question_id):
-    id = question_id
-    question = get_object_or_404(Question, pk=id)
-    question.delete()
-    return HttpResponseRedirect('/forum/my_question/')
-
-
-# Redirects back to topic after question creation
-def question_details(request, pk):
-    return render(request, '/forum/topics/' + pk)
 
 
 # Creates new topic
@@ -191,46 +183,48 @@ class UserFormView(generic.View):
 
 def search_for_q(request):
     q = request.GET['q']
-    WORD = re.compile(r'\w+')
+    word = compile(r'\w+')
     top3 = {0: None, 0.0001: None, 0.0000001: None}
-    vec1 = Counter(WORD.findall(q))
+    vec1 = Counter(word.findall(q))
     for que in Question.objects.values():
-        vec2 = Counter(WORD.findall(que.get('question_text')))
+        vec2 = Counter(word.findall(que.get('question_text')))
 
         intersection = set(vec1.keys()) & set(vec2.keys())
         numerator = sum([vec1[x] * vec2[x] for x in intersection])
 
         sum1 = sum([vec1[x] ** 2 for x in vec1.keys()])
         sum2 = sum([vec2[x] ** 2 for x in vec2.keys()])
-        denominator = math.sqrt(sum1) * math.sqrt(sum2)
+        denominator = sqrt(sum1) * sqrt(sum2)
 
         if not denominator:
             r = 0.0
         else:
             r = float(numerator) / denominator
 
-        min = 1
-        for mykey, myvalue in top3.items():  # iterere gjennom top3 dict
-            if mykey < min:
-                min = mykey
+        minimum = 1
+        for my_key, my_value in top3.items():  # iterates through top 3 dict
+            if my_key < minimum:
+                minimum = my_key
 
-        if r > min:
-            top3.pop(min)
+        if r > minimum:
+            top3.pop(minimum)
             top3[r] = que
 
     result = []
-    for mykey, myvalue in top3.items():
-        if top3.get(mykey) is not None:
-            result.append(top3.get(mykey))
+    for my_key, my_value in top3.items():
+        if top3.get(my_key) is not None:
+            result.append(top3.get(my_key))
     return render(request, 'forum/search_result.html', {'result': result})
 
 
+# Method for handling mark questions as solved
 def mark_as_solved(request):
-    q = Question.objects.get(pk=request.POST['pk_question'])
-    if q.question_solved == False:
-        q.question_solved = True
-        q.save()
+    q = Question.objects.get(pk=request.POST['pk_question'])  # Gets the question
+    if q.question_solved is False:  # Checks if question is already solved
+        q.question_solved = True  # Marks as solved
+        q.save()  # Saves updated question
     else:
-        q.question_solved = False
+        q.question_solved = False  # Marks as unsolved
         q.save()
-    return redirect('/forum/topics/' + request.POST['topic'] + '?cid=' + request.POST['pk_question'])
+    return redirect(
+        '/forum/topics/' + request.POST['topic'] + '?cid=' + request.POST['pk_question'])  # Redirects to question

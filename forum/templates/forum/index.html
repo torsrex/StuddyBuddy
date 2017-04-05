@@ -50,25 +50,25 @@
                                         <label>Question posted by: {{ q.user }}</label>
 
                                         <div>
-                                            <form action="/forum/upvote/" method="post">
+                                            <form action="/forum/up_vote/" method="post">
                                                 {% csrf_token %}
                                                 <div class="circle" style="float:left;">
                                                     <input type="hidden" value="{{ q.id }}" name="pk_question">
                                                     <input type="hidden" value="{{ topic_name.id }}" name="topic">
                                                     <button type="submit" class="submit-with-icon">
-                    <span data-toggle="tooltip-right" title="Upvote question"
+                    <span data-toggle="tooltip-right" title="Up_vote question"
                           class="glyphicon glyphicon-chevron-up"></span>
                                                     </button>
                                                 </div>
                                             </form>
                                             <label style="float:left;">&nbsp{{ var|votes:q }}&nbsp</label>
-                                            <form action="/forum/downvote/" method="post">
+                                            <form action="/forum/down_vote/" method="post">
                                                 {% csrf_token %}
                                                 <div class="circle" style="float:left;">
                                                     <input type="hidden" value="{{ q.id }}" name="pk_question">
                                                     <input type="hidden" value="{{ topic_name.id }}" name="topic">
                                                     <button type="submit" class="submit-with-icon">
-                    <span data-toggle="tooltip-right" title="Downvote question"
+                    <span data-toggle="tooltip-right" title="Down_vote question"
                           class="glyphicon glyphicon-chevron-down"></span>
                                                     </button>
                                                 </div>
@@ -128,27 +128,27 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <p style="float:left;">Created: {{ answer.answer_created }}</p>
-                                                <form action="/forum/upvote_answer/" method="post">
+                                                <form action="/forum/up_vote_answer/" method="post">
                                                     {% csrf_token %}
                                                     <div class="circle" style="float:left;margin-left:2em">
                                                         <input type="hidden" value="{{ q.id }}" name="pk_question">
                                                         <input type="hidden" value="{{ answer.id }}" name="pk_answer">
                                                         <input type="hidden" value="{{ topic_name.id }}" name="topic">
                                                         <button type="submit" class="submit-with-icon">
-                                <span data-toggle="tooltip-right" title="Upvote answer"
+                                <span data-toggle="tooltip-right" title="Up_vote answer"
                                       class="glyphicon glyphicon-chevron-up"></span>
                                                         </button>
                                                     </div>
                                                 </form>
                                                 <label style="float:left;">&nbsp{{ variable|votes:answer }}&nbsp</label>
-                                                <form action="/forum/downvote_answer/" method="post">
+                                                <form action="/forum/down_vote_answer/" method="post">
                                                     {% csrf_token %}
                                                     <div class="circle" style="float:left;">
                                                         <input type="hidden" value="{{ q.id }}" name="pk_question">
                                                         <input type="hidden" value="{{ answer.id }}" name="pk_answer">
                                                         <input type="hidden" value="{{ topic_name.id }}" name="topic">
                                                         <button type="submit" class="submit-with-icon">
-                                <span data-toggle="tooltip-right" title="Downvote answer"
+                                <span data-toggle="tooltip-right" title="Down_vote answer"
                                       class="glyphicon glyphicon-chevron-down"></span>
                                                         </button>
                                                     </div>

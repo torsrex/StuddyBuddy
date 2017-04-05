@@ -1,6 +1,7 @@
+from django.contrib.auth.models import Permission
 from django.test import Client, TestCase
 
-from forum.models import Question
+from forum.models import Question, Answer
 from forum.models import Topic, User
 
 
@@ -35,7 +36,9 @@ class siteTestCase(TestCase):
 class permissionTestCase(TestCase):
     def setUp(self):
         self.teacher = User.objects.create_user(
-            username='Pekka', email='pekka@ntnu.no', password='abraham')
+            username='Pekka', email='pekka@ntnu.no', password='abraham', )
+        permission = Permission.objects.get(codename='delete_question')
+        self.teacher.user_permissions.add(permission)
         self.student = User.objects.create_user(
             username='GenericStudent', email='generic@stud.ntnu.no', password='qwerty'
         )
@@ -82,7 +85,6 @@ class permissionTestCase(TestCase):
         assert userFound
 
     def test_upvote_and_downvote(self):
-
         self.question_1 = Question.objects.create(
             question_name="testquest",
             question_text="testdesc",
@@ -91,33 +93,75 @@ class permissionTestCase(TestCase):
         )
         c = Client()
         c.force_login(self.student)
-        c.post('/forum/upvote/',
-               {'pk_question': self.question_1.id, 'topic': self.question_1.question_topic, 'user': self.student})
+        c.post('/forum/up_vote/',
+               {'pk_question': self.question_1.id, 'topic': self.question_1.question_topic.id, 'user': self.student})
         assert self.question_1.votes.count() == 1
-        c.post('/forum/downvote/', {'pk_question': self.question_1.id, 'topic': self.question_1.question_topic})
+        c.post('/forum/down_vote/', {'pk_question': self.question_1.id, 'topic': self.question_1.question_topic.id})
         assert self.question_1.votes.count() == 0
 
-    """
-    @tag('notworking') #Det virker ikke som det funker å bruke post-request.
-    def test_add_answer(self):
-
+    def test_upvote_and_downvote_answer(self):
         self.question_1 = Question.objects.create(
             question_name="testquest",
             question_text="testdesc",
             question_topic=self.topic_1,
             user=self.student2,
         )
-        c=Client()
+
+        c = Client()
         c.force_login(self.student)
-        resp = c.post('/forum/new_answer/', {'answer_text':'have', 'question':self.question_1, 'topic': self.question_1.question_topic, 'user':self.student})
-        answers=Answer.objects.all()
-        print('svar: ',answers)
-        answerFound=False
+        c.post('/forum/new_answer/',
+               {'answer_text': 'have', 'question': self.question_1.id, 'pk_question': self.question_1.id,
+                'topic': self.question_1.question_topic.id, 'user': self.student})
+        answerpk = -1
+        for a in Answer.objects.all():
+            if a.answer_text == 'have':
+                answerpk = a.id
+        c.post('/forum/up_vote_answer/',
+               {'pk_answer': answerpk, 'topic': self.question_1.question_topic.id, 'user': self.student, 'pk_question': self.question_1.id})
+        assert Answer.objects.get(pk=answerpk).votes.count() == 1
+        c.post('/forum/down_vote_answer/',
+               {'pk_answer': answerpk, 'topic': self.question_1.question_topic.id, 'user': self.student, 'pk_question': self.question_1.id})
+        assert Answer.objects.get(pk=answerpk).votes.count() == 0
+
+    """
+    def test_delete_question(self):
+        self.question_1 = Question.objects.create(
+            question_name="testquest",
+            question_text="testdesc",
+            question_topic=self.topic_1,
+            user=self.student2,
+        )
+        questions = Question.objects.all()
+        assert len(questions) == 1
+        print('\nquestions:',questions)
+        c = Client()
+        c.force_login(self.student)
+        resp=c.post('/forum/'+str(self.question_1.id))
+        print('\nresp:',resp)
+        questions = Question.objects.all()
+        print('\nurl:','/forum/'+str(self.question_1.id)+'/')
+        assert len(questions) == 0
+    """
+
+    def test_add_answer(self):
+        self.question_1 = Question.objects.create(
+            question_name="testquest",
+            question_text="testdesc",
+            question_topic=self.topic_1,
+            user=self.student2,
+        )
+        c = Client()
+        c.force_login(self.student)
+
+        answers = Answer.objects.all()
+        resp = c.post('/forum/new_answer/', {'answer_text': 'have', 'question': self.question_1.id,
+                                             'topic': self.question_1.question_topic.id, 'user': self.student})
+        answers = Answer.objects.all()
+        answerFound = False
         for a in answers:
-            if a.answer.text=='have':
-                answerFound=True
+            if a.answer_text == 'have':
+                answerFound = True
         assert answerFound
-        """
 
     def test_my_question_list(self):
         c = Client()
@@ -133,8 +177,6 @@ class permissionTestCase(TestCase):
         resp = c.get('/forum/my_question')
         self.assertTrue(len(resp.context['my_question_list']) == 0)  # For another user, the list should still be empty.
 
-
-"""
     def test_teachers_can_delete_all_questions(self):
         self.question_1 = Question.objects.create(
             question_name="testquest",
@@ -142,110 +184,9 @@ class permissionTestCase(TestCase):
             question_topic=self.topic_1,
             user=self.student2,
         )
-        c=Client()
+        c = Client()
         c.force_login(self.teacher)
+        resp = c.post('/forum/delete_question_in_index/',
+                      {'pk_question': self.question_1.id, 'topic': self.question_1.question_topic.id})
         questions = Question.objects.all()
-        print(questions)
-        resp=c.post('/forum/delete_question_in_index/', {'pk_question':self.question_1.id,'topic':self.question_1.question_topic})
-        questions=Question.objects.all()
-        print(questions)
-        assert len(questions)==0
-"""
-
-"""
-@tag('selenium')
-class MySeleniumTests(LiveServerTestCase): #HUSK AT DISSE BRUKER LIVE-DATABASEN, Tester krever: bruker Student, bruker admin, minst ett spørsmål i databasen (som slettes).
-    def setUp(self):
-        self.selenium = webdriver.Firefox()
-        super(MySeleniumTests, self).setUp()
-
-    def tearDown(self):
-        self.selenium.quit()
-        super(MySeleniumTests, self).tearDown()
-
-     #Finner ikke ut om brukeren eksisterer i den ekte databasen, bare testbasen.
-    def test_registration(self):
-        selenium=self.selenium
-        selenium.get('http://127.0.0.1:8000/forum/register/')
-
-        time.sleep(0.5)
-
-        username = selenium.find_element_by_name('username')
-        password = selenium.find_element_by_name('password')
-        email=selenium.find_element_by_name('email')
-
-        register=selenium.find_element_by_id('register_button')
-
-        name='random'+str(round(time.time(),0))
-
-        time.sleep(0.5)
-        username.send_keys(name)
-        password.send_keys('stuff')
-        email.send_keys('dfssdf@ntnu.no')
-        time.sleep(0.5)
-        register.send_keys(Keys.RETURN)
-        time.sleep(0.8)
-        assert 'Topics' in selenium.title
-
-    def login_as_student(self,selenium): #Requires a user with username student and password qwerty
-        selenium.get('http://127.0.0.1:8000/forum/login')
-        # find the form element
-        username = selenium.find_element_by_name('username')
-        password = selenium.find_element_by_name('password')
-
-        login = selenium.find_element_by_id('login_button')
-
-        # Fill the form with data
-        username.send_keys('student')
-        password.send_keys('qwerty')
-        # submitting the form
-        login.send_keys(Keys.RETURN)
-
-    def login_as_admin(self,selenium):
-        selenium.get('http://127.0.0.1:8000/forum/login')
-        # find the form element
-        username = selenium.find_element_by_name('username')
-        password = selenium.find_element_by_name('password')
-
-        login = selenium.find_element_by_id('login_button')
-
-        # Fill the form with data
-        username.send_keys('admin')
-        password.send_keys('admin')
-        # submitting the form
-        login.send_keys(Keys.RETURN)
-
-
-    def test_login(self):
-        selenium = self.selenium
-        self.login_as_admin(selenium)
-        time.sleep(0.8) #If this test fails, try a longer sleep time.
-        assert 'Topics' in selenium.title
-
-    @tag('slow')
-    def test_must_be_logged_in_to_post_questions(self):
-        selenium = self.selenium
-        selenium.get('http://127.0.0.1:8000/forum/topics/1/')
-        selenium.find_element_by_id('registration_button').click()
-        time.sleep(0.3)
-        assert selenium.current_url=='http://127.0.0.1:8000/forum/login/?next=/forum/topics/1/new_question/'
-        self.login_as_student(selenium)
-        time.sleep(0.3)
-        selenium.get('http://127.0.0.1:8000/forum/topics/1/')
-        selenium.find_element_by_id('registration_button').click()
-        time.sleep(0.3)
-        assert selenium.current_url=='http://127.0.0.1:8000/forum/topics/1/new_question/'
-
-    @tag('slow')
-    def test_teacher_can_remove_post(self):
-        selenium=self.selenium
-        self.login_as_admin(selenium)
-        time.sleep(0.6)
-        selenium.find_element_by_id('t1').click() #Krever at det finnes en topic
-        time.sleep(0.8)
-        selenium.find_element_by_id('b1').click() #Krever at det finnes et spørsmål
-        time.sleep(0.4)
-        selenium.find_element_by_id('remove').click()
-        time.sleep(0.4)
-        assert True #Hvis sletteknappen finnes, har alt gått bra.
-"""
+        assert len(questions) == 0
