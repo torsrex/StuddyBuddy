@@ -190,3 +190,57 @@ class permissionTestCase(TestCase):
                       {'pk_question': self.question_1.id, 'topic': self.question_1.question_topic.id})
         questions = Question.objects.all()
         assert len(questions) == 0
+
+    def test_search(self):
+        self.question_1 = Question.objects.create(
+            question_name="transistor",
+            question_text="transistors mayne, how do they work?",
+            question_topic=self.topic_1,
+            user=self.student2,
+        )
+        self.question_2 = Question.objects.create(
+            question_name="jacobian",
+            question_text="jacobians mayne, how do they work?",
+            question_topic=self.topic_1,
+            user=self.student2,
+        )
+
+        c = Client()
+        c.force_login(self.student)
+        resp=c.post('/forum/search/?q=transistors')
+
+        transistorFound=False
+        jacobianFound=False
+        for q in resp.context['result']:
+            if q['question_name'] == 'jacobian':
+                jacobianFound=True
+            if q['question_name']=='transistor':
+                transistorFound=True
+
+        assert not jacobianFound
+        assert transistorFound
+
+    def test_mark_as_solved(self):
+        self.question_1 = Question.objects.create(
+            question_name="testquest",
+            question_text="testdesc",
+            question_topic=self.topic_1,
+            user=self.student2,
+        )
+        c = Client()
+        c.force_login(self.student)
+
+        q = Question.objects.get(pk=self.question_1.id)
+        assert not q.question_solved
+        resp = c.post('/forum/mark_as_solved/',
+                      {'pk_question': self.question_1.id, 'topic': self.question_1.question_topic.id})
+        q=Question.objects.get(pk=self.question_1.id)
+        assert q.question_solved
+        resp = c.post('/forum/mark_as_solved/',
+                      {'pk_question': self.question_1.id, 'topic': self.question_1.question_topic.id})
+        q = Question.objects.get(pk=self.question_1.id)
+        assert not q.question_solved
+
+
+
+
