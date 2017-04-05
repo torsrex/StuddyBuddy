@@ -2,7 +2,7 @@
 {% block title %}Your questions{% endblock %}
 
 {% block container-fluid %}
-    <h1>Current User: {{ user_name }}</h1>
+    <h1>List of your questions</h1>
     {% if my_question_list %}
         <div class="panel-group" id="accordion">
             {% for question in my_question_list %}

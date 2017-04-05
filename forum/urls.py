@@ -1,5 +1,6 @@
 from django.conf.urls import url
 from django.contrib.auth import views as auth_views
+from django.contrib.auth.decorators import login_required
 
 from . import views
 
@@ -8,7 +9,7 @@ urlpatterns = [
     url(r'^topics/(?P<pk>\d+)/$', views.IndexView.as_view(), name='index'),
     url(r'^topics/(?P<topic_id>\d+)/new_question/$', views.new_question, name='new_question'),
     url(r'^new_topic/$', views.new_topic, name='new_topic'),
-    url(r'^my_question', views.MyQuestionView.as_view(), name='my_question'),
+    url(r'^my_question', login_required(views.MyQuestionView.as_view(), login_url='login'), name='my_question'),
     url(r'^new_answer/$', views.new_answer, name='new_answer'),
     url(r'^register/$', views.UserFormView.as_view(), name='register'),
     url(r'^login/$', auth_views.login, name='login'),
