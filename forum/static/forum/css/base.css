@@ -1,15 +1,18 @@
+/* Align top right icons */
 .right {
     float: right;
     padding-top: 12px;
     padding-right: 90px;
 }
 
+/* Align top left icons */
 .left {
     float: left;
     padding-top: 12px;
     padding-right: 1em;
 }
 
+/* Style header icons */
 .green_button {
     min-width: 6.2em;
     height: 2.2em;
@@ -17,6 +20,7 @@
     background-color: #a9f654;
 }
 
+/* Style header icons */
 .blue_button {
     min-width: 6.2em;
     height: 2.2em;
@@ -24,20 +28,24 @@
     background-color: #87cefa;
 }
 
+/* Style header icons */
 .no_color_header_button {
     min-width: 6.2em;
     height: 2.2em;
     display: inline-block;
 }
 
+/* Seperate main div from header */
 .main_container {
     padding-top: 30px;
 }
 
+/* Theme colour of site */
 .body_color {
     background-color: #f6f6f6;
 }
 
+/* Search bar in header */
 #search {
     min-width: 6.2em;
     height: 2.2em;
@@ -47,36 +55,43 @@
     white-space: nowrap;
 }
 
+/* Common button properties for voting, delete button and mark as solved */
 .circle {
     border-radius: 100%;
     border: 0.22em solid black;
     height: 25px;
     width: 25px;
+    float: left;
 }
 
+/* Bootstrap up button */
 .glyphicon.glyphicon-chevron-up {
     font-size: 17px;
     padding-left: 1.6px;
 }
 
+/* Bootstrap down button */
 .glyphicon.glyphicon-chevron-down {
     padding-left: 1.6px;
     padding-top: 2px;
     font-size: 17px;
 }
 
+/* Bootstrap delete button */
 .glyphicon.glyphicon-remove {
     padding-left: 1px;
     padding-top: 1px;
     font-size: 17px;
 }
 
+/* Bootstrap ok button */
 .glyphicon.glyphicon-ok {
     padding-left: 1px;
     padding-top: 1px;
     font-size: 17px;
 }
 
+/* Hide input form */
 .submit-with-icon {
     background: transparent;
     border: 0px;
@@ -90,12 +105,14 @@
     border-color: rgb(173, 173, 173);
 }
 
+/* Hides all question content */
 .initiallyHidden {
     display: none;
     min-width: 150vh;
     margin-left: 10px;
 }
 
+/* Remove bullet points from unsorted list in table */
 ul {
     list-style-type: none;
     margin-right: 0px;
@@ -107,31 +124,36 @@ ul {
     overflow-y: auto;
 }
 
+/* Limit space for list of question names */
 div#feed {
-    width: 350px;
+    width: 360px;
     float: left;
     background-color: #e8e8e8;
     border-top: 2px solid #636363;
     border-right: 3px solid #636363;
 }
 
+/* Question name button styling */
 div#feed li {
     cursor: pointer;
     border-bottom: 3px solid #f6f6f6;
+    padding: 0.7em;
 }
 
+/* Change question name button on hover to another colour */
 div#feed li:hover {
     background-color: #d3d3d3;
 }
 
+/* Seperate main content from feed */
 div#detail {
     position: absolute;
     float: left;
-    left: 370px;
+    left: 380px;
 }
 
+/* Search bar in subject/topic page */
 #searchFunc {
-
     background-position: 10px 10px;
     background-repeat: no-repeat;
     width: 100%;
@@ -171,6 +193,7 @@ div#detail {
     padding-right: 30px;
 }
 
+/* style table in topic/subject page */
 #topicTable {
     border-collapse: collapse;
     width: 100%;
@@ -183,6 +206,26 @@ div#detail {
     padding: 12px;
 }
 
+/* Limit space for table columns */
+th#subject {
+    width: 20%;
+}
+
+th#code {
+    width: 80%;
+}
+
+.table-link {
+    color: #0f0f0f;
+    text-decoration:none;
+}
+
+.table-content {
+    height: 100%;
+    width: 100%;
+}
+
+/* Change table behavior */
 #topicTable tr {
     border-bottom: 1px solid #ddd;
 }
@@ -193,4 +236,48 @@ div#detail {
 
 #topicTable tr.header {
     background-color: #d3d3d3;
+}
+
+/* Red notification text */
+label#notification {
+    color: #EF233C;
+}
+
+/* Answer created text padding*/
+#answer-created {
+    float: left;
+}
+
+/* Answer vote count padding*/
+#answer-votes {
+    float: left;
+}
+
+/* Up vote answer button padding*/
+#up-vote-answer {
+    margin-left: 2em;
+}
+
+/* Mark as solved button colour*/
+#unsolved {
+    color: #ff0000;
+}
+/* Undo mark as solved button colour*/
+#solved {
+    color: #00ff00;
+}
+
+/* Question vote count padding*/
+#question-vote-count {
+    float: left;
+}
+
+/* Delete button padding */
+#delete-button {
+    margin-left: 2em;
+}
+
+/* Mark as solved button padding */
+#mark-as-solved-button {
+    margin-left: 1em;
 }

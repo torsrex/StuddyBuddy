@@ -1,4 +1,5 @@
 {% extends 'forum/base.html' %}
+{# set title #}
 {% block title %}Index of forum{% endblock %}
 {% load filters %}
 {% block header-button %}
@@ -11,27 +12,29 @@
 {% endblock %}
 
 {% block container-fluid %}
+    {#  Script to add explanatory text on hover #}
     <script>
         $(document).ready(function () {
             $('[data-toggle="tooltip-right"]').tooltip({placement: "right"});
         });
     </script>
-    <h1>Current subject: {{ topic_name }}</h1>
-    {% if latest_questions_list %}
-        <div id='feed' class="scroll">
+    <h1>Current subject: {{ topic_name }}</h1> {# Display current subject page #}
+    {% if latest_questions_list %} {# Check whether a question in current subject exists #}
+        <div id='feed' class="scroll"> {# Set off space for question name list #}
+            {# Iterate and show all questions in current subject #}
             <ul>
                 {% for q in latest_questions_list %}
+                    {# Check if question have been answered, if not, display notification text #}
                     {% if q.answers.all %}
-                        <li id='b{{ q.id }}' style="padding:0.7em">{{ q.question_name }}</li>
+                        <li id='b{{ q.id }}'>{{ q.question_name }}</li>
                     {% else %}
-                        <li id='b{{ q.id }}'
-                            style="padding:0.7em;">
+                        <li id='b{{ q.id }}'>
                             <div class="row">
                                 <div class="col-md-6">
                                     {{ q.question_name }}
                                 </div>
                                 <div class="col-md-6">
-                                    <label style="color: #EF233C;">New question!</label>
+                                    <label id="notification">New question!</label>
                                 </div>
                             </div>
                         </li>
@@ -39,20 +42,22 @@
                 {% endfor %}
             </ul>
         </div>
-        <div id='detail' class="scroll">
+        <div id='detail' class="scroll"> {# Set off space for question content #}
             <ul>
+                {# Iterate over all questions in current subject #}
                 {% for q in latest_questions_list %}
-                    <div class='initiallyHidden' id='b{{ q.id }}c'>
-                        <div class="panel panel-default">
+                    <div class='initiallyHidden' id='b{{ q.id }}c'> {# Loads all containers and hides them to make sure only one is displayed at a time #}
+                        <div class="panel panel-default"> {# Bootstrap predesigned container for content #}
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <label>Question posted by: {{ q.user }}</label>
-
+                                        <label>Question posted by: {{ q.user }}</label> {# Display name of user who posted question #}
+                                        {# Container for buttons #}
                                         <div>
+                                            {# Question up vote button #}
                                             <form action="/forum/up_vote/" method="post">
                                                 {% csrf_token %}
-                                                <div class="circle" style="float:left;">
+                                                <div class="circle">
                                                     <input type="hidden" value="{{ q.id }}" name="pk_question">
                                                     <input type="hidden" value="{{ topic_name.id }}" name="topic">
                                                     <button type="submit" class="submit-with-icon">
@@ -61,10 +66,11 @@
                                                     </button>
                                                 </div>
                                             </form>
-                                            <label style="float:left;">&nbsp{{ var|votes:q }}&nbsp</label>
+                                            <label id="question-vote-count">&nbsp{{ var|votes:q }}&nbsp</label> {# Show vote count #}
+                                            {# Question down vote button #}
                                             <form action="/forum/down_vote/" method="post">
                                                 {% csrf_token %}
-                                                <div class="circle" style="float:left;">
+                                                <div class="circle">
                                                     <input type="hidden" value="{{ q.id }}" name="pk_question">
                                                     <input type="hidden" value="{{ topic_name.id }}" name="topic">
                                                     <button type="submit" class="submit-with-icon">
@@ -73,10 +79,11 @@
                                                     </button>
                                                 </div>
                                             </form>
-                                            {% if perms.forum.delete_question %}
+                                            {% if perms.forum.delete_question %} {# Check if user is allowed to delete question #}
+                                                {# Delete question button #}
                                                 <form action="/forum/delete_question_in_index/" method="post">
                                                     {% csrf_token %}
-                                                    <div class="circle" style="float:left;margin-left:2em;">
+                                                    <div id="delete-button" class="circle">
                                                         <input type="hidden" value="{{ q.id }}" name="pk_question">
                                                         <input type="hidden" value="{{ topic_name.id }}" name="topic">
                                                         <button type="submit" class="submit-with-icon">
@@ -86,20 +93,20 @@
                                                     </div>
                                                 </form>
                                             {% endif %}
-                                            {% if q.user.username == user.username %}
+                                            {% if q.user.username == user.username %} {# Check if user is allowed to mark question as solved #}
+                                                {# Mark as solved button #}
                                                 <form action="/forum/mark_as_solved/" method="post">
                                                     {% csrf_token %}
-                                                    <div class="circle" style="float:left;margin-left:1em;">
+                                                    <div id="mark-as-solved-button" class="circle">
                                                         <input type="hidden" value="{{ q.id }}" name="pk_question">
                                                         <input type="hidden" value="{{ topic_name.id }}" name="topic">
                                                         <button type="submit" class="submit-with-icon">
+                                                            {# Check whether question is solved or unsolved #}
                                                             {% if q.question_solved == True %}
-                                                                <span data-toggle="tooltip-right" title="Undo mark as solved" class="glyphicon glyphicon-ok"
-                                                                      style="color:#00ff00"></span>
+                                                                <span id="solved" data-toggle="tooltip-right" title="Undo mark as solved" class="glyphicon glyphicon-ok"></span>
                                                             {% endif %}
                                                             {% if q.question_solved == False %}
-                                                                <span data-toggle="tooltip-right" title="Mark as solved" class="glyphicon glyphicon-ok"
-                                                                      style="color:#ff0000"></span>
+                                                                <span id="unsolved" data-toggle="tooltip-right" title="Mark as solved" class="glyphicon glyphicon-ok"></span>
                                                             {% endif %}
                                                         </button>
                                                     </div>
@@ -110,16 +117,17 @@
                                 </div>
                             </div>
                             <div class="panel-body">
-                                {{ q.question_text }}
+                                {{ q.question_text }} {# Display question content #}
                             </div>
                         </div>
-                        {% if q.answers.all %}
+                        {% if q.answers.all %} {# Check whether answer for question exists #}
 
-                            {% for answer in q.answers.all %}
+                            {% for answer in q.answers.all %} {# Iterate over all answers for current question #}
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <div class="row">
                                             <div class="col-md-6">
+                                                {# Display whether answer is created by student or teacher #}
                                                 {% if answer.is_teacher %}
                                                     <label>Answer by teacher: {{ answer.get_user }}</label>
                                                 {% else %}
@@ -127,10 +135,11 @@
                                                 {% endif %}
                                             </div>
                                             <div class="col-md-6">
-                                                <p style="float:left;">Created: {{ answer.answer_created }}</p>
+                                                <p id="answer-created">Created: {{ answer.answer_created }}</p> {# Display answer created date #}
                                                 <form action="/forum/up_vote_answer/" method="post">
                                                     {% csrf_token %}
-                                                    <div class="circle" style="float:left;margin-left:2em">
+                                                    {# Answer up vote button #}
+                                                    <div id="up-vote-answer" class="circle">
                                                         <input type="hidden" value="{{ q.id }}" name="pk_question">
                                                         <input type="hidden" value="{{ answer.id }}" name="pk_answer">
                                                         <input type="hidden" value="{{ topic_name.id }}" name="topic">
@@ -140,10 +149,11 @@
                                                         </button>
                                                     </div>
                                                 </form>
-                                                <label style="float:left;">&nbsp{{ variable|votes:answer }}&nbsp</label>
+                                                <label id="answer-votes">&nbsp{{ variable|votes:answer }}&nbsp</label> {# Answer vote count #}
                                                 <form action="/forum/down_vote_answer/" method="post">
                                                     {% csrf_token %}
-                                                    <div class="circle" style="float:left;">
+                                                    {# Answer down vote button #}
+                                                    <div id="down-vote-answer" class="circle">
                                                         <input type="hidden" value="{{ q.id }}" name="pk_question">
                                                         <input type="hidden" value="{{ answer.id }}" name="pk_answer">
                                                         <input type="hidden" value="{{ topic_name.id }}" name="topic">
@@ -156,6 +166,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    {# Display answer content #}
                                     <div class="panel-body">
                                         {{ answer.answer_text }}
                                     </div>
@@ -163,6 +174,7 @@
                                 <br>
                             {% endfor %}
                         {% else %}
+                            {# Placeholder if no answers are present #}
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <div class="row">
@@ -173,6 +185,7 @@
                                 </div>
                             </div>
                         {% endif %}
+                        {# Submit form for answer #}
                         <form class="new_question" action="/forum/new_answer/" method='post'>
                             {% csrf_token %}
                             {{ form.answer_text }}
@@ -185,10 +198,11 @@
             </ul>
         </div>
 
+        {# Load script for handling hiding and showing question content and redirecting #}
         {% load staticfiles %}
         <script src="{% static 'forum/js/script.js' %}"></script>
 
-    {% else %}
+    {% else %} {# Display default page if no question exists #}
         <p>No questions are available.</p>
     {% endif %}
 
