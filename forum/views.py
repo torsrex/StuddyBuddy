@@ -1,13 +1,11 @@
 # Necessary imports for search method
 from collections import Counter
-from re import compile
 from math import sqrt
+from re import compile
 
 # Imports used for authenticating
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Permission
-
 # Rendering and view related imports
 from django.http import HttpResponseForbidden
 from django.shortcuts import get_object_or_404, HttpResponseRedirect, render, redirect
@@ -48,7 +46,6 @@ class IndexView(generic.ListView):
 
 
 # Method to handle deletion of question in question list under topics (IndexView)
-@login_required(login_url='login')  # Requires user to be logged in
 def new_answer(request):
     if request.method == "POST":  # Used when submit button is clicked
         form = AnswerForm(request.POST)  # Passes arguments in request to form
@@ -62,7 +59,6 @@ def new_answer(request):
 
 
 # Creates new question
-@login_required(login_url='login')  # Requires user to be logged in
 def new_question(request, topic_id):
     if request.method == "POST":
         form = QuestionForm(request.POST)  # Passes arguments in request to form
@@ -70,14 +66,14 @@ def new_question(request, topic_id):
             form_to_save = form.save(commit=False)
             form_to_save.user = request.user
             form_to_save.save()
-            return redirect('/forum/topics/' + topic_id + '?cid=')  # TODO:Fix redirect
+            return redirect(
+                '/forum/topics/' + topic_id + '?cid=' + str(form_to_save.id))  # Redirects to newly created question
     else:
         form = QuestionForm(initial={'question_topic': topic_id})  # Creates a new form with initial values
     return render(request, 'forum/new_question.html', {'form': form})  # Returns a render using the form
 
 
 # Creates new topic
-@login_required(login_url='login')  # Requires user to be logged in
 def new_topic(request):
     if request.method == "POST":  # Used when submit button is clicked
         form = TopicForm(request.POST)  # Passes arguments in request to form
@@ -99,7 +95,6 @@ class MyQuestionView(generic.ListView):
             '-question_created')  # returns questions asked by logged in user ordered by creation date
 
 
-@login_required(login_url='login')  # Requires user to be logged in
 def up_vote(request):
     if request.method == 'POST':
         q = Question.objects.get(pk=request.POST['pk_question'])  # Fetches question
@@ -109,7 +104,6 @@ def up_vote(request):
             'pk_question'])  # Redirects to changed question
 
 
-@login_required(login_url='login')  # Requires user to be logged in
 def down_vote(request):
     if request.method == 'POST':
         q = Question.objects.get(pk=request.POST['pk_question'])
@@ -117,7 +111,6 @@ def down_vote(request):
     return redirect('/forum/topics/' + request.POST['topic'] + '?cid=' + request.POST['pk_question'])
 
 
-@login_required(login_url='login')  # Requires user to be logged in
 def up_vote_answer(request):
     if request.method == 'POST':
         a = Answer.objects.get(pk=request.POST['pk_answer'])
@@ -125,7 +118,6 @@ def up_vote_answer(request):
     return redirect('/forum/topics/' + request.POST['topic'] + '?cid=' + request.POST['pk_question'])
 
 
-@login_required(login_url='login')  # Requires user to be logged in
 def down_vote_answer(request):
     if request.method == 'POST':
         a = Answer.objects.get(pk=request.POST['pk_answer'])
@@ -166,7 +158,7 @@ class UserFormView(generic.View):
         if form.is_valid():
             user = form.save(commit=False)  # Saves form temporarily in user variable
 
-            # cleaned (normalized) data (riktig format)
+            # cleaned (normalized) data (correct format)
 
             username = form.cleaned_data['username']  # Gets cleaned version of username
             password = form.cleaned_data['password']  # Gets cleaned version of password
