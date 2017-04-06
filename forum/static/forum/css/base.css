@@ -126,7 +126,7 @@ ul {
 
 /* Limit space for list of question names */
 div#feed {
-    width: 360px;
+    width: 20%;
     float: left;
     background-color: #e8e8e8;
     border-top: 2px solid #636363;
@@ -147,7 +147,7 @@ div#feed li:hover {
 
 /* Seperate main content from feed */
 div#detail {
-    position: absolute;
+    max-width: 80%;
     float: left;
     left: 380px;
 }

@@ -140,5 +140,5 @@ DRACEDITOR_ENABLE_CONFIGS = {
     'mention': 'false',  # to enable/disable mention
     'jquery': 'true',  # to include/revoke jquery (require for admin default django)
 }
-DRACEDITOR_IMGUR_CLIENT_ID = 'IMGURAPI'
-DRACEDITOR_IMGUR_API_KEY = 'IMGURAPI'
+DRACEDITOR_IMGUR_CLIENT_ID = ''
+DRACEDITOR_IMGUR_API_KEY = ''
