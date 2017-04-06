@@ -284,6 +284,6 @@ label#notification {
 }
 
 /*Markdown editor initially hidden */
-div#editor {
+.initiallyHiddenEditor {
     display: none;
 }

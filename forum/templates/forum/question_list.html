@@ -52,12 +52,14 @@
             <ul>
                 {# Iterate over all questions in current subject #}
                 {% for q in latest_questions_list %}
-                    <div class='initiallyHidden' id='b{{ q.id }}c'> {# Loads all containers and hides them to make sure only one is displayed at a time #}
+                    <div class='initiallyHidden' id='b{{ q.id }}c'>
+                        {# Loads all containers and hides them to make sure only one is displayed at a time #}
                         <div class="panel panel-default"> {# Bootstrap predesigned container for content #}
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <label>Question posted by: {{ q.user }}</label> {# Display name of user who posted question #}
+                                        <label>Question posted by: {{ q.user }}</label>
+                                        {# Display name of user who posted question #}
                                         {# Container for buttons #}
                                         <div>
                                             {# Question up vote button #}
@@ -72,7 +74,8 @@
                                                     </button>
                                                 </div>
                                             </form>
-                                            <label id="question-vote-count">&nbsp{{ var|votes:q }}&nbsp</label> {# Show vote count #}
+                                            <label id="question-vote-count">&nbsp{{ var|votes:q }}&nbsp</label>
+                                            {# Show vote count #}
                                             {# Question down vote button #}
                                             <form action="/forum/down_vote/" method="post">
                                                 {% csrf_token %}
@@ -85,7 +88,8 @@
                                                     </button>
                                                 </div>
                                             </form>
-                                            {% if perms.forum.delete_question %} {# Check if user is allowed to delete question #}
+                                            {% if perms.forum.delete_question %}
+                                                {# Check if user is allowed to delete question #}
                                                 {# Delete question button #}
                                                 <form action="/forum/delete_question_in_index/" method="post">
                                                     {% csrf_token %}
@@ -99,7 +103,8 @@
                                                     </div>
                                                 </form>
                                             {% endif %}
-                                            {% if q.user.username == user.username %} {# Check if user is allowed to mark question as solved #}
+                                            {% if q.user.username == user.username %}
+                                                {# Check if user is allowed to mark question as solved #}
                                                 {# Mark as solved button #}
                                                 <form action="/forum/mark_as_solved/" method="post">
                                                     {% csrf_token %}
@@ -109,10 +114,14 @@
                                                         <button type="submit" class="submit-with-icon">
                                                             {# Check whether question is solved or unsolved #}
                                                             {% if q.question_solved == True %}
-                                                                <span id="solved" data-toggle="tooltip-right" title="Undo mark as solved" class="glyphicon glyphicon-ok"></span>
+                                                                <span id="solved" data-toggle="tooltip-right"
+                                                                      title="Undo mark as solved"
+                                                                      class="glyphicon glyphicon-ok"></span>
                                                             {% endif %}
                                                             {% if q.question_solved == False %}
-                                                                <span id="unsolved" data-toggle="tooltip-right" title="Mark as solved" class="glyphicon glyphicon-ok"></span>
+                                                                <span id="unsolved" data-toggle="tooltip-right"
+                                                                      title="Mark as solved"
+                                                                      class="glyphicon glyphicon-ok"></span>
                                                             {% endif %}
                                                         </button>
                                                     </div>
@@ -141,7 +150,8 @@
                                                 {% endif %}
                                             </div>
                                             <div class="col-md-6">
-                                                <p id="answer-created">Created: {{ answer.answer_created }}</p> {# Display answer created date #}
+                                                <p id="answer-created">Created: {{ answer.answer_created }}</p>
+                                                {# Display answer created date #}
                                                 <form action="/forum/up_vote_answer/" method="post">
                                                     {% csrf_token %}
                                                     {# Answer up vote button #}
@@ -155,7 +165,8 @@
                                                         </button>
                                                     </div>
                                                 </form>
-                                                <label id="answer-votes">&nbsp{{ variable|votes:answer }}&nbsp</label> {# Answer vote count #}
+                                                <label id="answer-votes">&nbsp{{ variable|votes:answer }}&nbsp</label>
+                                                {# Answer vote count #}
                                                 <form action="/forum/down_vote_answer/" method="post">
                                                     {% csrf_token %}
                                                     {# Answer down vote button #}
@@ -193,20 +204,22 @@
                             </div>
                         {% endif %}
                         {# Submit form for answer #}
-                    <div id="editor">
+                        <div id="editor">
+                            <div id='{{ q.id }}e' class="initiallyHiddenEditor">
 
-                        <form class="new_question" action="/forum/new_answer/" method='post'>
-                            {% csrf_token %}
-                            {# Display answer form with markdown editor #}
-                            {{ form.answer_text }}
-                            <input type="hidden" value="{{ q.id }}" name="question">
-                            {{ form.topic.as_hidden }}
-                            <br><input type='submit' class="ui left floated positive button" value='Submit'/>
-                        </form>
-                    </div>
-                        <button type="submit" id="hide-editor">
-                        Answer
-                        </button>
+                                <form class="new_question" action="/forum/new_answer/" method='post'>
+                                    {% csrf_token %}
+                                    {# Display answer form with markdown editor #}
+                                    {{ form.answer_text }}
+                                    <input type="hidden" value="{{ q.id }}" name="question">
+                                    {{ form.topic.as_hidden }}
+                                    <br><input type='submit' class="ui left floated positive button" value='Submit'/>
+                                </form>
+                            </div>
+                            <button type="submit" id='{{ q.id }}'>
+                                Answer
+                            </button>
+                        </div>
                     </div>
                 {% endfor %}
             </ul>
