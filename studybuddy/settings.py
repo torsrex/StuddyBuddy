@@ -133,3 +133,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+# Markdown editor configs
+DRACEDITOR_ENABLE_CONFIGS = {
+    'imgur': 'true',  # to enable/disable imgur/custom uploader.
+    'mention': 'false',  # to enable/disable mention
+    'jquery': 'true',  # to include/revoke jquery (require for admin default django)
+}
+DRACEDITOR_IMGUR_CLIENT_ID = 'IMGURAPI'
+DRACEDITOR_IMGUR_API_KEY = 'IMGURAPI'
