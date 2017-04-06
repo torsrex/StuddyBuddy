@@ -192,8 +192,6 @@ ENV/
 # Database related files
 studybuddy_db.sqlite3
 *.sql
-# Bootstrap related files and assets
-/static/
 /media/
 /env/
 

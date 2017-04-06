@@ -1,0 +1,13 @@
+.center {
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.body_color {
+    background-color: #f6f6f6;
+}
+
+.text_nowrap {
+    white-space: nowrap;
+}
