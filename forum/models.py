@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 from vote.models import VoteModel
+from draceditor.models import DraceditorField
 
 
 # Create your models here.
@@ -17,13 +18,13 @@ class Topic(models.Model):
 
 class Question(VoteModel, models.Model):
     question_name = models.CharField(max_length=60)
-    question_text = models.TextField()
+    question_text = DraceditorField()
     question_created = models.DateTimeField('Date created', auto_now_add=True)  # Automatically stores creation date
     question_updated = models.DateTimeField('Date updated', auto_now=True)  # Automatically updates on save
     # TODO: Implement quiz if time permits
     # question_SuitableForQuiz = models.BooleanField(default=False)  # Stores whether answer can be used for quiz
 
-    question_solved = models.BooleanField(default=False) #Stores whether answer is marked as solved by author
+    question_solved = models.BooleanField(default=False)  # Stores whether answer is marked as solved by author
     question_topic = models.ForeignKey(Topic, related_name='questions')
     user = models.ForeignKey(User, editable=False)
 
@@ -37,7 +38,7 @@ class Question(VoteModel, models.Model):
 class Answer(VoteModel, models.Model):
     question = models.ForeignKey(Question, related_name='answers')
     topic = models.ForeignKey(Topic)
-    answer_text = models.TextField()
+    answer_text = DraceditorField()
     answer_created = models.DateTimeField('Date created', auto_now_add=True)  # Automatically stores creation save
     answer_updated = models.DateTimeField('Date updated', auto_now_add=True)  # Automatically updates on save
     user = models.ForeignKey(User, editable=False)

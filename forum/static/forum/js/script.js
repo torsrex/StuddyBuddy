@@ -37,4 +37,7 @@ $(function () {
         $(toggled).css("background-color", "#d3d3d3");
 
     });
+    $("#hide-editor").click(function () {
+        $("#editor").toggle();
+    });
 });

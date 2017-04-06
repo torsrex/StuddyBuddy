@@ -2,6 +2,12 @@
 {# set title #}
 {% block title %}Index of forum{% endblock %}
 {% load filters %}
+
+{# Loads markdown tags #}
+{% load dractags %}
+{# Loads scripts required for markdown #}
+
+
 {% block header-button %}
     <div class="left">
         <a class="btn btn-default green_button" href="new_question"
@@ -117,7 +123,7 @@
                                 </div>
                             </div>
                             <div class="panel-body">
-                                {{ q.question_text }} {# Display question content #}
+                                {{ q.question_text|safe_markdown }} {# Display question content #}
                             </div>
                         </div>
                         {% if q.answers.all %} {# Check whether answer for question exists #}
@@ -168,7 +174,8 @@
                                     </div>
                                     {# Display answer content #}
                                     <div class="panel-body">
-                                        {{ answer.answer_text }}
+                                        {# Displays answer with markdown formatting #}
+                                        {{ answer.answer_text|safe_markdown }}
                                     </div>
                                 </div>
                                 <br>
@@ -186,13 +193,20 @@
                             </div>
                         {% endif %}
                         {# Submit form for answer #}
+                    <div id="editor">
+
                         <form class="new_question" action="/forum/new_answer/" method='post'>
                             {% csrf_token %}
+                            {# Display answer form with markdown editor #}
                             {{ form.answer_text }}
                             <input type="hidden" value="{{ q.id }}" name="question">
                             {{ form.topic.as_hidden }}
-                            <br><input type='submit' class="btn btn-default" value='Submit'/>
+                            <br><input type='submit' class="ui left floated positive button" value='Submit'/>
                         </form>
+                    </div>
+                        <button type="submit" id="hide-editor">
+                        Answer
+                        </button>
                     </div>
                 {% endfor %}
             </ul>

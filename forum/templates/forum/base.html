@@ -5,8 +5,13 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     {% load staticfiles %} {# jinja logic to reference static files #}
+    {# Loads bootstrap #}
     <link rel='stylesheet' href="{% static 'forum/css/bootstrap.min.css' %}" type="text/css">
     <link rel='stylesheet' href="{% static 'forum/css/base.css' %}" type="text/css">
+    {# Loads style for markdown editor #}
+    <link href="{% static 'plugins/css/ace.min.css' %}" type="text/css" media="all" rel="stylesheet"/>
+    <link href="{% static 'plugins/css/semantic.min.css' %}" type="text/css" media="all" rel="stylesheet"/>
+    <link href="{% static 'draceditor/css/draceditor.css' %}" type="text/css" media="all" rel="stylesheet"/>
     {# Load the CDN first #}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     {# If CDN fails to load, serve up the local version #}
@@ -84,5 +89,14 @@
         {% endblock %}
     </div>
 </div>
+{# Loads scripts required for markdown #}
+<script type="text/javascript" src="{% static 'plugins/js/ace.js' %}"></script>
+<script type="text/javascript" src="{% static 'plugins/js/semantic.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'plugins/js/mode-markdown.js' %}"></script>
+<script type="text/javascript" src="{% static 'plugins/js/ext-language_tools.js' %}"></script>
+<script type="text/javascript" src="{% static 'plugins/js/theme-github.js' %}"></script>
+<script type="text/javascript" src="{% static 'plugins/js/highlight.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'plugins/js/emojis.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'draceditor/js/draceditor.js' %}"></script>
 </body>
 </html>

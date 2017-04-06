@@ -217,7 +217,7 @@ th#code {
 
 .table-link {
     color: #0f0f0f;
-    text-decoration:none;
+    text-decoration: none;
 }
 
 .table-content {
@@ -262,6 +262,7 @@ label#notification {
 #unsolved {
     color: #ff0000;
 }
+
 /* Undo mark as solved button colour*/
 #solved {
     color: #00ff00;
@@ -280,4 +281,9 @@ label#notification {
 /* Mark as solved button padding */
 #mark-as-solved-button {
     margin-left: 1em;
+}
+
+/*Markdown editor initially hidden */
+div#editor {
+    display: none;
 }

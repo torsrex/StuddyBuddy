@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.views.generic.base import RedirectView
 
 urlpatterns = [
+    url(r'^draceditor/', include('draceditor.urls')),
     url(r'^forum/', include('forum.urls')),
     url(r'^$', RedirectView.as_view(url='forum/'), name='go-to-forum'),
     url(r'^admin/', admin.site.urls),

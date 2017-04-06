@@ -7,6 +7,10 @@
     {% load staticfiles %} {# jinja logic to reference static files #}
     {# Loads bootstrap css #}
     <link rel='stylesheet' href="{% static 'forum/css/bootstrap.min.css' %}" type="text/css">
+    {# Loads style for markdown editor #}
+    <link href="{% static 'plugins/css/ace.min.css' %}" type="text/css" media="all" rel="stylesheet"/>
+    <link href="{% static 'plugins/css/semantic.min.css' %}" type="text/css" media="all" rel="stylesheet"/>
+    <link href="{% static 'draceditor/css/draceditor.css' %}" type="text/css" media="all" rel="stylesheet"/>
     {# Loads css #}
     <link rel='stylesheet' href="{% static 'forum/css/base_login.css' %}" type="text/css">
     {# Loads jquery #}
@@ -20,5 +24,14 @@
     {% block content %}
     {% endblock %}
 </div>
+
+<script type="text/javascript" src="{% static 'plugins/js/ace.js' %}"></script>
+<script type="text/javascript" src="{% static 'plugins/js/semantic.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'plugins/js/mode-markdown.js' %}"></script>
+<script type="text/javascript" src="{% static 'plugins/js/ext-language_tools.js' %}"></script>
+<script type="text/javascript" src="{% static 'plugins/js/theme-github.js' %}"></script>
+<script type="text/javascript" src="{% static 'plugins/js/highlight.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'plugins/js/emojis.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'draceditor/js/draceditor.js' %}"></script>
 </body>
 </html>
