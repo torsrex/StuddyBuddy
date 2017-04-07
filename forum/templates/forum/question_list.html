@@ -251,7 +251,7 @@
 
                 var field = 'cid';
                 var url = window.location.href;
-                if (url.indexOf('?' + field + '=') != -1) {
+                if (url.indexOf('?' + field + '=') !== -1) {
                     var pk_question = findGetParameter(field);
                     $("#b" + pk_question).css("background-color", "#d3d3d3");
                     $("#b" + pk_question + "c").toggle();
@@ -265,6 +265,7 @@
                     $(toggled).css("background-color", "#e8e8e8");
                     toggled = "#" + id;
                     $(toggled).css("background-color", "#d3d3d3");
+                    alert(id.substring(1));
                     $("#changeable").val(id.substring(1));
 
                 });
