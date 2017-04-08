@@ -119,9 +119,8 @@ def delete_question_in_index(request):
 
 
 # Deletes question in my question_list
-def delete_question(request):
-    # TODO: Fix delete question
-    question = get_object_or_404(Question, pk=request.POST['pk_question'])  # Gets question or returns 404 if not found
+def delete_question(request, question_id):
+    question = get_object_or_404(Question, pk=question_id)  # Gets question or returns 404 if not found
     question.delete()
     return HttpResponseRedirect('/forum/my_question/')  # Redirects back to my question list
 
