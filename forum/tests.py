@@ -69,7 +69,7 @@ class permissionTestCase(TestCase):
     def test_teachers_add_topic(self):  # Are we able to create topics and have them appear in the database?
         c = Client()
         c.force_login(self.teacher)
-        resp = c.post('/forum/new_topic/', {'topic_name': 'ekstremt smud topic', 'topic_desc': 'uhyre smud desc'})
+        c.post('/forum/new_topic/', {'topic_name': 'ekstremt smud topic', 'topic_desc': 'uhyre smud desc'})
         topics = Topic.objects.all()  # Fetches all the Topic objects in the database
         topicFound = False
         for t in topics:
@@ -141,8 +141,7 @@ class permissionTestCase(TestCase):
         c = Client()
         c.force_login(self.student)
 
-        answers = Answer.objects.all()
-        resp = c.post('/forum/new_answer/', {'answer_text': 'have', 'question': self.question_1.id,
+        c.post('/forum/new_answer/', {'answer_text': 'have', 'question': self.question_1.id,
                                              'topic': self.question_1.question_topic.id, 'user': self.student})
         answers = Answer.objects.all()
         answerFound = False
@@ -157,7 +156,7 @@ class permissionTestCase(TestCase):
         resp = c.get('/forum/my_question')
         self.assertTrue(
             len(resp.context['my_question_list']) == 0)  # Before a question is created, the list should be empty
-        q = Question.objects.create(question_name="balle", question_topic=self.topic_1, user_id=self.student.id)
+        Question.objects.create(question_name="balle", question_topic=self.topic_1, user_id=self.student.id)
         resp = c.get('/forum/my_question')
 
         # After a question creation the list should have exactly one element for the student.
@@ -177,7 +176,7 @@ class permissionTestCase(TestCase):
         )
         c = Client()
         c.force_login(self.teacher)
-        resp = c.post('/forum/delete_question_in_index/',
+        c.post('/forum/delete_question_in_index/',
                       {'pk_question': self.question_1.id, 'topic': self.question_1.question_topic.id})
         questions = Question.objects.all()
         assert len(questions) == 0  # If the deletion was successful, we should have no questions left.
@@ -225,13 +224,13 @@ class permissionTestCase(TestCase):
         q = Question.objects.get(pk=self.question_1.id)
         assert not q.question_solved  # The question should initially not be solved.
         # After this, the question should be marked as solved.
-        resp = c.post('/forum/mark_as_solved/',
+        c.post('/forum/mark_as_solved/',
                       {'pk_question': self.question_1.id,
                        'topic': self.question_1.question_topic.id})
         q = Question.objects.get(pk=self.question_1.id)
         assert q.question_solved
         # After this, the question should be marked as unsolved.
-        resp = c.post('/forum/mark_as_solved/',
+        c.post('/forum/mark_as_solved/',
                       {'pk_question': self.question_1.id,
                        'topic': self.question_1.question_topic.id})
         q = Question.objects.get(pk=self.question_1.id)

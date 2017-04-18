@@ -91,9 +91,9 @@ class UserForm(forms.ModelForm):
         email = self.cleaned_data['email']  # Gets the cleaned email
 
         if '@ntnu.no' in email:
-            return email # Always returned the cleaned data
+            return email  # Always returned the cleaned data
         elif '@stud.ntnu.no' in email:
-            return email # Always returned the cleaned data
+            return email  # Always returned the cleaned data
         else:
             raise forms.ValidationError('Invalid email, please use ntnu mail.')  # Raises error if wrong email
 
