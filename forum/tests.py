@@ -56,13 +56,13 @@ class permissionTestCase(TestCase):
         c = Client()
         c.force_login(self.student)
         c.post('/forum/topics/1/new_question/',
-               {'question_name': "balle", 'question_text': "yoyoyo", 'question_topic': self.topic_1.id})
+               {'question_name': "test", 'question_text': "yoyoyo", 'question_topic': self.topic_1.id})
         """Post makes a POST-request to the link in the first argument, 
         sending in the dictionary in the second argument in the request."""
         questions = Question.objects.all()  # Fetches all the Question objects in the database
         questionFound = False
         for q in questions:
-            if q.question_name == "balle":  # Does the question exist in the database?
+            if q.question_name == "test":  # Does the question exist in the database?
                 questionFound = True
         assert questionFound
 
@@ -156,7 +156,7 @@ class permissionTestCase(TestCase):
         resp = c.get('/forum/my_question')
         self.assertTrue(
             len(resp.context['my_question_list']) == 0)  # Before a question is created, the list should be empty
-        Question.objects.create(question_name="balle", question_topic=self.topic_1, user_id=self.student.id)
+        Question.objects.create(question_name="test", question_topic=self.topic_1, user_id=self.student.id)
         resp = c.get('/forum/my_question')
 
         # After a question creation the list should have exactly one element for the student.
