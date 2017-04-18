@@ -1,6 +1,9 @@
 {% extends 'forum/base.html' %}
 {% block title %}Search results{% endblock %}
 
+{# Loads markdown tags #}
+{% load dractags %}
+
 {% block container-fluid %}
     <br>
     <h1>Top three search results: </h1>
@@ -17,7 +20,7 @@
                     </div>
 
                     <div class="panel-body">
-                        {{ q.question_text }}
+                        {{ q.question_text|safe_markdown }}
                     </div>
                 </div>
             </a>
