@@ -111,9 +111,11 @@ class MyQuestionView(generic.ListView):
 # Method to handle deletion of question in question list under topics (IndexView)
 def delete_question_in_index(request):
     if not request.user.has_perm('forum.delete_question'):
-        return HttpResponseForbidden('Nope!')  # Checks if user has permission to delete question
+        return HttpResponseForbidden()  # Checks if user has permission to delete question
     if request.method == 'POST':
         q = Question.objects.get(pk=request.POST['pk_question'])  # Gets question to be deleted
+        if request.user != q.get_user():
+            return HttpResponseForbidden()
         q.delete()
     return redirect('/forum/topics/' + request.POST['topic'])  # Redirects back to question list
 
@@ -121,6 +123,8 @@ def delete_question_in_index(request):
 # Deletes question in my question_list
 def delete_question(request, question_id):
     question = get_object_or_404(Question, pk=question_id)  # Gets question or returns 404 if not found
+    if request.user != question.get_user():
+        return HttpResponseForbidden()
     question.delete()
     return HttpResponseRedirect('/forum/my_question/')  # Redirects back to my question list
 

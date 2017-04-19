@@ -32,7 +32,7 @@ class Question(VoteModel, models.Model):
         return self.question_name
 
     def get_user(self):  # Returns user who created question
-        return User.objects.get(pk=self.user_id).username.title()
+        return User.objects.get(pk=self.user_id).username
 
 
 class Answer(VoteModel, models.Model):
