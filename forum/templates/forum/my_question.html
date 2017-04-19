@@ -1,7 +1,10 @@
 {% extends 'forum/base.html' %}
+{# Loads markdown tags #}
+{% load dractags %}
 {% block title %}Your questions{% endblock %}
 
 {% block container-fluid %}
+    <br>
     <h1>List of your questions</h1>
     {# Displays questions in my_question_list in accordion view #}
     {% if my_question_list %}
@@ -27,7 +30,7 @@
                     </div>
                     <div id="collapse{{ forloop.counter }}" class="panel-collapse collapse">
                         <div class="panel-body">
-                            <p>{{ question.question_text }}</p>
+                            <p>{{ question.question_text|safe_markdown }}</p>
                         </div>
                     </div>
                 </div>
