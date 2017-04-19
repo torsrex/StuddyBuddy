@@ -62,7 +62,7 @@ class PermissionTestCase(TestCase):
         questions = Question.objects.all()  # Fetches all the Question objects in the database
         question_found = False
         for q in questions:
-            if q.question_name == "test":  # Does the question exist in the database?
+            if q.__str__() == "test":  # Does the question exist in the database?
                 question_found = True
         assert question_found
 
@@ -146,7 +146,7 @@ class PermissionTestCase(TestCase):
         answers = Answer.objects.all()
         answer_found = False
         for a in answers:
-            if a.answer_text == 'have':
+            if a.__str__() == 'have':
                 answer_found = True
         assert answer_found
 
