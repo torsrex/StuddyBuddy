@@ -114,8 +114,6 @@ def delete_question_in_index(request):
         return HttpResponseForbidden()  # Checks if user has permission to delete question
     if request.method == 'POST':
         q = Question.objects.get(pk=request.POST['pk_question'])  # Gets question to be deleted
-        if request.user != q.get_user():
-            return HttpResponseForbidden()
         q.delete()
     return redirect('/forum/topics/' + request.POST['topic'])  # Redirects back to question list
 
