@@ -5,7 +5,7 @@ from forum.models import Question, Answer
 from forum.models import Topic, User
 
 
-class siteTestCase(TestCase):
+class SiteTestCase(TestCase):
     def setUp(self):
         self.topic_1 = Topic.objects.create(  # Creating a topic in the test database
             topic_name="smud test topic",
@@ -34,7 +34,7 @@ class siteTestCase(TestCase):
         self.assertEquals(resp.status_code, 200)
 
 
-class permissionTestCase(TestCase):
+class PermissionTestCase(TestCase):
     def setUp(self):  # Makes users and a topic, so it doesn't have to be done in every test.
         self.teacher = User.objects.create_user(
             username='Pekka', email='pekka@ntnu.no', password='abraham', )
@@ -60,22 +60,22 @@ class permissionTestCase(TestCase):
         """Post makes a POST-request to the link in the first argument, 
         sending in the dictionary in the second argument in the request."""
         questions = Question.objects.all()  # Fetches all the Question objects in the database
-        questionFound = False
+        question_found = False
         for q in questions:
             if q.question_name == "test":  # Does the question exist in the database?
-                questionFound = True
-        assert questionFound
+                question_found = True
+        assert question_found
 
     def test_teachers_add_topic(self):  # Are we able to create topics and have them appear in the database?
         c = Client()
         c.force_login(self.teacher)
         c.post('/forum/new_topic/', {'topic_name': 'ekstremt smud topic', 'topic_desc': 'uhyre smud desc'})
         topics = Topic.objects.all()  # Fetches all the Topic objects in the database
-        topicFound = False
+        topic_found = False
         for t in topics:
             if t.topic_name == "ekstremt smud topic":
-                topicFound = True
-        assert topicFound
+                topic_found = True
+        assert topic_found
 
     def test_create_user(self):  # Are we able to create users and have them appear in the database?
         c = Client()
@@ -84,11 +84,11 @@ class permissionTestCase(TestCase):
         c.post('/forum/register/',
                {'username': 'teststudent', 'password': 'smud passord', 'email': 'smud@stud.ntnu.no'})
         users = User.objects.all()  # Fetches all the User objects in the database
-        userFound = False
+        user_found = False
         for u in users:
             if u.username == "testteacher":
-                userFound = True
-        assert userFound
+                user_found = True
+        assert user_found
 
     def test_upvote_and_downvote(self):  # Are we able to register and store upvotes and downvotes in the database?
         self.question_1 = Question.objects.create(
@@ -142,13 +142,13 @@ class permissionTestCase(TestCase):
         c.force_login(self.student)
 
         c.post('/forum/new_answer/', {'answer_text': 'have', 'question': self.question_1.id,
-                                             'topic': self.question_1.question_topic.id, 'user': self.student})
+                                      'topic': self.question_1.question_topic.id, 'user': self.student})
         answers = Answer.objects.all()
-        answerFound = False
+        answer_found = False
         for a in answers:
             if a.answer_text == 'have':
-                answerFound = True
-        assert answerFound
+                answer_found = True
+        assert answer_found
 
     def test_my_question_list(self):
         c = Client()
@@ -177,7 +177,7 @@ class permissionTestCase(TestCase):
         c = Client()
         c.force_login(self.teacher)
         c.post('/forum/delete_question_in_index/',
-                      {'pk_question': self.question_1.id, 'topic': self.question_1.question_topic.id})
+               {'pk_question': self.question_1.id, 'topic': self.question_1.question_topic.id})
         questions = Question.objects.all()
         assert len(questions) == 0  # If the deletion was successful, we should have no questions left.
 
@@ -200,16 +200,16 @@ class permissionTestCase(TestCase):
         c.force_login(self.student)
         # Makes a search for "transistors" and searches through the question_texts of all questions for a similar word.
         resp = c.post('/forum/search/?q=transistors')
-        transistorFound = False
-        jacobianFound = False
+        transistor_found = False
+        jacobian_found = False
         for q in resp.context['result']:  # Iterates through the questions in the list returned by the search function.
             if q['question_name'] == 'jacobian':  # The jacobian question should not be returned
-                jacobianFound = True
+                jacobian_found = True
             if q['question_name'] == 'transistor':  # The transistor question should not be returned
-                transistorFound = True
+                transistor_found = True
 
-        assert not jacobianFound
-        assert transistorFound
+        assert not jacobian_found
+        assert transistor_found
 
     def test_mark_as_solved(self):  # Are we able to mark questions as solved, and then mark them as unsolved again?
         self.question_1 = Question.objects.create(
@@ -225,13 +225,13 @@ class permissionTestCase(TestCase):
         assert not q.question_solved  # The question should initially not be solved.
         # After this, the question should be marked as solved.
         c.post('/forum/mark_as_solved/',
-                      {'pk_question': self.question_1.id,
-                       'topic': self.question_1.question_topic.id})
+               {'pk_question': self.question_1.id,
+                'topic': self.question_1.question_topic.id})
         q = Question.objects.get(pk=self.question_1.id)
         assert q.question_solved
         # After this, the question should be marked as unsolved.
         c.post('/forum/mark_as_solved/',
-                      {'pk_question': self.question_1.id,
-                       'topic': self.question_1.question_topic.id})
+               {'pk_question': self.question_1.id,
+                'topic': self.question_1.question_topic.id})
         q = Question.objects.get(pk=self.question_1.id)
         assert not q.question_solved
