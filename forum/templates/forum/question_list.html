@@ -31,20 +31,19 @@
             <ul>
                 {% for q in latest_questions_list %}
                     {# Check if question have been answered, if not, display notification text #}
-                    {% if q.answers.all %}
-                        <li id='b{{ q.id }}'>{{ q.question_name }}</li>
-                    {% else %}
-                        <li id='b{{ q.id }}'>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    {{ q.question_name }}
-                                </div>
-                                <div class="col-md-6">
-                                    <label id="notification">New question!</label>
-                                </div>
+
+                    <li id='b{{ q.id }}'>
+                        <div class="row">
+                            <div class="col-md-6">
+                                {{ q.question_name }}
                             </div>
-                        </li>
-                    {% endif %}
+                            <div class="col-md-6">
+                                {% if not q.question_solved and not q.answers.all %}
+                                    <label id="notification">New question!</label>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </li>
                 {% endfor %}
             </ul>
         </div>

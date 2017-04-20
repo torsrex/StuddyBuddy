@@ -33,7 +33,7 @@ class IndexView(generic.ListView):
     def get_queryset(self):
         # One-liner, uses topic id to get related questions, orders by question created and fetches related answers
         return Question.objects.filter(question_topic_id=self.kwargs["pk"]).order_by(
-            '-question_created').prefetch_related(
+            'question_solved', '-vote_score', '-question_created').prefetch_related(
             'answers').all()
 
     def get_context_data(self, **kwargs):
