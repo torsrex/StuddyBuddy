@@ -121,7 +121,7 @@ def delete_question_in_index(request):
 # Deletes question in my question_list
 def delete_question(request, question_id):
     question = get_object_or_404(Question, pk=question_id)  # Gets question or returns 404 if not found
-    if request.user != question.get_user():
+    if str(request.user).strip() != str(question.get_user()).strip():
         return HttpResponseForbidden()
     question.delete()
     return HttpResponseRedirect('/forum/my_question/')  # Redirects back to my question list

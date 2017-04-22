@@ -87,7 +87,7 @@
                                                     </button>
                                                 </div>
                                             </form>
-                                            {% if perms.forum.delete_question %}
+                                            {% if perms.forum.delete_question or q.user.username == user.username %}
                                                 {# Check if user is allowed to delete question #}
                                                 {# Delete question button #}
                                                 <form action="/forum/delete_question_in_index/" method="post">
