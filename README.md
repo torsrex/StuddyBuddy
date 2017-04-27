@@ -5,5 +5,25 @@
 Studybuddy is a project that aims to help students ask and answer questions. What sets it apart from other similar projects, is its ability to help you find similar questions, thus eliminating the need to repeatedly ask the same question. 
 
 Studybuddy is developed using the Django Framework for Python 3.6.<br>
-A live version is accessible here: http://178.62.110.47
 
+
+## Installation
+cd into the main project directory
+```
+pip install -r requirements.txt
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver
+```
+Now you have a local server running at localhost:8000
+
+
+## Contributing
+1. Fork it!
+2. Create your feature branch: `git checkout -b my-new-feature`
+3. Commit your changes: `git commit -am 'Add some feature'`
+4. Push to the branch: `git push origin my-new-feature`
+5. Submit a pull request
+
+## Live Version
+http://studybuddy.cf
