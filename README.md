@@ -2,9 +2,22 @@
 [![Build Status](https://travis-ci.org/torsrex/StuddyBuddy.svg?branch=master)](https://travis-ci.org/torsrex/StuddyBuddy)
 [![Coverage Status](https://coveralls.io/repos/github/torsrex/StuddyBuddy/badge.svg?branch=master)](https://coveralls.io/github/torsrex/StuddyBuddy?branch=master)
 
+[![forthebadge](http://forthebadge.com/images/badges/fuck-it-ship-it.svg)](http://forthebadge.com)
+[![forthebadge](http://forthebadge.com/images/badges/uses-css.svg)](http://forthebadge.com)
+[![forthebadge](http://forthebadge.com/images/badges/uses-html.svg)](http://forthebadge.com)
+[![forthebadge](http://forthebadge.com/images/badges/made-with-python.svg)](http://forthebadge.com)
+[![forthebadge](http://forthebadge.com/images/badges/designed-in-ms-paint.svg)](http://forthebadge.com)
+[![forthebadge](http://forthebadge.com/images/badges/powered-by-electricity.svg)](http://forthebadge.com)
+[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)
+
 Studybuddy is a project that aims to help students ask and answer questions. What sets it apart from other similar projects, is its ability to help you find similar questions, thus eliminating the need to repeatedly ask the same question. 
 
 Studybuddy is developed using the Django Framework for Python 3.6.<br>
+
+
+
+
+
 
 
 ## Installation
